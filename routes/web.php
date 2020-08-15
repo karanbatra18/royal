@@ -17,11 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->group(function() {
+Route::prefix('admin')->middleware('auth')->group(function() {
 
     Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
     // Route::post('create', 'VideoRoomsController@createRoom');
-    Route::get('user', 'Admin\UserController@index')->name('user.create');
+    Route::get('user', 'Admin\UserController@create')->name('user.create');
     
      Route::post('user', 'Admin\UserController@store')->name('user.store');
   
