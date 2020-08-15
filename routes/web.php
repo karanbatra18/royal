@@ -21,7 +21,17 @@ Route::prefix('admin')->group(function() {
 
     Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
     // Route::post('create', 'VideoRoomsController@createRoom');
+    Route::get('user', 'Admin\UserController@index')->name('user.create');
+    
+     Route::post('user', 'Admin\UserController@store')->name('user.store');
+  
 });
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
