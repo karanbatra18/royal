@@ -18,7 +18,9 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-
+        $users = UserProfile::get();
+        return view('admin.user.index', compact('users'));
+ 
     }
 
     public function store(Request $request)
@@ -36,5 +38,11 @@ class UserController extends Controller
 
         return redirect()->route('user.create');
     }
+    
+     public function edit()
+    {
+             return view('admin.user.edit');
+    }
+
 
 }

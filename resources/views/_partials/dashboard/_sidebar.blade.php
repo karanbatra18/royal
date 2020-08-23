@@ -9,17 +9,37 @@
 <div class="sidebar-wrapper">
     <ul class="nav">
         <li class="nav-item active  ">
-            <a class="nav-link" href="./dashboard.html">
+            <a class="nav-link" href="{{ route('admin.dashboard') }}">
                 <i class="material-icons">dashboard</i>
                 <p>Dashboard</p>
             </a>
         </li>
-        <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-                <i class="material-icons">person</i>
-                <p>User Profile</p>
-            </a>
+        <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
+                        <span class="sidebar-mini"> <i class="material-icons">person</i></span>
+                         
+                        <p>User Management
+                        <b class="caret"></b>
+                      </p>
+                    </a>
+                    <div class="collapse show" id="laravelExample" style="">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('user.create') }}">
+                            <span class="sidebar-mini">  <i class="material-icons">person</i> </span>
+                            <span class="sidebar-normal">Add User </span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('user.index') }}">
+                            <span class="sidebar-mini"> <i class="material-icons">person</i></span>
+                            <span class="sidebar-normal"> All User</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
         </li>
+
      
     </ul>
 </div>

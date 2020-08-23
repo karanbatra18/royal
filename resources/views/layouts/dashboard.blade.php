@@ -15,9 +15,12 @@
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
     <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet"/>
+    
 </head>
 
 
@@ -57,6 +60,8 @@
 <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
 <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
 <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
 <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
 <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
 <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
@@ -75,7 +80,6 @@
 <!-- Library for adding dinamically elements -->
 <script src="../assets/js/plugins/arrive.min.js"></script>
 <!--  Google Maps Plugin    -->
-<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Chartist JS -->
 <script src="../assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
@@ -261,6 +265,11 @@
         md.initDashboardPageCharts();
 
     });
+    
+     var date_input=$('#input-dob'); //our date input has the name "date"
+        date_input.datepicker({
+            format: 'dd/mm/yyyy',
+                });
 </script>
 
 </body>

@@ -9,6 +9,10 @@ class UserProfile extends Model
     protected $fillable = [
         'name',
         'email',
-        'gender'
+        'gender',
+        'dob',
+        'phone',
+        'married',
+        'password',
     ];
 }
