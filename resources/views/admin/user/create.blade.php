@@ -10,7 +10,7 @@
 
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">{{ __('Edit Profile') }}</h4>
+                <h4 class="card-title">{{ __('Add User') }}</h4>
                 <p class="card-category">{{ __('User information') }}</p>
               </div>
               <div class="card-body ">
@@ -45,6 +45,86 @@
                       @if ($errors->has('email'))
                         <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
                       @endif
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Gender') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('gender') ? ' has-danger' : '' }}">
+                      <select class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" id="input-gender" required >
+                          <option value="">Please select</option>
+                          <option value="M">Male</option>
+                          <option value="F">Female</option>
+                          <option value="tg">TransGender</option>
+                    </select>
+                      @if ($errors->has('email'))
+                        <span id="gender-error" class="error text-danger" >{{ $errors->first('gender') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Date of Birth') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('dob') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" id="input-dob" type="text" placeholder="{{ __('Date Of Birth') }}" value="" required />
+                    
+                      @if ($errors->has('dob'))
+                        <span id="dob-error" class="error text-danger" >{{ $errors->first('dob') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                 <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Marital Status') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('married') ? ' has-danger' : '' }}">
+                      <select class="form-control{{ $errors->has('married') ? ' is-invalid' : '' }}" name="married" id="input-married" required >
+                          <option value="">Please select</option>
+                          <option value="single">Single</option>
+                          <option value="married">Married</option>
+                          <option value="divorce">Divorced</option>
+                    </select>
+                      @if ($errors->has('married'))
+                        <span id="married-error" class="error text-danger" >{{ $errors->first('married') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                 <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Phone') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                       <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" id="input-phone" type="text" placeholder="{{ __('Phone') }}" value="" required />
+                   
+                      @if ($errors->has('phone'))
+                        <span id="phone-error" class="error text-danger" >{{ $errors->first('phone') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                   <div class="row">
+                  <label class="col-sm-2 col-form-label" for="input-password">{{ __('New Password') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="input-password" type="password" placeholder="{{ __('New Password') }}" value="" required />
+                      @if ($errors->has('password'))
+                        <span id="password-error" class="error text-danger" for="input-password">{{ $errors->first('password') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <label class="col-sm-2 col-form-label" for="input-password-confirmation">{{ __('Confirm New Password') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group">
+                      <input class="form-control" name="password_confirmation" id="input-password-confirmation" type="password" placeholder="{{ __('Confirm New Password') }}" value="" required />
                     </div>
                   </div>
                 </div>
