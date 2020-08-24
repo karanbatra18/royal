@@ -54,7 +54,7 @@ class UserController extends Controller
         $user = User::create($data);
         $user->userProfile()->create([]);
 
-        return redirect()->route('user.create');
+        return redirect()->route('user.create')->with('success','User successfully Added!');;
     }
 
     /**
@@ -84,7 +84,7 @@ class UserController extends Controller
         $user = User::where('id', $userId)->first();
         $user->update($data);
 
-        return redirect()->back()->withSuccess('Information Updated successfully');
+        return redirect()->back()->with('success','Information Updated successfully!');
     }
 
     /**
@@ -98,7 +98,7 @@ class UserController extends Controller
         $user = User::where('id', $userId)->first();
         $user->userProfile()->update($data);
 
-        return redirect()->back()->withSuccess('Information Updated successfully');
+        return redirect()->back()->with('success','Information Updated successfully!');
     }
 
 

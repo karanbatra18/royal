@@ -38,6 +38,7 @@
         @include('_partials.dashboard._header')
 
         <div class="content">
+            @include('flash-message')
             @yield('content')
         </div>
         @include('_partials.dashboard._footer')
