@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -16,7 +17,19 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name',
+        'last_name',
+        'email',
+        'alternate_email',
+        'gender',
+        'dob',
+        'marital_status',
+        'phone',
+        'alternate_phone',
+        'family_phone_number',
+        'landline',
+        'whatsup',
+        'password',
     ];
 
     /**
@@ -36,4 +49,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userProfile(): HasOne
+    {
+        return $this->hasOne(\App\Models\UserProfile::class);
+    }
 }

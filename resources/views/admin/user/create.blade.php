@@ -26,13 +26,24 @@
                     </div>
                   </div>
                 @endif
+                  <div class="row">
+                    <label class="col-sm-2 col-form-label">Firstname</label>
+                    <div class="col-sm-7">
+                      <div class="form-group{{ $errors->has('first_name') ? ' has-danger' : '' }}">
+                        <input class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" id="input-name" type="text" placeholder="Firstname" required="true" aria-required="true" value="{{ old('first_name') }}"/>
+                        @if ($errors->has('first_name'))
+                          <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('first_name') }}</span>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Name') }}</label>
+                  <label class="col-sm-2 col-form-label">Lastname</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="input-name" type="text" placeholder="{{ __('Name') }}" value="" required="true" aria-required="true"/>
-                      @if ($errors->has('name'))
-                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                    <div class="form-group{{ $errors->has('last_name') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" id="input-name" type="text" placeholder="Lastname" required="true" aria-required="true" value="{{ old('last_name') }}"/>
+                      @if ($errors->has('last_name'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('last_name') }}</span>
                       @endif
                     </div>
                   </div>
@@ -41,7 +52,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Email') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="input-email" type="email" placeholder="{{ __('Email') }}" value="" required />
+                      <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="input-email" type="email" placeholder="{{ __('Email') }}" value="{{ old('email') }}" required />
                       @if ($errors->has('email'))
                         <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
                       @endif
@@ -55,9 +66,9 @@
                     <div class="form-group{{ $errors->has('gender') ? ' has-danger' : '' }}">
                       <select class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" id="input-gender" required >
                           <option value="">Please select</option>
-                          <option value="M">Male</option>
-                          <option value="F">Female</option>
-                          <option value="tg">TransGender</option>
+                          <option {{ old('gender') == 'male' ? 'selected' : '' }} value="male">Male</option>
+                          <option {{ old('gender') == 'female' ? 'selected' : '' }} value="female">Female</option>
+                          <option {{ old('gender') == 'transGender' ? 'selected' : '' }} value="transGender">TransGender</option>
                     </select>
                       @if ($errors->has('email'))
                         <span id="gender-error" class="error text-danger" >{{ $errors->first('gender') }}</span>
@@ -70,7 +81,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Date of Birth') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('dob') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" id="input-dob" type="text" placeholder="{{ __('Date Of Birth') }}" value="" required />
+                      <input class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" id="input-dob" type="date" placeholder="{{ __('Date Of Birth') }}" value="{{ old('dob') }}" required autocomplete="off" />
                     
                       @if ($errors->has('dob'))
                         <span id="dob-error" class="error text-danger" >{{ $errors->first('dob') }}</span>
@@ -82,15 +93,15 @@
                  <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Marital Status') }}</label>
                   <div class="col-sm-7">
-                    <div class="form-group{{ $errors->has('married') ? ' has-danger' : '' }}">
-                      <select class="form-control{{ $errors->has('married') ? ' is-invalid' : '' }}" name="married" id="input-married" required >
+                    <div class="form-group{{ $errors->has('marital_status') ? ' has-danger' : '' }}">
+                      <select class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}" name="marital_status" id="input-marital_status" required >
                           <option value="">Please select</option>
-                          <option value="single">Single</option>
-                          <option value="married">Married</option>
-                          <option value="divorce">Divorced</option>
+                          <option {{ old('marital_status') == 'single' ? 'selected' : '' }} value="single">Single</option>
+                          <option {{ old('marital_status') == 'married' ? 'selected' : '' }} value="married">Married</option>
+                          <option {{ old('marital_status') == 'divorced' ? 'selected' : '' }} value="divorced">Divorced</option>
                     </select>
-                      @if ($errors->has('married'))
-                        <span id="married-error" class="error text-danger" >{{ $errors->first('married') }}</span>
+                      @if ($errors->has('marital_status'))
+                        <span id="married-error" class="error text-danger" >{{ $errors->first('marital_status') }}</span>
                       @endif
                     </div>
                   </div>
@@ -100,7 +111,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Phone') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
-                       <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" id="input-phone" type="text" placeholder="{{ __('Phone') }}" value="" required />
+                       <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" id="input-phone" type="text" placeholder="{{ __('Phone') }}" value="{{ old('phone') }}" required />
                    
                       @if ($errors->has('phone'))
                         <span id="phone-error" class="error text-danger" >{{ $errors->first('phone') }}</span>
@@ -113,7 +124,7 @@
                   <label class="col-sm-2 col-form-label" for="input-password">{{ __('New Password') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="input-password" type="password" placeholder="{{ __('New Password') }}" value="" required />
+                      <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="input-password" type="password" placeholder="{{ __('New Password') }}" value="{{ old('password') }}" required />
                       @if ($errors->has('password'))
                         <span id="password-error" class="error text-danger" for="input-password">{{ $errors->first('password') }}</span>
                       @endif
@@ -124,7 +135,7 @@
                   <label class="col-sm-2 col-form-label" for="input-password-confirmation">{{ __('Confirm New Password') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group">
-                      <input class="form-control" name="password_confirmation" id="input-password-confirmation" type="password" placeholder="{{ __('Confirm New Password') }}" value="" required />
+                      <input class="form-control" name="password_confirmation" id="input-password-confirmation" type="password" placeholder="{{ __('Confirm New Password') }}" value="{{ old('password_confirmation') }}" required />
                     </div>
                   </div>
                 </div>
