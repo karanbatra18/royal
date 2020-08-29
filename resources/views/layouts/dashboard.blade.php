@@ -271,7 +271,64 @@
         date_input.datepicker({
             format: 'dd-mm-yyyy',
                 });*/
+    
+    
 </script>
+
+    
+    
+    <script>
+        $('.datepicker').datepicker();
+        $('#birthday_users_submit').click(function(){
+            if($('#birthday_users').val()=="")
+            {
+                alert('Please select profile to send birthday mail or sms');
+                return false;
+            }
+        });
+        
+           
+        $('.checked_all').on('change', function() {   
+            if($(this).prop("checked"))
+            {
+                var str="";
+                 $('.checkbox').each(function(){
+                     str += $(this).val()+',';
+                 })
+                 if(str!="")
+                 {
+                     str= str.slice(0, -1);
+                 }
+                $('#birthday_users').val(str);
+                }else{
+                    $('#birthday_users').val(''); 
+                }
+            
+           
+                $('.checkbox').prop('checked', $(this).prop("checked"));              
+        });
+        $('.checkbox').change(function(){ 
+            
+            if($('.checkbox:checked').length == $('.checkbox').length){
+                   $('.checked_all').prop('checked',true);
+            }else{
+                   $('.checked_all').prop('checked',false);
+            }
+            
+            
+                 var str="";
+                 $('.checkbox:checked').each(function(){
+                     str += $(this).val()+',';
+                 })
+                 if(str!="")
+                 {
+                     str= str.slice(0, -1);
+                 }
+                $('#birthday_users').val(str);
+            
+            
+        });
+    </script>
 
 </body>
 </html>

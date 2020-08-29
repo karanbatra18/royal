@@ -39,6 +39,40 @@
                       </ul>
                     </div>
         </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.birthday', ['birthday_date' => date('Y-m-d')]) }}">
+                <i class="material-icons">B</i>
+                <p>Birthday Listing</p>
+            </a>
+        </li>
+        
+        
+         <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#swayamber" aria-expanded="false">
+                        <span class="sidebar-mini"> <i class="material-icons">person</i></span>
+                         
+                        <p>Swyamber Management
+                        <b class="caret"></b>
+                      </p>
+                    </a>
+                    <div class="collapse" id="swayamber" style="">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('user.create') }}">
+                            <span class="sidebar-mini">  <i class="material-icons">person</i> </span>
+                            <span class="sidebar-normal">Add Swyamber </span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('user.index') }}">
+                            <span class="sidebar-mini"> <i class="material-icons">person</i></span>
+                            <span class="sidebar-normal"> All Swyamber</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+        </li>
 
      
     </ul>

@@ -36,7 +36,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::post('users', 'Admin\UserController@store')->name('user.store');
     Route::put('users/{user}', 'Admin\UserController@update')->name('user.update');
     Route::put('users-profile/{user}', 'Admin\UserController@updateProfile')->name('user.update_profile');
-
+    Route::get('birthday/{birthday_date}', 'Admin\BirthdayController@index')->name('admin.birthday');
 });
 
 
