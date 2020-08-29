@@ -59,13 +59,13 @@
                     <div class="collapse" id="swayamber" style="">
                       <ul class="nav">
                         <li class="nav-item">
-                          <a class="nav-link" href="{{ route('user.create') }}">
+                          <a class="nav-link" href="{{ route('swyamber.create') }}">
                             <span class="sidebar-mini">  <i class="material-icons">person</i> </span>
                             <span class="sidebar-normal">Add Swyamber </span>
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{{ route('user.index') }}">
+                          <a class="nav-link" href="{{ route('swyamber.index') }}">
                             <span class="sidebar-mini"> <i class="material-icons">person</i></span>
                             <span class="sidebar-normal"> All Swyamber</span>
                           </a>
