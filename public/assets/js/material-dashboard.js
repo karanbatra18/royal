@@ -215,7 +215,7 @@ md = {
   },
 
 
-  initFormExtendedDatetimepickers: function() {
+  /*initFormExtendedDatetimepickers: function() {
     $('.datetimepicker').datetimepicker({
       icons: {
         time: "fa fa-clock-o",
@@ -230,8 +230,8 @@ md = {
       }
     });
 
-    $('.datepicker').datetimepicker({
-      format: 'MM/DD/YYYY',
+    $('.datepicker').datepicker({
+     // format: 'MM/DD/YYYY',
       icons: {
         time: "fa fa-clock-o",
         date: "fa fa-calendar",
@@ -261,7 +261,7 @@ md = {
 
       }
     });
-  },
+  },*/
 
 
   initSliders: function() {

@@ -15,8 +15,8 @@
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
+    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+--}}
     <link href="{{ asset('assets/css/material-dashboard.css?v=2.1.2') }}" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet"/>
@@ -42,6 +42,7 @@
             @yield('content')
         </div>
         @include('_partials.dashboard._footer')
+
     </div>
 </div>
 
@@ -61,9 +62,11 @@
 <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
 <script src="{{ asset('assets/js/plugins/bootstrap-selectpicker.js') }}"></script>
 <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+{{--
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+--}}
 
-<script src="{{ asset('assets/js/plugins/bootstrap-datetimepicker.min.js') }}"></script>
+{{--<script src="{{ asset('assets/js/plugins/bootstrap-datetimepicker.min.js') }}"></script>--}}
 <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
 <script src="{{ asset('assets/js/plugins/jquery.dataTables.min.js') }}"></script>
 <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
@@ -87,10 +90,13 @@
 <script src="{{ asset('assets/js/plugins/bootstrap-notify.js') }}"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="{{ asset('assets/js/material-dashboard.js?v=2.1.2') }}" type="text/javascript"></script>
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{ asset('assets/demo/demo.js') }}"></script>
 <script>
     $(document).ready(function() {
+       /* $('.datepicker').datepicker({ format:"yyyy-mm-dd" });*/
         $().ready(function() {
             $sidebar = $('.sidebar');
 
@@ -278,7 +284,7 @@
     
     
     <script>
-        $('.datepicker').datepicker();
+
         $('#birthday_users_submit').click(function(){
             if($('#birthday_users').val()=="")
             {
@@ -329,6 +335,6 @@
             
         });
     </script>
-
+@yield('script')
 </body>
 </html>
