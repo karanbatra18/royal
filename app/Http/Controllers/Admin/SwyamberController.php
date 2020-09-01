@@ -55,7 +55,7 @@ class SwyamberController extends Controller
         $swyamber = Swyamber::create($data);
         $swyamber->users()->attach($members);
 
-        return redirect()->route('admin.swyamber.index')->with('success','Swyamber successfully Added!');;
+        return redirect()->route('swyamber.index')->with('success','Swyamber successfully Added!');;
     }
 
     /**
