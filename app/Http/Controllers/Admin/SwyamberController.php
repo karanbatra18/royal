@@ -10,14 +10,15 @@ use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class BirthdayController extends Controller
+class SwyamberController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        return view('admin.user.create');
+        $users = User::get();
+        return view('admin.swyamber.create',compact('users'));
     }
 
     /**
@@ -26,10 +27,12 @@ class BirthdayController extends Controller
      */
     public function index(Request $request,$birthdayDate = null)
     {
-        $birthdayDate = !empty($birthdayDate) ? date('Y-m-d') : date('Y-m-d',strtotime($birthdayDate));
-        $condition = ['dob' => $birthdayDate];
-        $users = User::where($condition)->get();
-        return view('admin.user.birthday', compact('users'));
+      
+        $birthdayDate = date('Y-m-d',strtotime($birthdayDate));
+       // $condition = ['dob' => $birthdayDate];
+       //   dd($birthdayDate);
+        $users = User::whereDate('dob', $birthdayDate)->get();
+        return view('admin.user.birthday', compact('users','birthdayDate'));
 
     }
 

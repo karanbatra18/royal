@@ -16,6 +16,10 @@
                                     <input class="form-control datepicker" name="birthday_date" id="birthday_date" type="text" placeholder="{{ __('Birthday Date') }}" value="{{ $birthdayDate }}" required="true" aria-required="true"/>
                                   </div>
                                 </div>
+                            
+                               <div class="col-md-6">
+                                <button type="submit" id="birthday_date_submit" class="btn btn-primary">{{ __('Go') }}</button>
+                                </div>
 
                         </div>
                          
@@ -133,7 +137,7 @@
         $(document).ready(function(){
             $('.datepicker').datepicker({ format:"yyyy-mm-dd" });
 
-            $('#birthday_users_submit').on('click', function(){
+            $('#birthday_date_submit').on('click', function(){
 
                 var dataVal = $('#birthday_date').val();
                 location.href="{{ url('admin/birthday') }}"+'/'+dataVal;
