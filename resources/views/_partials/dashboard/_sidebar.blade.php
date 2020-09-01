@@ -52,7 +52,7 @@
                     <a class="nav-link" data-toggle="collapse" href="#swayamber" aria-expanded="false">
                         <span class="sidebar-mini"> <i class="material-icons">person</i></span>
                          
-                        <p>Swyamber Management
+                        <p>Swyamber
                         <b class="caret"></b>
                       </p>
                     </a>

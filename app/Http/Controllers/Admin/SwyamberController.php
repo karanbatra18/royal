@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Swyamber;
 use App\User;
 use App\UserProfile;
 use Illuminate\Http\Request;
@@ -25,14 +26,10 @@ class SwyamberController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Request $request,$birthdayDate = null)
+    public function index(Request $request)
     {
-      
-        $birthdayDate = date('Y-m-d',strtotime($birthdayDate));
-       // $condition = ['dob' => $birthdayDate];
-       //   dd($birthdayDate);
-        $users = User::whereDate('dob', $birthdayDate)->get();
-        return view('admin.user.birthday', compact('users','birthdayDate'));
+        $swyambers = Swyamber::get();
+        return view('admin.swyamber.index', compact('swyambers'));
 
     }
 
@@ -42,35 +39,35 @@ class SwyamberController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $validateData = $request->validate([
-            'first_name' => 'required|min:3|max:180',
-            'last_name' => 'required|min:3|max:180',
-            'gender' => 'required',
-            'dob' => 'required',
-            'email' => 'required|min:5|email',
-            'marital_status' => 'required',
-            'phone' => 'required|min:5',
-            'password' => 'required',
+            'title' => 'required|min:3|max:180',
+            'place' => 'required|min:3|max:180',
+            'swyamber_date' => 'required',
         ]);
 
+        $maleMembers = $request->male_member;
+        $femaleMembers = $request->female_member;
+        $members = array_merge($maleMembers, $femaleMembers);
 
-        $data = $request->all();
-        $data['dob'] = date('Y-m-d', strtotime($request->dob));
-        $user = User::create($data);
-        $user->userProfile()->create([]);
+        $data = $request->except('male_member', 'female_member', '_token');
+        $data['swyamber_date'] = date('Y-m-d', strtotime($request->swyamber_date));
+        $swyamber = Swyamber::create($data);
+        $swyamber->users()->attach($members);
 
-        return redirect()->route('user.create')->with('success','User successfully Added!');;
+        return redirect()->route('admin.swyamber.index')->with('success','Swyamber successfully Added!');;
     }
 
     /**
      * @param $userId
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit($userId)
+    public function edit($swyamberId)
     {
-        $user = User::where('id', $userId)->first();
-        $userProfile = $user->userProfile()->first();
-        return view('admin.user.edit', compact('user', 'userProfile'));
+        $users = User::get();
+        $swyamber = Swyamber::with('users')->where('id', $swyamberId)->first();
+        $members = $swyamber->users()->pluck('users.id')->toArray();
+        return view('admin.swyamber.edit', compact('swyamber', 'users', 'members'));
     }
 
     /**
@@ -78,16 +75,24 @@ class SwyamberController extends Controller
      * @param $userId
      * @return mixed
      */
-    public function update(Request $request, $userId)
+    public function update(Request $request, $swyamberId)
     {
-        /*$validateData = $request->validate([
-            'name' => 'required|min:3|max:180',
-            'email' => 'required|min:5',
-        ]);*/
+        $validateData = $request->validate([
+            'title' => 'required|min:3|max:180',
+            'place' => 'required|min:3|max:180',
+            'swyamber_date' => 'required',
+        ]);
 
-        $data = $request->all();
-        $user = User::where('id', $userId)->first();
-        $user->update($data);
+        $maleMembers = $request->male_member;
+        $femaleMembers = $request->female_member;
+        $members = array_merge($maleMembers, $femaleMembers);
+
+        $data = $request->except('male_member', 'female_member', '_token');
+        $data['swyamber_date'] = date('Y-m-d', strtotime($request->swyamber_date));
+
+        $swyamber = Swyamber::where('id', $swyamberId)->first();
+        $swyamber->update($data);
+        $swyamber->users()->sync($members);
 
         return redirect()->back()->with('success','Information Updated successfully!');
     }

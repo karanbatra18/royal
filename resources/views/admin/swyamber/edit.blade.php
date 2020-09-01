@@ -5,9 +5,9 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="{{ route('swyamber.store') }}" autocomplete="off" class="form-horizontal">
+          <form method="post" action="{{ route('swyamber.update', ['swyamber_id' => $swyamber->id]) }}" autocomplete="off" class="form-horizontal">
             @csrf
-
+            <input name="_method" type="hidden" value="PUT">
             <div class="card ">
               <div class="card-header card-header-primary">
                 <h4 class="card-title">{{ __('Add Swyamber') }}</h4>
@@ -30,7 +30,7 @@
                     <label class="col-sm-2 col-form-label">Title</label>
                     <div class="col-sm-7">
                       <div class="form-group{{ $errors->has('title') ? ' has-danger' : '' }}">
-                        <input class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" id="input-title" type="text" placeholder="Title" required="true" aria-required="true" value="{{ old('title') }}"/>
+                        <input class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" id="input-title" type="text" placeholder="Title" required="true" aria-required="true" value="{{ isset($swyamber) ? $swyamber->title : old('title') }}"/>
                         @if ($errors->has('title'))
                           <span id="title-error" class="error text-danger" for="input-title">{{ $errors->first('title') }}</span>
                         @endif
@@ -41,7 +41,7 @@
                   <label class="col-sm-2 col-form-label">Place</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('place') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('place') ? ' is-invalid' : '' }}" name="place" id="input-place" type="text" placeholder="Place" required="true" aria-required="true" value="{{ old('place') }}"/>
+                      <input class="form-control{{ $errors->has('place') ? ' is-invalid' : '' }}" name="place" id="input-place" type="text" placeholder="Place" required="true" aria-required="true" value="{{ isset($swyamber) ? $swyamber->place : old('place') }}"/>
                       @if ($errors->has('place'))
                         <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('place') }}</span>
                       @endif
@@ -53,7 +53,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Date') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('swyamber_date') ? ' has-danger' : '' }}">
-                      <input class="datepicker form-control{{ $errors->has('swyamber_date') ? ' is-invalid' : '' }}" name="swyamber_date" id="input-swyamber_date" type="text" placeholder="{{ __('Swyamber Date') }}" value="{{ old('swyamberdate') }}" required autocomplete="off" />
+                      <input class="datepicker form-control{{ $errors->has('swyamber_date') ? ' is-invalid' : '' }}" name="swyamber_date" id="input-swyamber_date" type="text" placeholder="{{ __('Swyamber Date') }}" value="{{ isset($swyamber) ? $swyamber->swyamber_date : old('swyamber_date') }}" required autocomplete="off" />
                     
                       @if ($errors->has('swyamber_date'))
                         <span id="swyamber_date-error" class="error text-danger" >{{ $errors->first('swyamber_date') }}</span>
@@ -70,7 +70,7 @@
                            @foreach($users as $user)
                                         @if($user->email != 'admin@gmail.com' && $user->gender=='male')
                                         
-                                        <option value="{{$user->id}}">{{$user->first_name.' '.$user->last_name}}</option>{{ old('gender') == 'male' ? 'selected' : '' }} value="male">Male</option>
+                                        <option {{ in_array($user->id, $members) ? 'selected' : '' }} value="{{$user->id}}">{{$user->first_name.' '.$user->last_name}}</option>{{ old('gender') == 'male' ? 'selected' : '' }} value="male">Male</option>
                       @endif
                       @endforeach
                       </select>
@@ -90,7 +90,7 @@
                            @foreach($users as $user)
                                         @if($user->email != 'admin@gmail.com' && $user->gender=='female')
                                         
-                                        <option value="{{$user->id}}">{{$user->first_name.' '.$user->last_name}}</option>{{ old('gender') == 'female' ? 'selected' : '' }} value="female">Male</option>
+                                        <option {{ in_array($user->id, $members) ? 'selected' : '' }} value="{{$user->id}}">{{$user->first_name.' '.$user->last_name}}</option>{{ old('gender') == 'female' ? 'selected' : '' }} value="female">Male</option>
                       @endif
                       @endforeach
                       </select>

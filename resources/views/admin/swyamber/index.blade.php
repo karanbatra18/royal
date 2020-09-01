@@ -44,7 +44,7 @@
                                                 {{$swyamber->place}}
                                             </td>
                                             <td>
-                                                {{$swyamber->swyamberdate}}
+                                                {{$swyamber->swyamber_date}}
                                             </td>
                                             <td class="td-actions text-right">
 
@@ -56,9 +56,9 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                        @endif
+
                                         @endforeach
-                                      
+                                    @endif
                                     </tbody>
                                 </table>
                             </div>

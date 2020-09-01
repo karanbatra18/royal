@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(\App\Models\UserProfile::class);
     }
+
+    public function swyamber()
+    {
+        return $this->belongsToMany('App\Models\Swyamber');
+    }
 }

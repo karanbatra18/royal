@@ -38,8 +38,11 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::put('users-profile/{user}', 'Admin\UserController@updateProfile')->name('user.update_profile');
     Route::get('birthday/{birthday_date}', 'Admin\BirthdayController@index')->name('admin.birthday');
     Route::get('swyamber/create', 'Admin\SwyamberController@create')->name('swyamber.create');
+    Route::post('swyambers', 'Admin\SwyamberController@store')->name('swyamber.store');
+    Route::put('swyambers/{swyamber_id}', 'Admin\SwyamberController@update')->name('swyamber.update');
     Route::get('swyambers', 'Admin\SwyamberController@index')->name('swyamber.index');
-    
+    Route::get('swyambers/edit/{swyamber_id}', 'Admin\SwyamberController@edit')->name('swyamber.edit');
+
     
 });
 
