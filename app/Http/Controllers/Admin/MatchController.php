@@ -4,14 +4,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
-use App\Country;
 use App\UserProfile;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class UserController extends Controller
+class MatchController extends Controller
 {
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -25,10 +24,14 @@ class UserController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request,$birthdayDate = null)
     {
-        $users = User::get();
-        return view('admin.user.index', compact('users'));
+      
+        $birthdayDate = date('Y-m-d',strtotime($birthdayDate));
+       // $condition = ['dob' => $birthdayDate];
+       //   dd($birthdayDate);
+        $users = User::whereDate('dob', $birthdayDate)->get();
+        return view('admin.match.birthday', compact('users','birthdayDate'));
 
     }
 
@@ -64,10 +67,9 @@ class UserController extends Controller
      */
     public function edit($userId)
     {
-        $countries= Country::get(["name","id"]);
         $user = User::where('id', $userId)->first();
         $userProfile = $user->userProfile()->first();
-        return view('admin.user.edit', compact('user', 'userProfile','countries'));
+        return view('admin.user.edit', compact('user', 'userProfile'));
     }
 
     /**

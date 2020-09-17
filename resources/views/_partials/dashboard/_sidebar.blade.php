@@ -36,8 +36,22 @@
                             <span class="sidebar-normal"> All User</span>
                           </a>
                         </li>
+                        
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('caste.index') }}">
+                            <span class="sidebar-mini"> <i class="material-icons">person</i></span>
+                            <span class="sidebar-normal"> Caste Management </span>
+                          </a>
+                        </li>
                       </ul>
                     </div>
+        </li>
+        
+         <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.match') }}">
+                <i class="material-icons">person</i>
+                <p>Match Profile</p>
+            </a>
         </li>
         
         <li class="nav-item">
@@ -74,6 +88,31 @@
                     </div>
         </li>
 
-     
+             <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#membership" aria-expanded="false">
+                        <span class="sidebar-mini"> <i class="material-icons">person</i></span>
+                         
+                        <p>Membership
+                        <b class="caret"></b>
+                      </p>
+                    </a>
+                    <div class="collapse" id="membership" style="">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('membership.create') }}">
+                            <span class="sidebar-mini">  <i class="material-icons">person</i> </span>
+                            <span class="sidebar-normal">Add Plan </span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('membership.index') }}">
+                            <span class="sidebar-mini"> <i class="material-icons">person</i></span>
+                            <span class="sidebar-normal"> All Plans</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+        </li>
+
     </ul>
 </div>

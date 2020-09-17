@@ -1,0 +1,5 @@
+[17-Sep-2020 13:57:34 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Admin\Controller' not found in /home/xjutonzv/public_html/royal/app/Http/Controllers/Admin/CastController.php on line 11
+[17-Sep-2020 13:59:16 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Admin\Controller' not found in /home/xjutonzv/public_html/royal/app/Http/Controllers/Admin/CastController.php on line 11
+[17-Sep-2020 14:01:03 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Admin\Controller' not found in /home/xjutonzv/public_html/royal/app/Http/Controllers/Admin/CastController.php on line 11
+[17-Sep-2020 14:01:42 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Admin\Controller' not found in /home/xjutonzv/public_html/royal/app/Http/Controllers/Admin/CastController.php on line 11
+[17-Sep-2020 14:02:02 UTC] PHP Fatal error:  Class 'App\Http\Controllers\Admin\Controller' not found in /home/xjutonzv/public_html/royal/app/Http/Controllers/Admin/CastController.php on line 11

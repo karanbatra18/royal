@@ -81,7 +81,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Date of Birth') }}</label>
                   <div class="col-sm-7">
                     <div class="form-group{{ $errors->has('dob') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" id="input-dob" type="date" placeholder="{{ __('Date Of Birth') }}" value="{{ old('dob') }}" required autocomplete="off" />
+                      <input class="datepicker form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" id="birthday_date" type="text" placeholder="{{ __('Date Of Birth') }}" value="{{ old('dob') }}" required autocomplete="off" />
                     
                       @if ($errors->has('dob'))
                         <span id="dob-error" class="error text-danger" >{{ $errors->first('dob') }}</span>
@@ -211,5 +211,17 @@
       </div>--}}
     </div>
   </div>
+@endsection
+
+@section('script')
+    <script>
+
+        $(document).ready(function(){
+            $('.datepicker').datepicker({ format:"yyyy-mm-dd" });
+
+          
+        });
+    </script>
+
 @endsection
 

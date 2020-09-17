@@ -96,9 +96,8 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Date of Birth') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('dob') ? ' has-danger' : '' }}">
-                                            <input class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}"
-                                                   name="dob" id="input-dob" type="text"
-                                                   placeholder="{{ __('Date Of Birth') }}"
+                                            <input class="datepicker form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}"
+                                                   name="dob" id="input-dob" type="text" placeholder="{{ __('Date Of Birth') }}"
                                                    value="{{ isset($user->dob) ? $user->dob : old('dob') }}" required/>
 
                                             @if ($errors->has('dob'))
@@ -124,6 +123,15 @@
                                                 </option>
                                                 <option {{ (isset($user->marital_status) && $user->marital_status == 'divorced') ? 'selected' : (old('gender') == 'divorced') ? 'selected' : '' }} value="divorced">
                                                     Divorced
+                                                </option>
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'engaged') ? 'selected' : (old('gender') == 'engaged') ? 'selected' : '' }} value="engaged">
+                                                    Engaged
+                                                </option>
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'remarriage') ? 'selected' : (old('gender') == 'remarriage') ? 'selected' : '' }} value="remarriage">
+                                                    ReMarriage
+                                                </option>
+                                                 <option {{ (isset($user->marital_status) && $user->marital_status == 'rokkadone') ? 'selected' : (old('gender') == 'rokkadone') ? 'selected' : '' }} value="rokkadone">
+                                                    Rokka Done
                                                 </option>
                                             </select>
                                             @if ($errors->has('marital_status'))
@@ -161,7 +169,7 @@
                     </div>
                 </div>
             </form>
-            <form method="post" action="{{ route('user.update_profile', ['user' => $user]) }}" autocomplete="off"
+            <form method="post" id="country_state_city" action="{{ route('user.update_profile', ['user' => $user]) }}" autocomplete="off"
                   class="form-horizontal">
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
@@ -217,9 +225,27 @@
                                                 <option {{ (isset($userProfile->religion) && $userProfile->religion == 'muslim') ? 'selected' : (old('religion') == 'muslim') ? 'selected' : '' }} value="muslim">
                                                     Muslim
                                                 </option>
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'punjabi') ? 'selected' : (old('religion') == 'punjabi') ? 'selected' : '' }}  value="punjabi">
+                                                    Punjabi
+                                                </option>
                                                 <option {{ (isset($userProfile->religion) && $userProfile->religion == 'sikh') ? 'selected' : (old('religion') == 'sikh') ? 'selected' : '' }}  value="sikh">
                                                     Sikh
                                                 </option>
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'bania') ? 'selected' : (old('religion') == 'bania') ? 'selected' : '' }}  value="bania">
+                                                    Bania
+                                                </option>
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'jain') ? 'selected' : (old('religion') == 'jain') ? 'selected' : '' }}  value="jain">
+                                                    Jain
+                                                </option>
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'christian') ? 'selected' : (old('religion') == 'christian') ? 'selected' : '' }}  value="christian">
+                                                    Christian
+                                                </option>
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'brahmin') ? 'selected' : (old('religion') == 'brahmin') ? 'selected' : '' }}  value="brahmin">
+                                                    Brahmin
+                                                </option>
+                                                
+                                                
+                                                
                                             </select>
                                             @if ($errors->has('religion'))
                                                 <span id="religion-error"
@@ -230,7 +256,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Cast') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Caste') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('cast') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('cast') ? ' is-invalid' : '' }}"
@@ -250,7 +276,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Sub Cast') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Sub Caste') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('sub_cast') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('sub_cast') ? ' is-invalid' : '' }}"
@@ -293,6 +319,9 @@
                                                 <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'marathi') ? 'selected' : (old('mother_tongue') == 'marathi') ? 'selected' : '' }} value="marathi">
                                                     Mrathi
                                                 </option>
+                                                 <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'others') ? 'selected' : (old('mother_tongue') == 'marathi') ? 'selected' : '' }} value="others">
+                                                    Others
+                                                </option>
 
                                             </select>
                                             @if ($errors->has('mother_tongue'))
@@ -309,14 +338,14 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('country') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}"
-                                                    name="country" id="input-tongue" required>
+                                                    name="country" id="country-dropdown" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->country) && $userProfile->country == 'india') ? 'selected' : (old('country') == 'india') ? 'selected' : '' }} value="india">
-                                                    India
+                                                
+                                               @foreach ($countries as $country) 
+                                                <option value="{{$country->id}}" {{ (isset($userProfile->country) && $userProfile->country == $country->name) ? 'selected' : (old('country') == $country->name) ? 'selected' : '' }} >
+                                                {{$country->name}}
                                                 </option>
-                                                <option {{ (isset($userProfile->country) && $userProfile->country == 'canada') ? 'selected' : (old('country') == 'canada') ? 'selected' : '' }} value="canada">
-                                                    Canada
-                                                </option>
+                                                @endforeach
 
                                             </select>
                                             @if ($errors->has('country'))
@@ -333,14 +362,11 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('state') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
-                                                    name="state" id="input-state" required>
+                                                    name="state" id="state-dropdown" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->state) && $userProfile->state == 'delhi') ? 'selected' : (old('state') == 'delhi') ? 'selected' : '' }} value="delhi">
-                                                    Delhi
-                                                </option>
-                                                <option {{ (isset($userProfile->state) && $userProfile->state == 'uttarakhand') ? 'selected' : (old('state') == 'uttarakhand') ? 'selected' : '' }} value="uttarakhand">
-                                                    Uttarakhand
-                                                </option>
+                                                <option value="{{$userProfile->state}}" selected>
+                                                {{$userProfile->state}}
+                                              
 
                                             </select>
                                             @if ($errors->has('state'))
@@ -357,14 +383,11 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('city') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
-                                                    name="city" id="input-city" required>
+                                                    name="city" id="city-dropdown" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->city) && $userProfile->city == 'dehradun') ? 'selected' : (old('city') == 'dehradun') ? 'selected' : '' }} value="dehradun">
-                                                    Dehradun
-                                                </option>
-                                                <option {{ (isset($userProfile->city) && $userProfile->city == 'haridwar') ? 'selected' : (old('city') == 'haridwar') ? 'selected' : '' }} value="haridwar">
-                                                    Haridwar
-                                                </option>
+                                               <option value="{{$userProfile->city}}" selected>
+                                                {{$userProfile->city}}
+                                              
 
 
                                             </select>
@@ -1351,5 +1374,76 @@
 
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+
+        $(document).ready(function(){
+            $('.datepicker').datepicker({ format:"yyyy-mm-dd" });
+
+          
+        });
+        
+  
+    $(document).ready(function() {
+$('#country-dropdown').on('change', function() {
+var country_id = this.value;
+$("#state-dropdown").html('');
+$.ajax({
+url:"{{url('get-states-by-country')}}",
+type: "POST",
+data: {
+country_id: country_id,
+_token: '{{csrf_token()}}' 
+},
+dataType : 'json',
+success: function(result){
+$('#state-dropdown').html('<option value="">Select State</option>'); 
+$.each(result.states,function(key,value){
+$("#state-dropdown").append('<option value="'+value.id+'">'+value.name+'</option>');
+});
+$('#city-dropdown').html('<option value="">Select State First</option>'); 
+}
+});
+});    
+$('#state-dropdown').on('change', function() {
+var state_id = this.value;
+$("#city-dropdown").html('');
+$.ajax({
+url:"{{url('get-cities-by-state')}}",
+type: "POST",
+data: {
+state_id: state_id,
+_token: '{{csrf_token()}}' 
+},
+dataType : 'json',
+success: function(result){
+$('#city-dropdown').html('<option value="">Select City</option>'); 
+$.each(result.cities,function(key,value){
+$("#city-dropdown").append('<option value="'+value.id+'">'+value.name+'</option>');
+});
+}
+});
+});
+});
+
+
+    $("#country_state_city").submit(function(e) {
+
+       
+        var country =  $("#country-dropdown option:selected").text();
+        var state =  $("#state-dropdown option:selected").text();
+        var city =  $("#city-dropdown option:selected").text();
+        
+        $('#country-dropdown option:selected').val(country);
+        $('#state-dropdown option:selected').val(state);
+        $('#city-dropdown option:selected').val(city);
+         
+        
+
+    });
+</script>
+
 @endsection
 
