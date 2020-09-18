@@ -74,13 +74,13 @@
                                             <select class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}"
                                                     name="gender" id="input-gender" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($user->gender) && $user->gender == 'male') ? 'selected' : (old('gender') == 'male') ? 'selected' : '' }} value="male">
+                                                <option {{ (isset($user->gender) && $user->gender == 'male') ? 'selected' : ((old('gender') == 'male') ? 'selected' : '') }} value="male">
                                                     Male
                                                 </option>
-                                                <option {{ (isset($user->gender) && $user->gender == 'female') ? 'selected' : (old('gender') == 'female') ? 'selected' : '' }} value="female">
+                                                <option {{ (isset($user->gender) && $user->gender == 'female') ? 'selected' : ((old('gender') == 'female') ? 'selected' : '') }} value="female">
                                                     Female
                                                 </option>
-                                                <option {{ (isset($user->gender) && $user->gender == 'transgender') ? 'selected' : (old('gender') == 'transgender') ? 'selected' : '' }} value="transgender">
+                                                <option {{ (isset($user->gender) && $user->gender == 'transgender') ? 'selected' : ((old('gender') == 'transgender') ? 'selected' : '') }} value="transgender">
                                                     TransGender
                                                 </option>
                                             </select>
@@ -115,22 +115,22 @@
                                             <select class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}"
                                                     name="marital_status" id="input-marital_status" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'single') ? 'selected' : (old('gender') == 'single') ? 'selected' : '' }} value="single">
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'single') ? 'selected' : ((old('gender') == 'single') ? 'selected' : '') }} value="single">
                                                     Single
-                                                </option>
-                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'married') ? 'selected' : (old('gender') == 'married') ? 'selected' : '' }} value="married">
+                                                </option>(
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'married') ? 'selected' : ((old('gender') == 'married') ? 'selected' : '') }} value="married">
                                                     Married
                                                 </option>
-                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'divorced') ? 'selected' : (old('gender') == 'divorced') ? 'selected' : '' }} value="divorced">
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'divorced') ? 'selected' : ((old('gender') == 'divorced') ? 'selected' : '') }} value="divorced">
                                                     Divorced
                                                 </option>
-                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'engaged') ? 'selected' : (old('gender') == 'engaged') ? 'selected' : '' }} value="engaged">
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'engaged') ? 'selected' : ((old('gender') == 'engaged') ? 'selected' : '') }} value="engaged">
                                                     Engaged
                                                 </option>
-                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'remarriage') ? 'selected' : (old('gender') == 'remarriage') ? 'selected' : '' }} value="remarriage">
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'remarriage') ? 'selected' : ((old('gender') == 'remarriage') ? 'selected' : '') }} value="remarriage">
                                                     ReMarriage
                                                 </option>
-                                                 <option {{ (isset($user->marital_status) && $user->marital_status == 'rokkadone') ? 'selected' : (old('gender') == 'rokkadone') ? 'selected' : '' }} value="rokkadone">
+                                                 <option {{ (isset($user->marital_status) && $user->marital_status == 'rokkadone') ? 'selected' : ((old('gender') == 'rokkadone') ? 'selected' : '') }} value="rokkadone">
                                                     Rokka Done
                                                 </option>
                                             </select>
@@ -219,28 +219,28 @@
                                             <select class="form-control{{ $errors->has('religion') ? ' is-invalid' : '' }}"
                                                     name="religion" id="input-religion" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'hindu') ? 'selected' : (old('religion') == 'hindu') ? 'selected' : '' }}  value="hindu">
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'hindu') ? 'selected' : ((old('religion') == 'hindu') ? 'selected' : '') }}  value="hindu">
                                                     Hindu
                                                 </option>
-                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'muslim') ? 'selected' : (old('religion') == 'muslim') ? 'selected' : '' }} value="muslim">
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'muslim') ? 'selected' : ((old('religion') == 'muslim') ? 'selected' : '') }} value="muslim">
                                                     Muslim
                                                 </option>
-                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'punjabi') ? 'selected' : (old('religion') == 'punjabi') ? 'selected' : '' }}  value="punjabi">
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'punjabi') ? 'selected' : ((old('religion') == 'punjabi') ? 'selected' : '') }}  value="punjabi">
                                                     Punjabi
                                                 </option>
-                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'sikh') ? 'selected' : (old('religion') == 'sikh') ? 'selected' : '' }}  value="sikh">
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'sikh') ? 'selected' : ((old('religion') == 'sikh') ? 'selected' : '') }}  value="sikh">
                                                     Sikh
                                                 </option>
-                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'bania') ? 'selected' : (old('religion') == 'bania') ? 'selected' : '' }}  value="bania">
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'bania') ? 'selected' : ((old('religion') == 'bania') ? 'selected' : '') }}  value="bania">
                                                     Bania
                                                 </option>
-                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'jain') ? 'selected' : (old('religion') == 'jain') ? 'selected' : '' }}  value="jain">
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'jain') ? 'selected' : ((old('religion') == 'jain') ? 'selected' : '') }}  value="jain">
                                                     Jain
                                                 </option>
-                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'christian') ? 'selected' : (old('religion') == 'christian') ? 'selected' : '' }}  value="christian">
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'christian') ? 'selected' : ((old('religion') == 'christian') ? 'selected' : '') }}  value="christian">
                                                     Christian
                                                 </option>
-                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'brahmin') ? 'selected' : (old('religion') == 'brahmin') ? 'selected' : '' }}  value="brahmin">
+                                                <option {{ (isset($userProfile->religion) && $userProfile->religion == 'brahmin') ? 'selected' : ((old('religion') == 'brahmin') ? 'selected' : '') }}  value="brahmin">
                                                     Brahmin
                                                 </option>
                                                 
@@ -262,7 +262,7 @@
                                             <select class="form-control{{ $errors->has('cast') ? ' is-invalid' : '' }}"
                                                     name="cast" id="input-cast" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->cast) && $userProfile->cast == 'punjabi') ? 'selected' : (old('cast') == 'punjabi') ? 'selected' : '' }} value="punjabi">
+                                                <option {{ (isset($userProfile->cast) && $userProfile->cast == 'punjabi') ? 'selected' : ((old('cast') == 'punjabi') ? 'selected' : '') }} value="punjabi">
                                                     Punjabi
                                                 </option>
 
@@ -282,7 +282,7 @@
                                             <select class="form-control{{ $errors->has('sub_cast') ? ' is-invalid' : '' }}"
                                                     name="sub_cast" id="input-sub_cast" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->sub_cast) && $userProfile->sub_cast == 'punjabi') ? 'selected' : (old('sub_cast') == 'punjabi') ? 'selected' : '' }} value="punjabi">
+                                                <option {{ (isset($userProfile->sub_cast) && $userProfile->sub_cast == 'punjabi') ? 'selected' : ((old('sub_cast') == 'punjabi') ? 'selected' : '') }} value="punjabi">
                                                     punjabi
                                                 </option>
 
@@ -301,25 +301,25 @@
                                         <div class="form-group{{ $errors->has('tongue') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('mother_tongue') ? ' is-invalid' : '' }}"
                                                     name="mother_tongue" id="input-mother_tongue" required>
-                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'punjabi') ? 'selected' : (old('mother_tongue') == 'punjabi') ? 'selected' : '' }} value="">
+                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'punjabi') ? 'selected' : ((old('mother_tongue') == 'punjabi') ? 'selected' : '') }} value="">
                                                     Please select
                                                 </option>
-                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'hindi') ? 'selected' : (old('mother_tongue') == 'hindi') ? 'selected' : '' }} value="hindi">
+                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'hindi') ? 'selected' : ((old('mother_tongue') == 'hindi') ? 'selected' : '') }} value="hindi">
                                                     Hindi
                                                 </option>
-                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'english') ? 'selected' : (old('mother_tongue') == 'english') ? 'selected' : '' }} value="english">
+                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'english') ? 'selected' : ((old('mother_tongue') == 'english') ? 'selected' : '') }} value="english">
                                                     English
                                                 </option>
-                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'punjabi') ? 'selected' : (old('mother_tongue') == 'punjabi') ? 'selected' : '' }} value="punjabi">
+                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'punjabi') ? 'selected' : ((old('mother_tongue') == 'punjabi') ? 'selected' : '') }} value="punjabi">
                                                     Punjabi
                                                 </option>
-                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'urdu') ? 'selected' : (old('mother_tongue') == 'urdu') ? 'selected' : '' }} value="urdu">
+                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'urdu') ? 'selected' : ((old('mother_tongue') == 'urdu') ? 'selected' : '') }} value="urdu">
                                                     Urdu
                                                 </option>
-                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'marathi') ? 'selected' : (old('mother_tongue') == 'marathi') ? 'selected' : '' }} value="marathi">
+                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'marathi') ? 'selected' : ((old('mother_tongue') == 'marathi') ? 'selected' : '') }} value="marathi">
                                                     Mrathi
                                                 </option>
-                                                 <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'others') ? 'selected' : (old('mother_tongue') == 'marathi') ? 'selected' : '' }} value="others">
+                                                 <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'others') ? 'selected' : ((old('mother_tongue') == 'marathi') ? 'selected' : '') }} value="others">
                                                     Others
                                                 </option>
 
@@ -342,7 +342,7 @@
                                                 <option value="">Please select</option>
                                                 
                                                @foreach ($countries as $country) 
-                                                <option value="{{$country->id}}" {{ (isset($userProfile->country) && $userProfile->country == $country->name) ? 'selected' : (old('country') == $country->name) ? 'selected' : '' }} >
+                                                <option value="{{$country->id}}" {{ (isset($userProfile->country) && $userProfile->country == $country->name) ? 'selected' : ((old('country') == $country->name) ? 'selected' : '') }} >
                                                 {{$country->name}}
                                                 </option>
                                                 @endforeach
@@ -634,16 +634,16 @@
                                                 <select class="form-control{{ $errors->has('body_type') ? ' is-invalid' : '' }}"
                                                         name="body_type" id="input-body_type">
                                                     <option value="">Please select</option>
-                                                    <option {{ (isset($userProfile->body_type) && $userProfile->body_type == 'athletic') ? 'selected' : (old('body_type') == 'athletic') ? 'selected' : '' }} value="athletic">
+                                                    <option {{ (isset($userProfile->body_type) && $userProfile->body_type == 'athletic') ? 'selected' : ((old('body_type') == 'athletic') ? 'selected' : '') }} value="athletic">
                                                         Athletic
                                                     </option>
-                                                    <option {{ (isset($userProfile->body_type) && $userProfile->body_type == 'average') ? 'selected' : (old('body_type') == 'average') ? 'selected' : '' }} value="average">
+                                                    <option {{ (isset($userProfile->body_type) && $userProfile->body_type == 'average') ? 'selected' : ((old('body_type') == 'average') ? 'selected' : '') }} value="average">
                                                         Average
                                                     </option>
-                                                    <option {{ (isset($userProfile->body_type) && $userProfile->body_type == 'heavy') ? 'selected' : (old('body_type') == 'heavy') ? 'selected' : '' }} value="heavy">
+                                                    <option {{ (isset($userProfile->body_type) && $userProfile->body_type == 'heavy') ? 'selected' : ((old('body_type') == 'heavy') ? 'selected' : '') }} value="heavy">
                                                         Heavy
                                                     </option>
-                                                    <option {{ (isset($userProfile->body_type) && $userProfile->body_type == 'slim') ? 'selected' : (old('body_type') == 'slim') ? 'selected' : '' }} value="slim">
+                                                    <option {{ (isset($userProfile->body_type) && $userProfile->body_type == 'slim') ? 'selected' : ((old('body_type') == 'slim') ? 'selected' : '') }} value="slim">
                                                         Slim
                                                     </option>
 
@@ -664,19 +664,19 @@
                                                 <select class="form-control{{ $errors->has('complexion') ? ' is-invalid' : '' }}"
                                                         name="complexion" id="input-complexion">
                                                     <option value="">Please select</option>
-                                                    <option {{ (isset($userProfile->complexion) && $userProfile->complexion == 'dark') ? 'selected' : (old('complexion') == 'dark') ? 'selected' : '' }} value="dark">
+                                                    <option {{ (isset($userProfile->complexion) && $userProfile->complexion == 'dark') ? 'selected' : ((old('complexion') == 'dark') ? 'selected' : '') }} value="dark">
                                                         Dark
                                                     </option>
-                                                    <option {{ (isset($userProfile->complexion) && $userProfile->complexion == 'fair') ? 'selected' : (old('complexion') == 'fair') ? 'selected' : '' }} value="fair">
+                                                    <option {{ (isset($userProfile->complexion) && $userProfile->complexion == 'fair') ? 'selected' : ((old('complexion') == 'fair') ? 'selected' : '') }} value="fair">
                                                         Fair
                                                     </option>
-                                                    <option {{ (isset($userProfile->complexion) && $userProfile->complexion == 'medium') ? 'selected' : (old('complexion') == 'medium') ? 'selected' : '' }} value="medium">
+                                                    <option {{ (isset($userProfile->complexion) && $userProfile->complexion == 'medium') ? 'selected' : ((old('complexion') == 'medium') ? 'selected' : '') }} value="medium">
                                                         Medium
                                                     </option>
-                                                    <option {{ (isset($userProfile->complexion) && $userProfile->complexion == 'very_fair') ? 'selected' : (old('complexion') == 'very_fair') ? 'selected' : '' }} value="very_fair">
+                                                    <option {{ (isset($userProfile->complexion) && $userProfile->complexion == 'very_fair') ? 'selected' : ((old('complexion') == 'very_fair') ? 'selected' : '') }} value="very_fair">
                                                         Very fair
                                                     </option>
-                                                    <option {{ (isset($userProfile->complexion) && $userProfile->complexion == 'wheatish') ? 'selected' : (old('complexion') == 'wheatish') ? 'selected' : '' }} value="wheatish">
+                                                    <option {{ (isset($userProfile->complexion) && $userProfile->complexion == 'wheatish') ? 'selected' : ((old('complexion') == 'wheatish') ? 'selected' : '') }} value="wheatish">
                                                         Wheatish
                                                     </option>
                                                 </select>
@@ -756,8 +756,8 @@
                                             <select class="form-control{{ $errors->has('higher_education') ? ' is-invalid' : '' }}"
                                                     name="higher_education" id="input-higher_education">
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->higher_education) && $userProfile->higher_education == 'phd') ? 'selected' : (old('higher_education') == 'phd') ? 'selected' : '' }} value="phd">PHD</option>
-                                                <option {{ (isset($userProfile->higher_education) && $userProfile->higher_education == 'btech') ? 'selected' : (old('higher_education') == 'btech') ? 'selected' : '' }} value="btech">B.Tech</option>
+                                                <option {{ (isset($userProfile->higher_education) && $userProfile->higher_education == 'phd') ? 'selected' : ((old('higher_education') == 'phd') ? 'selected' : '') }} value="phd">PHD</option>
+                                                <option {{ (isset($userProfile->higher_education) && $userProfile->higher_education == 'btech') ? 'selected' : ((old('higher_education') == 'btech') ? 'selected' : '') }} value="btech">B.Tech</option>
 
 
                                             </select>
@@ -1092,8 +1092,8 @@
                                             <select class="form-control{{ $errors->has('mangalik_status') ? ' is-invalid' : '' }}"
                                                     name="mangalik_status" id="input-mangalik_status" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'yes') ? 'selected' : (old('mangalik_status') == 'yes') ? 'selected' : '' }} value="yes">Yes</option>
-                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'no') ? 'selected' : (old('mangalik_status') == 'no') ? 'selected' : '' }}  value="no">No</option>
+                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'yes') ? 'selected' : ((old('mangalik_status') == 'yes') ? 'selected' : '') }} value="yes">Yes</option>
+                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'no') ? 'selected' : ((old('mangalik_status') == 'no') ? 'selected' : '') }}  value="no">No</option>
                                             </select>
                                             @if ($errors->has('mangalik_status'))
                                                 <span id="mangalik_status-error"
@@ -1135,7 +1135,7 @@
                                         <div class="form-group{{ $errors->has('non_veg') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='non_veg'>
                                             <input class="{{ $errors->has('non_veg') ? ' is-invalid' : '' }}" name="non_veg"
-                                                   id="input-non_veg" type="checkbox" {{ (isset($userProfile->non_veg) && $userProfile->non_veg == 1) ? 'selected' : (old('non_veg') == 1) ? 'checked' : '' }} value="1"/>
+                                                   id="input-non_veg" type="checkbox" {{ (isset($userProfile->non_veg) && $userProfile->non_veg == 1) ? 'selected' : ((old('non_veg') == 1) ? 'checked' : '') }} value="1"/>
                                             @if ($errors->has('non_veg'))
                                                 <span id="non_veg-error" class="error text-danger"
                                                       for="input-non_veg">{{ $errors->first('non_veg') }}</span>
@@ -1151,7 +1151,7 @@
                                         <div class="form-group{{ $errors->has('drink') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='drink'>
                                             <input class="{{ $errors->has('drink') ? ' is-invalid' : '' }}" name="drink"
-                                                   id="input-drink" type="checkbox" {{ (isset($userProfile->drink) && $userProfile->drink == 1) ? 'checked' : (old('drink') == 1) ? 'checked' : '' }} value="1"/>
+                                                   id="input-drink" type="checkbox" {{ (isset($userProfile->drink) && $userProfile->drink == 1) ? 'checked' : ((old('drink') == 1) ? 'checked' : '') }} value="1"/>
                                             @if ($errors->has('drink'))
                                                 <span id="drink-error" class="error text-danger"
                                                       for="input-drink">{{ $errors->first('drink') }}</span>
@@ -1167,7 +1167,7 @@
                                         <div class="form-group{{ $errors->has('smoke') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='smoke'>
                                             <input class="{{ $errors->has('smoke') ? ' is-invalid' : '' }}" name="smoke"
-                                                   id="input-smoke" type="checkbox" {{ (isset($userProfile->smoke) && $userProfile->smoke == 1) ? 'checked' : (old('smoke') == 1) ? 'checked' : '' }} value="1"/>
+                                                   id="input-smoke" type="checkbox" {{ (isset($userProfile->smoke) && $userProfile->smoke == 1) ? 'checked' : ((old('smoke') == 1) ? 'checked' : '') }} value="1"/>
                                             @if ($errors->has('smoke'))
                                                 <span id="smoke-error" class="error text-danger"
                                                       for="input-smoke">{{ $errors->first('smoke') }}</span>
@@ -1182,7 +1182,7 @@
                                         <div class="form-group{{ $errors->has('own_house') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='own_house'>
                                             <input class="{{ $errors->has('own_house') ? ' is-invalid' : '' }}" name="own_house"
-                                                   id="input-own_house" type="checkbox" {{ (isset($userProfile->own_house) && $userProfile->own_house == 1) ? 'checked' : (old('own_house') == 1) ? 'checked' : '' }} value="1"/>
+                                                   id="input-own_house" type="checkbox" {{ (isset($userProfile->own_house) && $userProfile->own_house == 1) ? 'checked' : ((old('own_house') == 1) ? 'checked' : '') }} value="1"/>
                                             @if ($errors->has('own_house'))
                                                 <span id="own_house-error" class="error text-danger"
                                                       for="input-own_house">{{ $errors->first('own_house') }}</span>
@@ -1197,7 +1197,7 @@
                                         <div class="form-group{{ $errors->has('own_car') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='own_car'>
                                             <input class="{{ $errors->has('own_car') ? ' is-invalid' : '' }}" name="own_car"
-                                                   id="input-own_car" type="checkbox" {{ (isset($userProfile->own_car) && $userProfile->own_car == 1) ? 'checked' : (old('own_car') == 1) ? 'checked' : '' }} value="1"/>
+                                                   id="input-own_car" type="checkbox" {{ (isset($userProfile->own_car) && $userProfile->own_car == 1) ? 'checked' : ((old('own_car') == 1) ? 'checked' : '') }} value="1"/>
                                             @if ($errors->has('own_car'))
                                                 <span id="own_car-error" class="error text-danger"
                                                       for="input-own_car">{{ $errors->first('own_car') }}</span>
@@ -1302,8 +1302,8 @@
                                             <select class="form-control{{ $errors->has('gothra') ? ' is-invalid' : '' }}"
                                                     name="gothra" id="input-gothra" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->gothra) && $userProfile->gothra == 'sanatan') ? 'selected' : (old('gender') == 'sanatan') ? 'selected' : '' }} value="sanatan">Sanatan</option>
-                                                <option {{ (isset($userProfile->gothra) && $userProfile->gothra == 'other') ? 'selected' : (old('gender') == 'other') ? 'selected' : '' }} value="other">Other</option>
+                                                <option {{ (isset($userProfile->gothra) && $userProfile->gothra == 'sanatan') ? 'selected' : ((old('gender') == 'sanatan') ? 'selected' : '') }} value="sanatan">Sanatan</option>
+                                                <option {{ (isset($userProfile->gothra) && $userProfile->gothra == 'other') ? 'selected' : ((old('gender') == 'other') ? 'selected' : '') }} value="other">Other</option>
 
                                             </select>
                                             @if ($errors->has('gothra'))
@@ -1337,7 +1337,7 @@
                                         <div class="form-group{{ $errors->has('living_with_parents') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='living_with_parents'>
                                             <input class="{{ $errors->has('living_with_parents') ? ' is-invalid' : '' }}"
-                                                   name="living_with_parents" id="input-living_with_parents" type="checkbox" value="1" {{ (isset($userProfile->living_with_parents) && $userProfile->living_with_parents == 1) ? 'checked' : (old('living_with_parents') == 1) ? 'checked' : '' }}/>
+                                                   name="living_with_parents" id="input-living_with_parents" type="checkbox" value="1" {{ (isset($userProfile->living_with_parents) && $userProfile->living_with_parents == 1) ? 'checked' : ((old('living_with_parents') == 1) ? 'checked' : '') }}/>
                                             @if ($errors->has('living_with_parents'))
                                                 <span id="living_with_parents-error" class="error text-danger"
                                                       for="input-living_with_parents">{{ $errors->first('living_with_parents') }}</span>
@@ -1352,7 +1352,7 @@
                                         <div class="form-group{{ $errors->has('abroad_willing') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='abroad_willing'>
                                             <input class="{{ $errors->has('abroad_willing') ? ' is-invalid' : '' }}"
-                                                   name="abroad_willing" id="input-abroad_willing" type="checkbox" value="1" {{ (isset($userProfile->abroad_willing) && $userProfile->abroad_willing == 1) ? 'checked' : (old('abroad_willing') == 1) ? 'checked' : '' }}/>
+                                                   name="abroad_willing" id="input-abroad_willing" type="checkbox" value="1" {{ (isset($userProfile->abroad_willing) && $userProfile->abroad_willing == 1) ? 'checked' : ((old('abroad_willing') == 1) ? 'checked' : '') }}/>
                                             @if ($errors->has('abroad_willing'))
                                                 <span id="abroad_willing-error" class="error text-danger"
                                                       for="input-abroad_willing">{{ $errors->first('abroad_willing') }}</span>

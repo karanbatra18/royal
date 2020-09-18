@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Cast;
+use App\Models\Cast;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;

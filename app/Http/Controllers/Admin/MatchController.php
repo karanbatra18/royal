@@ -26,12 +26,9 @@ class MatchController extends Controller
      */
     public function index(Request $request,$birthdayDate = null)
     {
-      
-        $birthdayDate = date('Y-m-d',strtotime($birthdayDate));
-       // $condition = ['dob' => $birthdayDate];
-       //   dd($birthdayDate);
-        $users = User::whereDate('dob', $birthdayDate)->get();
-        return view('admin.match.birthday', compact('users','birthdayDate'));
+
+        $users = User::get();
+        return view('admin.match.index', compact('users'));
 
     }
 

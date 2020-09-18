@@ -46,7 +46,7 @@
                       <select class="form-control{{ $errors->has('parent_id') ? ' is-invalid' : '' }}" name="parent_id"  id="input-parent_id" >
                           <option value="0">Please Select</option>
                           @foreach ($pcast as $p) 
-                                <option value="{{$p->id}}" {{ (isset($cast->parent_id) && $cast->parent_id == $p->id) ? 'selected' : (old('country') == $p->id) ? 'selected' : '' }}>
+                                <option value="{{$p->id}}" {{ ((isset($cast->parent_id) && $cast->parent_id == $p->id)) ? 'selected' : ((old('country') == $p->id) ? 'selected' : '') }}>
                                                 {{$p->name}}
                                 </option>
                             @endforeach
