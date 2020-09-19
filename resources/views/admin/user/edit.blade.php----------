@@ -20,7 +20,7 @@
 
                             <div class="card-body ">
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">Firstname*</label>
+                                    <label class="col-sm-2 col-form-label">Firstname</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('first_name') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">Lastname*</label>
+                                    <label class="col-sm-2 col-form-label">Lastname</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('last_name') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}"
@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Email*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Email') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
@@ -68,7 +68,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Gender*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Gender') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('gender') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}"
@@ -93,7 +93,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Date of Birth*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Date of Birth') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('dob') ? ' has-danger' : '' }}">
                                             <input class="datepicker form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}"
@@ -109,7 +109,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Marital Status*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Marital Status') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('marital_status') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}"
@@ -143,7 +143,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Phone*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Phone') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
@@ -196,7 +196,7 @@
                                 @endif
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Height*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Height') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('height') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('height') ? ' is-invalid' : '' }}"
@@ -213,7 +213,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Religion*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Religion') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('religion') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('religion') ? ' is-invalid' : '' }}"
@@ -256,7 +256,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Caste*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Caste') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('cast') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('cast') ? ' is-invalid' : '' }}"
@@ -276,7 +276,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Sub Caste*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Sub Caste') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('sub_cast') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('sub_cast') ? ' is-invalid' : '' }}"
@@ -296,7 +296,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Mother Tongue*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Mother Tongue') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('tongue') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('mother_tongue') ? ' is-invalid' : '' }}"
@@ -334,7 +334,7 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Country*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Country') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('country') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}"
@@ -358,7 +358,7 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('State*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('State') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('state') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
@@ -383,7 +383,7 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('city') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
-                                                    name="city" id="city-dropdown">
+                                                    name="city" id="city-dropdown" required>
                                                 <option value="">Please select</option>
                                                <option value="{{$userProfile->city}}" selected>
                                                 {{$userProfile->city}}
@@ -408,7 +408,7 @@
                                                    name="annual_income" id="input-annual_income" type="text"
                                                    placeholder="{{ __('Annual Income') }}"
                                                    value="{{ isset($userProfile->annual_income) ? $userProfile->annual_income : old('annual_income') }}"
-                                                   />
+                                                   required/>
 
                                             @if ($errors->has('annual_income'))
                                                 <span id="annual_income-error"
@@ -515,7 +515,7 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Date of Birth*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Date of Birth') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('dob') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}"
@@ -531,7 +531,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Marital Status*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Marital Status') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('married') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('married') ? ' is-invalid' : '' }}"
@@ -556,7 +556,7 @@
                                         <div class="form-group{{ $errors->has('profile_by') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('profile_by') ? ' is-invalid' : '' }}"
                                                    name="profile_by" id="input-profile_by" type="text"
-                                                   placeholder="{{ __('Profile By') }}" value="" />
+                                                   placeholder="{{ __('Profile By') }}" value="" required/>
 
                                             @if ($errors->has('profile_by'))
                                                 <span id="profile_by-error"
@@ -610,7 +610,7 @@
 
 
                                     <div class="row">
-                                        <label class="col-sm-2 col-form-label">{{ __('Weight*') }}</label>
+                                        <label class="col-sm-2 col-form-label">{{ __('Weight') }}</label>
                                         <div class="col-sm-7">
                                             <div class="form-group{{ $errors->has('weight') ? ' has-danger' : '' }}">
                                                 <input class="form-control{{ $errors->has('weight') ? ' is-invalid' : '' }}"
@@ -750,11 +750,11 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Higher Education*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Higher Education') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('higher_education') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('higher_education') ? ' is-invalid' : '' }}"
-                                                    name="higher_education" id="input-higher_education" required>
+                                                    name="higher_education" id="input-higher_education">
                                                 <option value="">Please select</option>
                                                 <option {{ (isset($userProfile->higher_education) && $userProfile->higher_education == 'phd') ? 'selected' : ((old('higher_education') == 'phd') ? 'selected' : '') }} value="phd">PHD</option>
                                                 <option {{ (isset($userProfile->higher_education) && $userProfile->higher_education == 'btech') ? 'selected' : ((old('higher_education') == 'btech') ? 'selected' : '') }} value="btech">B.Tech</option>
@@ -826,11 +826,11 @@
                             <div class="card-body ">
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('About Career*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('About Career') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('about_career') ? ' has-danger' : '' }}">
                                             <textarea
-                                                    required class="form-control{{ $errors->has('about_career') ? ' is-invalid' : '' }}"
+                                                    class="form-control{{ $errors->has('about_career') ? ' is-invalid' : '' }}"
                                                     name="about_career" id="input-about_career"
                                                     placeholder="{{ __('Career') }}">{{ isset($userProfile->about_career) ? $userProfile->about_career : old('about_career') }}</textarea>
 
@@ -916,7 +916,7 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Email*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Email') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
@@ -937,7 +937,7 @@
                                             <input class="form-control{{ $errors->has('alternate_email') ? ' is-invalid' : '' }}"
                                                    name="alternate_email" id="input-alternate_email"
                                                    type="alternate_email" placeholder="{{ __('Alternate Email') }}"
-                                                   value="{{ isset($user->alternate_email) ? $user->alternate_email : old('alternate_email') }}"/>
+                                                   value="{{ isset($user->alternate_email) ? $user->alternate_email : old('alternate_email') }}" required/>
                                             @if ($errors->has('alternate_email'))
                                                 <span id="alternate_email-error" class="error text-danger"
                                                       for="input-alternate_email">{{ $errors->first('alternate_email') }}</span>
@@ -947,7 +947,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Phone*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Phone') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
@@ -969,7 +969,7 @@
                                         <div class="form-group{{ $errors->has('alternate_phone') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('alternate_phone') ? ' is-invalid' : '' }}"
                                                    name="alternate_phone" id="input-alternate_phone" type="text"
-                                                   placeholder="{{ __('Alternate Phone') }}" value="{{ isset($user->alternate_phone) ? $user->alternate_phone : old('alternate_phone') }}"/>
+                                                   placeholder="{{ __('Alternate Phone') }}" value="{{ isset($user->alternate_phone) ? $user->alternate_phone : old('alternate_phone') }}" required/>
 
                                             @if ($errors->has('alternate_phone'))
                                                 <span id="alternate_phone-error"
@@ -985,7 +985,7 @@
                                         <div class="form-group{{ $errors->has('family_phone_number') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('family_phone_number') ? ' is-invalid' : '' }}"
                                                    name="family_phone_number" id="input-family_phone_number" type="text"
-                                                   placeholder="{{ __('Family Phone Number') }}" value="{{ isset($user->family_phone_number) ? $user->family_phone_number : old('family_phone_number') }}"/>
+                                                   placeholder="{{ __('Family Phone Number') }}" value="{{ isset($user->family_phone_number) ? $user->family_phone_number : old('family_phone_number') }}" required/>
 
                                             @if ($errors->has('family_phone_number'))
                                                 <span id="family_phone_number-error"
@@ -1002,7 +1002,7 @@
                                         <div class="form-group{{ $errors->has('landline') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('landline') ? ' is-invalid' : '' }}"
                                                    name="landline" id="input-landline" type="text"
-                                                   placeholder="{{ __('Landline') }}" value="{{ isset($user->landline) ? $user->landline : old('landline') }}"/>
+                                                   placeholder="{{ __('Landline') }}" value="{{ isset($user->landline) ? $user->landline : old('landline') }}" required/>
 
                                             @if ($errors->has('landline'))
                                                 <span id="landline-error"
@@ -1014,7 +1014,7 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Whatsup*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Whatsup') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('whatsup') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('whatsup') ? ' is-invalid' : '' }}"
@@ -1055,12 +1055,12 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Time of Birth*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Time of Birth') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('birth_time') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('birth_time') ? ' is-invalid' : '' }}"
                                                    name="birth_time" id="input-birth_time" type="time"
-                                                   placeholder="{{ __('Time of Birth') }}" value="{{ isset($userProfile->birth_time) ? $userProfile->birth_time : old('birth_time') }} required"/>
+                                                   placeholder="{{ __('Time of Birth') }}" value="{{ isset($userProfile->birth_time) ? $userProfile->birth_time : old('birth_time') }}"/>
                                             @if ($errors->has('birth_time'))
                                                 <span id="birth_time-error" class="error text-danger"
                                                       for="input-birth_time">{{ $errors->first('birth_time') }}</span>
@@ -1086,7 +1086,7 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Mangalik Status*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Mangalik Status') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('mangalik_status') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('mangalik_status') ? ' is-invalid' : '' }}"
@@ -1130,12 +1130,12 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Veg/NonVeg*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Veg/NonVeg') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('non_veg') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='non_veg'>
                                             <input class="{{ $errors->has('non_veg') ? ' is-invalid' : '' }}" name="non_veg"
-                                                   id="input-non_veg" type="checkbox" {{ (isset($userProfile->non_veg) && $userProfile->non_veg == 1) ? 'selected' : ((old('non_veg') == 1) ? 'checked' : '') }} value="1" required/>
+                                                   id="input-non_veg" type="checkbox" {{ (isset($userProfile->non_veg) && $userProfile->non_veg == 1) ? 'selected' : ((old('non_veg') == 1) ? 'checked' : '') }} value="1"/>
                                             @if ($errors->has('non_veg'))
                                                 <span id="non_veg-error" class="error text-danger"
                                                       for="input-non_veg">{{ $errors->first('non_veg') }}</span>
@@ -1231,13 +1231,13 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Father Name*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Father Name') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('father_name') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('father_name') ? ' is-invalid' : '' }}"
                                                    name="father_name" id="input-father_name" type="text"
                                                    placeholder="{{ __('Father Name') }}"
-                                                   value="{{ isset($userProfile->father_name) ? $userProfile->father_name : old('father_name') }}" required/>
+                                                   value="{{ isset($userProfile->father_name) ? $userProfile->father_name : old('father_name') }}"/>
                                             @if ($errors->has('father_name'))
                                                 <span id="father_name-error" class="error text-danger"
                                                       for="input-father_name">{{ $errors->first('father_name') }}</span>
@@ -1264,12 +1264,12 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Mother Name*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Mother Name') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('mother_name') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('mother_name') ? ' is-invalid' : '' }}"
                                                    name="mother_name" id="input-mother_name" type="text"
-                                                   placeholder="{{ __('Mother Name') }}" value="{{ isset($userProfile->mother_name) ? $userProfile->mother_name : old('mother_name') }}" required/>
+                                                   placeholder="{{ __('Mother Name') }}" value="{{ isset($userProfile->mother_name) ? $userProfile->mother_name : old('mother_name') }}"/>
                                             @if ($errors->has('mother_name'))
                                                 <span id="mother_name-error" class="error text-danger"
                                                       for="input-mother_name">{{ $errors->first('mother_name') }}</span>
@@ -1296,7 +1296,7 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Gothra*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Gothra') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('gothra') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('gothra') ? ' is-invalid' : '' }}"
@@ -1316,7 +1316,7 @@
 
 
                                 <div class="row">
-                                    <label class="col-sm-2 col-form-label">{{ __('Family Income*') }}</label>
+                                    <label class="col-sm-2 col-form-label">{{ __('Family Income') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('family_income') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('family_income') ? ' is-invalid' : '' }}"
