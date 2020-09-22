@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AdminUserSeeder' => $baseDir . '/database/seeds/AdminUserSeeder.php',
-    'App\\Cast' => $baseDir . '/app/Cast.php',
     'App\\City' => $baseDir . '/app/City.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Country' => $baseDir . '/app/Country.php',
@@ -37,6 +36,7 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Models\\Cast' => $baseDir . '/app/Models/Cast.php',
     'App\\Models\\Membership' => $baseDir . '/app/Models/Membership.php',
     'App\\Models\\Swyamber' => $baseDir . '/app/Models/Swyamber.php',
     'App\\Models\\UserProfile' => $baseDir . '/app/Models/UserProfile.php',

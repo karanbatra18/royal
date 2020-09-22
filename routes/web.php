@@ -53,7 +53,13 @@ Route::get('castes', 'Admin\CastController@index')->name('caste.index');
 Route::post('castes', 'Admin\CastController@store')->name('caste.store');
 Route::get('castes/edit/{caste_id}', 'Admin\CastController@edit')->name('caste.edit');
 Route::put('castes/{caste_id}', 'Admin\CastController@update')->name('caste.update');
+  Route::get('emails', 'Admin\EmailController@index')->name('email.index');
+  Route::get('email/create', 'Admin\EmailController@create')->name('email.create');
 
+Route::post('emails', 'Admin\EmailController@store')->name('email.store');
+Route::get('emails/edit/{email_id}', 'Admin\EmailController@edit')->name('email.edit');
+Route::put('emails/{email_id}', 'Admin\EmailController@update')->name('email.update');
+ 
     
 });
 
