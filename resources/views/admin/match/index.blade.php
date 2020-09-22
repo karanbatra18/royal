@@ -15,7 +15,7 @@
                            <div class="row mt-4">
                            	<div class="col-md-3">
                             	<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button class="btn btn-secondary dropdown-toggle border" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     USer Info
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -36,52 +36,165 @@
                             <button type="submit" class="btn btn-primary">Go</button>
                             </div>
                            </div>
-                           <div class="border px-3 mt-5 pb-4">
-                           		<h3 class="mb-2">User Profile</h3>
+                           <div class="border p-3 mt-5 bg-light">
+                           		
                                 <div class="media">
   <svg class="bd-placeholder-img mr-3" width="64" height="64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 64x64"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">64x64</text></svg>
   <div class="media-body">
-    
+    <h3 class="mb-1 mt-0">Shivani Ahuja</h3>
+    <div>
+    	<ul class="list-unstyled row mb-0">
+        	<li class="col-md-3 ">shivani@yahoo.com</li>
+            <li class="col-md-3">23-08-1991</li>
+            <li class="col-md-3 ">Pujabi-Khatri</li>
+            <li class="col-md-3">Unmarried</li>
+            <li class="col-md-3">32 Years</li>
+            <li class="col-md-3 ">Manglik</li>
+            <li class="col-md-3 ">B.Com, DU</li>
+            <li class="col-md-3 ">New Delhi</li>
+        </ul>
+    </div>
   </div>
 </div>
                            </div>
+                           
                            <div class="row mt-5">
                            	<div class="col-md-4">
-                            	<div class="border py-3">
+                            	<div class="border p-3 bg-light">
                                 	<form action="">
-                                    <div class="form-group row">
-    <label for="staticEmail" class="col-4 col-form-label pr-0 position-static">Date of Birth</label>
-    <div class="col-8">
-      <input type="date" class="form-control" id="staticEmail" value="">
-    </div>
+                                    <div class="form-group">
+    <label for="staticEmail" class="position-static">Date of Birth</label>
+      <input type="date" class="form-control border border-bottom-0" id="staticEmail" value="">
   </div>
-  <div class="form-group row">
-    <label for="staticEmail" class="col-4 col-form-label pr-0 position-static">Born time</label>
-    <div class="col-8">
-      <input type="text" class="form-control" id="staticEmail" value="">
-    </div>
+  <div class="form-group ">
+    <label for="staticEmail" class="position-static">Born time</label>
+      <input type="text" class="form-control border border-bottom-0" id="staticEmail" value="">
+  </div>
+  <div class="form-group ">
+    <label for="staticEmail" class="position-static">Birth Place</label>
+      <input type="text" class="form-control border border-bottom-0" id="staticEmail" value="">
+  </div>
+  <div class="form-group ">
+    <label for="staticEmail" class="position-static">Gender</label>
+      <select class="form-control border border-bottom-0" >
+      <option value="" selected>--Select gender--</option>
+      	<option value="">Male</option>
+        <option value="">Female</option>
+      </select>
+  </div>
+  <div class="form-group ">
+    <label for="staticEmail" class="position-static">Marital Status</label>
+      <select class="form-control border border-bottom-0" >
+      <option value="" selected>--Select Marital Status--</option>
+      	<option value="">Married</option>
+        <option value="">Never Married</option>
+      </select>
+  </div>
+  <div class="form-group ">
+    <label for="staticEmail" class="position-static">Caste</label>
+      <input type="text" class="form-control border border-bottom-0" id="staticEmail" value="">
+  </div>
+  <div class="form-group ">
+    <label for="staticEmail" class="position-static">Occupation</label>
+      <input type="text" class="form-control border border-bottom-0" id="staticEmail" value="">
+  </div>
+  <div class="form-group ">
+    <label for="staticEmail" class="position-static">Monthly Income</label>
+      <input type="text" class="form-control border border-bottom-0" id="staticEmail" value="">
+  </div>
+  <div class="form-group ">
+    <label for="staticEmail" class="position-static">Height</label>
+      <input type="text" class="form-control border border-bottom-0" id="staticEmail" value="">
+  </div>
+  <div class="form-group ">
+    <label for="staticEmail" class="position-static">Weight</label>
+      <input type="text" class="form-control border" id="staticEmail" value="">
+  </div>
+   <div class="form-group text-right">
+  <input type="submit" value="Filter" class="btn btn-primary">
   </div>
                                     </form>
                                 </div>
                             </div>
                             <div class="col-md-8">
-                            	<div class="media">
+                            	<div class="media mb-4 border-bottom">
   <svg class="bd-placeholder-img mr-3" width="64" height="64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 64x64"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">64x64</text></svg>
-  <div class="media-body">
-    <h5>Title goes here</h5>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, doloremque architecto optio corporis maiores voluptas provident! Quod, ducimus, rerum magnam facilis neque dolore ut reiciendis rem enim voluptatibus illum autem.</p>
+   <div class="media-body">
+    <h6 class="mb-1 mt-0">Shivani Ahuja</h6>
+    <div>
+    <table class="table-sm table mb-0">
+    	<tr>
+        	<td>shivani@yahoo.com</td>
+        	<td>23-08-1991</td>
+        	<td>Pujabi-Khatri</td>
+        </tr>
+        <tr>
+        	<td>Unmarried</td>
+        	<td>Manglik</td>
+        	<td>B.Com, DU</td>
+        </tr>
+    </table>
+    </div>
   </div>
-</div><div class="media">
+</div>
+                            	<div class="media mb-4 border-bottom">
   <svg class="bd-placeholder-img mr-3" width="64" height="64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 64x64"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">64x64</text></svg>
-  <div class="media-body">
-    <h5>Title goes here</h5>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, doloremque architecto optio corporis maiores voluptas provident! Quod, ducimus, rerum magnam facilis neque dolore ut reiciendis rem enim voluptatibus illum autem.</p>
+   <div class="media-body">
+    <h6 class="mb-1 mt-0">Shivani Ahuja</h6>
+    <div>
+    <table class="table-sm table mb-0">
+    	<tr>
+        	<td>shivani@yahoo.com</td>
+        	<td>23-08-1991</td>
+        	<td>Pujabi-Khatri</td>
+        </tr>
+        <tr>
+        	<td>Unmarried</td>
+        	<td>Manglik</td>
+        	<td>B.Com, DU</td>
+        </tr>
+    </table>
+    </div>
   </div>
-</div><div class="media">
+</div>
+                            	<div class="media mb-4 border-bottom">
   <svg class="bd-placeholder-img mr-3" width="64" height="64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 64x64"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">64x64</text></svg>
-  <div class="media-body">
-    <h5>Title goes here</h5>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, doloremque architecto optio corporis maiores voluptas provident! Quod, ducimus, rerum magnam facilis neque dolore ut reiciendis rem enim voluptatibus illum autem.</p>
+   <div class="media-body">
+    <h6 class="mb-1 mt-0">Shivani Ahuja</h6>
+    <div>
+    <table class="table-sm table mb-0">
+    	<tr>
+        	<td>shivani@yahoo.com</td>
+        	<td>23-08-1991</td>
+        	<td>Pujabi-Khatri</td>
+        </tr>
+        <tr>
+        	<td>Unmarried</td>
+        	<td>Manglik</td>
+        	<td>B.Com, DU</td>
+        </tr>
+    </table>
+    </div>
+  </div>
+</div>
+                            	<div class="media mb-4 border-bottom">
+  <svg class="bd-placeholder-img mr-3" width="64" height="64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 64x64"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">64x64</text></svg>
+   <div class="media-body">
+    <h6 class="mb-1 mt-0">Shivani Ahuja</h6>
+    <div>
+    <table class="table-sm table mb-0">
+    	<tr>
+        	<td>shivani@yahoo.com</td>
+        	<td>23-08-1991</td>
+        	<td>Pujabi-Khatri</td>
+        </tr>
+        <tr>
+        	<td>Unmarried</td>
+        	<td>Manglik</td>
+        	<td>B.Com, DU</td>
+        </tr>
+    </table>
+    </div>
   </div>
 </div>
                             </div>

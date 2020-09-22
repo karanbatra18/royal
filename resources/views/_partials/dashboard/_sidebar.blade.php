@@ -113,6 +113,13 @@
                       </ul>
                     </div>
         </li>
+        
+           <li class="nav-item">
+            <a class="nav-link" href="{{ route('email.index') }}">
+                <i class="material-icons">E</i>
+                <p>Email Templates</p>
+            </a>
+        </li>
 
     </ul>
 </div>
