@@ -97,7 +97,8 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('dob') ? ' has-danger' : '' }}">
                                             <input class="datepicker form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}"
-                                                   name="dob" id="input-dob" type="text" placeholder="{{ __('Date Of Birth') }}"
+                                                   name="dob" id="input-dob" type="text"
+                                                   placeholder="{{ __('Date Of Birth') }}"
                                                    value="{{ isset($user->dob) ? $user->dob : old('dob') }}" required/>
 
                                             @if ($errors->has('dob'))
@@ -117,7 +118,8 @@
                                                 <option value="">Please select</option>
                                                 <option {{ (isset($user->marital_status) && $user->marital_status == 'single') ? 'selected' : ((old('gender') == 'single') ? 'selected' : '') }} value="single">
                                                     Single
-                                                </option>(
+                                                </option>
+                                                (
                                                 <option {{ (isset($user->marital_status) && $user->marital_status == 'married') ? 'selected' : ((old('gender') == 'married') ? 'selected' : '') }} value="married">
                                                     Married
                                                 </option>
@@ -130,7 +132,7 @@
                                                 <option {{ (isset($user->marital_status) && $user->marital_status == 'remarriage') ? 'selected' : ((old('gender') == 'remarriage') ? 'selected' : '') }} value="remarriage">
                                                     ReMarriage
                                                 </option>
-                                                 <option {{ (isset($user->marital_status) && $user->marital_status == 'rokkadone') ? 'selected' : ((old('gender') == 'rokkadone') ? 'selected' : '') }} value="rokkadone">
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'rokkadone') ? 'selected' : ((old('gender') == 'rokkadone') ? 'selected' : '') }} value="rokkadone">
                                                     Rokka Done
                                                 </option>
                                             </select>
@@ -169,7 +171,8 @@
                     </div>
                 </div>
             </form>
-            <form method="post" id="country_state_city" action="{{ route('user.update_profile', ['user' => $user]) }}" autocomplete="off"
+            <form method="post" id="country_state_city" action="{{ route('user.update_profile', ['user' => $user]) }}"
+                  autocomplete="off"
                   class="form-horizontal">
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
@@ -194,7 +197,22 @@
                                         </div>
                                     </div>
                                 @endif
-
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Portfolio Number*') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('folio_no') ? ' has-danger' : '' }}">
+                                                <input class="form-control{{ $errors->has('folio_no') ? ' is-invalid' : '' }}"
+                                                       name="folio_no" id="input-folio_no" type="text"
+                                                       placeholder="{{ __('Portfolio Number') }}"
+                                                       value="{{ isset($userProfile->folio_no) ? $userProfile->folio_no : old('folio_no') }}"
+                                                       required/>
+                                                @if ($errors->has('folio_no'))
+                                                    <span id="folio_no-error" class="error text-danger"
+                                                          for="input-email">{{ $errors->first('folio_no') }}</span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Height*') }}</label>
                                     <div class="col-sm-7">
@@ -243,9 +261,8 @@
                                                 <option {{ (isset($userProfile->religion) && $userProfile->religion == 'brahmin') ? 'selected' : ((old('religion') == 'brahmin') ? 'selected' : '') }}  value="brahmin">
                                                     Brahmin
                                                 </option>
-                                                
-                                                
-                                                
+
+
                                             </select>
                                             @if ($errors->has('religion'))
                                                 <span id="religion-error"
@@ -258,18 +275,22 @@
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Caste*') }}</label>
                                     <div class="col-sm-7">
-                                        <div class="form-group{{ $errors->has('cast') ? ' has-danger' : '' }}">
-                                            <select class="form-control{{ $errors->has('cast') ? ' is-invalid' : '' }}"
-                                                    name="cast" id="input-cast" required>
+                                        <div class="form-group{{ $errors->has('caste_id') ? ' has-danger' : '' }}">
+                                            <select class="caste_id form-control{{ $errors->has('caste_id') ? ' is-invalid' : '' }}"
+                                                    name="caste_id" id="input-cast" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->cast) && $userProfile->cast == 'punjabi') ? 'selected' : ((old('cast') == 'punjabi') ? 'selected' : '') }} value="punjabi">
-                                                    Punjabi
-                                                </option>
+                                                @if($castes->count())
+                                                    @foreach($castes as $caste)
+                                                        <option {{ (isset($userProfile->caste_id) && $userProfile->caste_id == $caste->id) ? 'selected' : ((old('caste_id') == $caste->id) ? 'selected' : '') }} value="{{ $caste->id }}">
+                                                            {{ $caste->name }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
 
                                             </select>
-                                            @if ($errors->has('cast'))
-                                                <span id="cast-error"
-                                                      class="error text-danger">{{ $errors->first('cast') }}</span>
+                                            @if ($errors->has('caste_id'))
+                                                <span id="caste_id-error"
+                                                      class="error text-danger">{{ $errors->first('caste_id') }}</span>
                                             @endif
                                         </div>
                                     </div>
@@ -278,18 +299,22 @@
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Sub Caste*') }}</label>
                                     <div class="col-sm-7">
-                                        <div class="form-group{{ $errors->has('sub_cast') ? ' has-danger' : '' }}">
-                                            <select class="form-control{{ $errors->has('sub_cast') ? ' is-invalid' : '' }}"
-                                                    name="sub_cast" id="input-sub_cast" required>
+                                        <div class="form-group{{ $errors->has('sub_caste_id') ? ' has-danger' : '' }}">
+                                            <select class="sub_caste_id form-control{{ $errors->has('sub_caste_id') ? ' is-invalid' : '' }}"
+                                                    name="sub_caste_id" id="input-sub_caste_id" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->sub_cast) && $userProfile->sub_cast == 'punjabi') ? 'selected' : ((old('sub_cast') == 'punjabi') ? 'selected' : '') }} value="punjabi">
-                                                    punjabi
-                                                </option>
 
+                                                @if($subCastes->count())
+                                                    @foreach($subCastes as $caste)
+                                                        <option {{ (isset($userProfile->sub_caste_id) && $userProfile->sub_caste_id == $caste->id) ? 'selected' : ((old('sub_caste_id') == $caste->id) ? 'selected' : '') }} value="{{ $caste->id }}">
+                                                            {{ $caste->name }}
+                                                        </option>
+                                                    @endforeach
+                                                @endif
                                             </select>
-                                            @if ($errors->has('sub_cast'))
-                                                <span id="sub_cast-error"
-                                                      class="error text-danger">{{ $errors->first('sub_cast') }}</span>
+                                            @if ($errors->has('sub_caste_id'))
+                                                <span id="sub_caste_id-error"
+                                                      class="error text-danger">{{ $errors->first('sub_caste_id') }}</span>
                                             @endif
                                         </div>
                                     </div>
@@ -319,7 +344,7 @@
                                                 <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'marathi') ? 'selected' : ((old('mother_tongue') == 'marathi') ? 'selected' : '') }} value="marathi">
                                                     Mrathi
                                                 </option>
-                                                 <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'others') ? 'selected' : ((old('mother_tongue') == 'marathi') ? 'selected' : '') }} value="others">
+                                                <option {{ (isset($userProfile->mother_tongue) && $userProfile->mother_tongue == 'others') ? 'selected' : ((old('mother_tongue') == 'marathi') ? 'selected' : '') }} value="others">
                                                     Others
                                                 </option>
 
@@ -340,11 +365,11 @@
                                             <select class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}"
                                                     name="country" id="country-dropdown" required>
                                                 <option value="">Please select</option>
-                                                
-                                               @foreach ($countries as $country) 
-                                                <option value="{{$country->id}}" {{ (isset($userProfile->country) && $userProfile->country == $country->name) ? 'selected' : ((old('country') == $country->name) ? 'selected' : '') }} >
-                                                {{$country->name}}
-                                                </option>
+
+                                                @foreach ($countries as $country)
+                                                    <option value="{{$country->id}}" {{ (isset($userProfile->country) && $userProfile->country == $country->name) ? 'selected' : ((old('country') == $country->name) ? 'selected' : '') }} >
+                                                        {{$country->name}}
+                                                    </option>
                                                 @endforeach
 
                                             </select>
@@ -366,7 +391,7 @@
                                                 <option value="">Please select</option>
                                                 <option value="{{$userProfile->state}}" selected>
                                                 {{$userProfile->state}}
-                                              
+
 
                                             </select>
                                             @if ($errors->has('state'))
@@ -385,9 +410,8 @@
                                             <select class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
                                                     name="city" id="city-dropdown">
                                                 <option value="">Please select</option>
-                                               <option value="{{$userProfile->city}}" selected>
+                                                <option value="{{$userProfile->city}}" selected>
                                                 {{$userProfile->city}}
-                                              
 
 
                                             </select>
@@ -408,7 +432,7 @@
                                                    name="annual_income" id="input-annual_income" type="text"
                                                    placeholder="{{ __('Annual Income') }}"
                                                    value="{{ isset($userProfile->annual_income) ? $userProfile->annual_income : old('annual_income') }}"
-                                                   />
+                                            />
 
                                             @if ($errors->has('annual_income'))
                                                 <span id="annual_income-error"
@@ -720,8 +744,8 @@
                   class="form-horizontal">
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
-            <div class="row">
-                <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
 
 
                         <div class="card ">
@@ -756,8 +780,12 @@
                                             <select class="form-control{{ $errors->has('higher_education') ? ' is-invalid' : '' }}"
                                                     name="higher_education" id="input-higher_education" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->higher_education) && $userProfile->higher_education == 'phd') ? 'selected' : ((old('higher_education') == 'phd') ? 'selected' : '') }} value="phd">PHD</option>
-                                                <option {{ (isset($userProfile->higher_education) && $userProfile->higher_education == 'btech') ? 'selected' : ((old('higher_education') == 'btech') ? 'selected' : '') }} value="btech">B.Tech</option>
+                                                <option {{ (isset($userProfile->higher_education) && $userProfile->higher_education == 'phd') ? 'selected' : ((old('higher_education') == 'phd') ? 'selected' : '') }} value="phd">
+                                                    PHD
+                                                </option>
+                                                <option {{ (isset($userProfile->higher_education) && $userProfile->higher_education == 'btech') ? 'selected' : ((old('higher_education') == 'btech') ? 'selected' : '') }} value="btech">
+                                                    B.Tech
+                                                </option>
 
 
                                             </select>
@@ -776,7 +804,8 @@
                                         <div class="form-group{{ $errors->has('college') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('college') ? ' is-invalid' : '' }}"
                                                    name="college" id="input-college" type="text"
-                                                   placeholder="{{ __('College') }}" value="{{ isset($userProfile->college) ? $userProfile->college : old('college') }}"/>
+                                                   placeholder="{{ __('College') }}"
+                                                   value="{{ isset($userProfile->college) ? $userProfile->college : old('college') }}"/>
                                             @if ($errors->has('college'))
                                                 <span id="college-error" class="error text-danger"
                                                       for="input-college">{{ $errors->first('college') }}</span>
@@ -791,7 +820,8 @@
                                         <div class="form-group{{ $errors->has('school') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('school') ? ' is-invalid' : '' }}"
                                                    name="school" id="input-school" type="text"
-                                                   placeholder="{{ __('School') }}" value="{{ isset($userProfile->school) ? $userProfile->school : old('school') }}"/>
+                                                   placeholder="{{ __('School') }}"
+                                                   value="{{ isset($userProfile->school) ? $userProfile->school : old('school') }}"/>
                                             @if ($errors->has('school'))
                                                 <span id="school-error" class="error text-danger"
                                                       for="input-school">{{ $errors->first('school') }}</span>
@@ -807,15 +837,15 @@
                             </div>
                         </div>
 
+                    </div>
                 </div>
-            </div>
             </form>
             <form method="post" action="{{ route('user.update_profile', ['user' => $user]) }}" autocomplete="off"
                   class="form-horizontal">
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
-            <div class="row">
-                <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
 
 
                         <div class="card ">
@@ -830,7 +860,8 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('about_career') ? ' has-danger' : '' }}">
                                             <textarea
-                                                    required class="form-control{{ $errors->has('about_career') ? ' is-invalid' : '' }}"
+                                                    required
+                                                    class="form-control{{ $errors->has('about_career') ? ' is-invalid' : '' }}"
                                                     name="about_career" id="input-about_career"
                                                     placeholder="{{ __('Career') }}">{{ isset($userProfile->about_career) ? $userProfile->about_career : old('about_career') }}</textarea>
 
@@ -849,7 +880,8 @@
                                         <div class="form-group{{ $errors->has('employed_in') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('employed_in') ? ' is-invalid' : '' }}"
                                                    name="employed_in" id="input-employed_in" type="text"
-                                                   placeholder="{{ __('Employed In') }}" value="{{ isset($userProfile->employed_in) ? $userProfile->employed_in : old('employed_in') }}"/>
+                                                   placeholder="{{ __('Employed In') }}"
+                                                   value="{{ isset($userProfile->employed_in) ? $userProfile->employed_in : old('employed_in') }}"/>
                                             @if ($errors->has('employed_in'))
                                                 <span id="employed_in-error" class="error text-danger"
                                                       for="input-employed_in">{{ $errors->first('employed_in') }}</span>
@@ -865,7 +897,8 @@
                                         <div class="form-group{{ $errors->has('occupation') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('occupation') ? ' is-invalid' : '' }}"
                                                    name="occupation" id="input-occupation" type="text"
-                                                   placeholder="{{ __('Occupation') }}" value="{{ isset($userProfile->occupation) ? $userProfile->occupation : old('occupation') }}"/>
+                                                   placeholder="{{ __('Occupation') }}"
+                                                   value="{{ isset($userProfile->occupation) ? $userProfile->occupation : old('occupation') }}"/>
                                             @if ($errors->has('occupation'))
                                                 <span id="occupation-error" class="error text-danger"
                                                       for="input-occupation">{{ $errors->first('occupation') }}</span>
@@ -881,7 +914,8 @@
                                         <div class="form-group{{ $errors->has('organization_name') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('organization_name') ? ' is-invalid' : '' }}"
                                                    name="organization_name" id="input-organization_name" type="text"
-                                                   placeholder="{{ __('Organization Name') }}" value="{{ isset($userProfile->organization_name) ? $userProfile->organization_name : old('organization_name') }}"/>
+                                                   placeholder="{{ __('Organization Name') }}"
+                                                   value="{{ isset($userProfile->organization_name) ? $userProfile->organization_name : old('organization_name') }}"/>
                                             @if ($errors->has('organization_name'))
                                                 <span id="organization_name-error" class="error text-danger"
                                                       for="input-organization_name">{{ $errors->first('organization_name') }}</span>
@@ -897,15 +931,15 @@
                             </div>
                         </div>
 
+                    </div>
                 </div>
-            </div>
             </form>
             <form method="post" action="{{ route('user.update', ['user' => $user]) }}" autocomplete="off"
                   class="form-horizontal">
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
-            <div class="row">
-                <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
 
                         <div class="card ">
                             <div class="card-header card-header-primary">
@@ -921,7 +955,9 @@
                                         <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
                                                    name="email" id="input-email" type="email"
-                                                   placeholder="{{ __('Email') }}" value="{{ isset($user->email) ? $user->email : old('email') }}" required/>
+                                                   placeholder="{{ __('Email') }}"
+                                                   value="{{ isset($user->email) ? $user->email : old('email') }}"
+                                                   required/>
                                             @if ($errors->has('email'))
                                                 <span id="email-error" class="error text-danger"
                                                       for="input-email">{{ $errors->first('email') }}</span>
@@ -952,7 +988,9 @@
                                         <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}"
                                                    name="phone" id="input-phone" type="text"
-                                                   placeholder="{{ __('Phone') }}" value="{{ isset($user->phone) ? $user->phone : old('phone') }}" required/>
+                                                   placeholder="{{ __('Phone') }}"
+                                                   value="{{ isset($user->phone) ? $user->phone : old('phone') }}"
+                                                   required/>
 
                                             @if ($errors->has('phone'))
                                                 <span id="phone-error"
@@ -969,7 +1007,8 @@
                                         <div class="form-group{{ $errors->has('alternate_phone') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('alternate_phone') ? ' is-invalid' : '' }}"
                                                    name="alternate_phone" id="input-alternate_phone" type="text"
-                                                   placeholder="{{ __('Alternate Phone') }}" value="{{ isset($user->alternate_phone) ? $user->alternate_phone : old('alternate_phone') }}"/>
+                                                   placeholder="{{ __('Alternate Phone') }}"
+                                                   value="{{ isset($user->alternate_phone) ? $user->alternate_phone : old('alternate_phone') }}"/>
 
                                             @if ($errors->has('alternate_phone'))
                                                 <span id="alternate_phone-error"
@@ -985,7 +1024,8 @@
                                         <div class="form-group{{ $errors->has('family_phone_number') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('family_phone_number') ? ' is-invalid' : '' }}"
                                                    name="family_phone_number" id="input-family_phone_number" type="text"
-                                                   placeholder="{{ __('Family Phone Number') }}" value="{{ isset($user->family_phone_number) ? $user->family_phone_number : old('family_phone_number') }}"/>
+                                                   placeholder="{{ __('Family Phone Number') }}"
+                                                   value="{{ isset($user->family_phone_number) ? $user->family_phone_number : old('family_phone_number') }}"/>
 
                                             @if ($errors->has('family_phone_number'))
                                                 <span id="family_phone_number-error"
@@ -1002,7 +1042,8 @@
                                         <div class="form-group{{ $errors->has('landline') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('landline') ? ' is-invalid' : '' }}"
                                                    name="landline" id="input-landline" type="text"
-                                                   placeholder="{{ __('Landline') }}" value="{{ isset($user->landline) ? $user->landline : old('landline') }}"/>
+                                                   placeholder="{{ __('Landline') }}"
+                                                   value="{{ isset($user->landline) ? $user->landline : old('landline') }}"/>
 
                                             @if ($errors->has('landline'))
                                                 <span id="landline-error"
@@ -1019,7 +1060,9 @@
                                         <div class="form-group{{ $errors->has('whatsup') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('whatsup') ? ' is-invalid' : '' }}"
                                                    name="whatsup" id="input-whatsup" type="text"
-                                                   placeholder="{{ __('Whatsup') }}" value="{{ isset($user->whatsup) ? $user->whatsup : old('whatsup') }}" required/>
+                                                   placeholder="{{ __('Whatsup') }}"
+                                                   value="{{ isset($user->whatsup) ? $user->whatsup : old('whatsup') }}"
+                                                   required/>
 
                                             @if ($errors->has('whatsup'))
                                                 <span id="whatsup-error"
@@ -1036,15 +1079,15 @@
                             </div>
                         </div>
 
+                    </div>
                 </div>
-            </div>
             </form>
             <form method="post" action="{{ route('user.update_profile', ['user' => $user]) }}" autocomplete="off"
                   class="form-horizontal">
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
-            <div class="row">
-                <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
 
                         <div class="card ">
                             <div class="card-header card-header-primary">
@@ -1060,7 +1103,8 @@
                                         <div class="form-group{{ $errors->has('birth_time') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('birth_time') ? ' is-invalid' : '' }}"
                                                    name="birth_time" id="input-birth_time" type="time"
-                                                   placeholder="{{ __('Time of Birth') }}" value="{{ isset($userProfile->birth_time) ? $userProfile->birth_time : old('birth_time') }} required"/>
+                                                   placeholder="{{ __('Time of Birth') }}"
+                                                   value="{{ isset($userProfile->birth_time) ? $userProfile->birth_time : old('birth_time') }} required"/>
                                             @if ($errors->has('birth_time'))
                                                 <span id="birth_time-error" class="error text-danger"
                                                       for="input-birth_time">{{ $errors->first('birth_time') }}</span>
@@ -1075,7 +1119,8 @@
                                         <div class="form-group{{ $errors->has('birth_place') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('birth_place') ? ' is-invalid' : '' }}"
                                                    name="birth_place" id="input-birth_place" type="text"
-                                                   placeholder="{{ __('Place of Birth') }}" value="{{ isset($userProfile->birth_place) ? $userProfile->birth_place : old('birth_place') }}"/>
+                                                   placeholder="{{ __('Place of Birth') }}"
+                                                   value="{{ isset($userProfile->birth_place) ? $userProfile->birth_place : old('birth_place') }}"/>
                                             @if ($errors->has('birth_place'))
                                                 <span id="birth_place-error" class="error text-danger"
                                                       for="input-birth_place">{{ $errors->first('birth_place') }}</span>
@@ -1092,8 +1137,12 @@
                                             <select class="form-control{{ $errors->has('mangalik_status') ? ' is-invalid' : '' }}"
                                                     name="mangalik_status" id="input-mangalik_status" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'yes') ? 'selected' : ((old('mangalik_status') == 'yes') ? 'selected' : '') }} value="yes">Yes</option>
-                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'no') ? 'selected' : ((old('mangalik_status') == 'no') ? 'selected' : '') }}  value="no">No</option>
+                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'yes') ? 'selected' : ((old('mangalik_status') == 'yes') ? 'selected' : '') }} value="yes">
+                                                    Yes
+                                                </option>
+                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'no') ? 'selected' : ((old('mangalik_status') == 'no') ? 'selected' : '') }}  value="no">
+                                                    No
+                                                </option>
                                             </select>
                                             @if ($errors->has('mangalik_status'))
                                                 <span id="mangalik_status-error"
@@ -1110,15 +1159,15 @@
                             </div>
                         </div>
 
+                    </div>
                 </div>
-            </div>
             </form>
             <form method="post" action="{{ route('user.update_profile', ['user' => $user]) }}" autocomplete="off"
                   class="form-horizontal">
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
-            <div class="row">
-                <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
 
 
                         <div class="card ">
@@ -1134,8 +1183,11 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('non_veg') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='non_veg'>
-                                            <input class="{{ $errors->has('non_veg') ? ' is-invalid' : '' }}" name="non_veg"
-                                                   id="input-non_veg" type="checkbox" {{ (isset($userProfile->non_veg) && $userProfile->non_veg == 1) ? 'selected' : ((old('non_veg') == 1) ? 'checked' : '') }} value="1" required/>
+                                            <input class="{{ $errors->has('non_veg') ? ' is-invalid' : '' }}"
+                                                   name="non_veg"
+                                                   id="input-non_veg" type="checkbox"
+                                                   {{ (isset($userProfile->non_veg) && $userProfile->non_veg == 1) ? 'selected' : ((old('non_veg') == 1) ? 'checked' : '') }} value="1"
+                                                   required/>
                                             @if ($errors->has('non_veg'))
                                                 <span id="non_veg-error" class="error text-danger"
                                                       for="input-non_veg">{{ $errors->first('non_veg') }}</span>
@@ -1151,7 +1203,8 @@
                                         <div class="form-group{{ $errors->has('drink') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='drink'>
                                             <input class="{{ $errors->has('drink') ? ' is-invalid' : '' }}" name="drink"
-                                                   id="input-drink" type="checkbox" {{ (isset($userProfile->drink) && $userProfile->drink == 1) ? 'checked' : ((old('drink') == 1) ? 'checked' : '') }} value="1"/>
+                                                   id="input-drink" type="checkbox"
+                                                   {{ (isset($userProfile->drink) && $userProfile->drink == 1) ? 'checked' : ((old('drink') == 1) ? 'checked' : '') }} value="1"/>
                                             @if ($errors->has('drink'))
                                                 <span id="drink-error" class="error text-danger"
                                                       for="input-drink">{{ $errors->first('drink') }}</span>
@@ -1167,7 +1220,8 @@
                                         <div class="form-group{{ $errors->has('smoke') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='smoke'>
                                             <input class="{{ $errors->has('smoke') ? ' is-invalid' : '' }}" name="smoke"
-                                                   id="input-smoke" type="checkbox" {{ (isset($userProfile->smoke) && $userProfile->smoke == 1) ? 'checked' : ((old('smoke') == 1) ? 'checked' : '') }} value="1"/>
+                                                   id="input-smoke" type="checkbox"
+                                                   {{ (isset($userProfile->smoke) && $userProfile->smoke == 1) ? 'checked' : ((old('smoke') == 1) ? 'checked' : '') }} value="1"/>
                                             @if ($errors->has('smoke'))
                                                 <span id="smoke-error" class="error text-danger"
                                                       for="input-smoke">{{ $errors->first('smoke') }}</span>
@@ -1181,8 +1235,10 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('own_house') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='own_house'>
-                                            <input class="{{ $errors->has('own_house') ? ' is-invalid' : '' }}" name="own_house"
-                                                   id="input-own_house" type="checkbox" {{ (isset($userProfile->own_house) && $userProfile->own_house == 1) ? 'checked' : ((old('own_house') == 1) ? 'checked' : '') }} value="1"/>
+                                            <input class="{{ $errors->has('own_house') ? ' is-invalid' : '' }}"
+                                                   name="own_house"
+                                                   id="input-own_house" type="checkbox"
+                                                   {{ (isset($userProfile->own_house) && $userProfile->own_house == 1) ? 'checked' : ((old('own_house') == 1) ? 'checked' : '') }} value="1"/>
                                             @if ($errors->has('own_house'))
                                                 <span id="own_house-error" class="error text-danger"
                                                       for="input-own_house">{{ $errors->first('own_house') }}</span>
@@ -1196,8 +1252,10 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('own_car') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='own_car'>
-                                            <input class="{{ $errors->has('own_car') ? ' is-invalid' : '' }}" name="own_car"
-                                                   id="input-own_car" type="checkbox" {{ (isset($userProfile->own_car) && $userProfile->own_car == 1) ? 'checked' : ((old('own_car') == 1) ? 'checked' : '') }} value="1"/>
+                                            <input class="{{ $errors->has('own_car') ? ' is-invalid' : '' }}"
+                                                   name="own_car"
+                                                   id="input-own_car" type="checkbox"
+                                                   {{ (isset($userProfile->own_car) && $userProfile->own_car == 1) ? 'checked' : ((old('own_car') == 1) ? 'checked' : '') }} value="1"/>
                                             @if ($errors->has('own_car'))
                                                 <span id="own_car-error" class="error text-danger"
                                                       for="input-own_car">{{ $errors->first('own_car') }}</span>
@@ -1212,15 +1270,15 @@
                             </div>
                         </div>
 
+                    </div>
                 </div>
-            </div>
             </form>
             <form method="post" action="{{ route('user.update_profile', ['user' => $user]) }}" autocomplete="off"
                   class="form-horizontal">
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
-            <div class="row">
-                <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
 
                         <div class="card ">
                             <div class="card-header card-header-primary">
@@ -1237,7 +1295,8 @@
                                             <input class="form-control{{ $errors->has('father_name') ? ' is-invalid' : '' }}"
                                                    name="father_name" id="input-father_name" type="text"
                                                    placeholder="{{ __('Father Name') }}"
-                                                   value="{{ isset($userProfile->father_name) ? $userProfile->father_name : old('father_name') }}" required/>
+                                                   value="{{ isset($userProfile->father_name) ? $userProfile->father_name : old('father_name') }}"
+                                                   required/>
                                             @if ($errors->has('father_name'))
                                                 <span id="father_name-error" class="error text-danger"
                                                       for="input-father_name">{{ $errors->first('father_name') }}</span>
@@ -1253,7 +1312,8 @@
                                         <div class="form-group{{ $errors->has('father_occupation') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('father_occupation') ? ' is-invalid' : '' }}"
                                                    name="father_occupation" id="input-father_occupation"
-                                                   type="text" placeholder="{{ __('Father Occupation') }}" value="{{ isset($userProfile->father_occupation) ? $userProfile->father_occupation : old('father_occupation') }}"/>
+                                                   type="text" placeholder="{{ __('Father Occupation') }}"
+                                                   value="{{ isset($userProfile->father_occupation) ? $userProfile->father_occupation : old('father_occupation') }}"/>
                                             @if ($errors->has('father_occupation'))
                                                 <span id="father_occupation-error" class="error text-danger"
                                                       for="input-father_occupation">{{ $errors->first('father_occupation') }}</span>
@@ -1269,7 +1329,9 @@
                                         <div class="form-group{{ $errors->has('mother_name') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('mother_name') ? ' is-invalid' : '' }}"
                                                    name="mother_name" id="input-mother_name" type="text"
-                                                   placeholder="{{ __('Mother Name') }}" value="{{ isset($userProfile->mother_name) ? $userProfile->mother_name : old('mother_name') }}" required/>
+                                                   placeholder="{{ __('Mother Name') }}"
+                                                   value="{{ isset($userProfile->mother_name) ? $userProfile->mother_name : old('mother_name') }}"
+                                                   required/>
                                             @if ($errors->has('mother_name'))
                                                 <span id="mother_name-error" class="error text-danger"
                                                       for="input-mother_name">{{ $errors->first('mother_name') }}</span>
@@ -1285,7 +1347,8 @@
                                         <div class="form-group{{ $errors->has('mother_occupation') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('mother_occupation') ? ' is-invalid' : '' }}"
                                                    name="mother_occupation" id="input-mother_occupation"
-                                                   type="text" placeholder="{{ __('Mother Occupation') }}" value="{{ isset($userProfile->mother_occupation) ? $userProfile->mother_occupation : old('mother_occupation') }}"/>
+                                                   type="text" placeholder="{{ __('Mother Occupation') }}"
+                                                   value="{{ isset($userProfile->mother_occupation) ? $userProfile->mother_occupation : old('mother_occupation') }}"/>
                                             @if ($errors->has('mother_occupation'))
                                                 <span id="mother_occupation-error" class="error text-danger"
                                                       for="input-mother_occupation">{{ $errors->first('mother_occupation') }}</span>
@@ -1302,8 +1365,12 @@
                                             <select class="form-control{{ $errors->has('gothra') ? ' is-invalid' : '' }}"
                                                     name="gothra" id="input-gothra" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->gothra) && $userProfile->gothra == 'sanatan') ? 'selected' : ((old('gender') == 'sanatan') ? 'selected' : '') }} value="sanatan">Sanatan</option>
-                                                <option {{ (isset($userProfile->gothra) && $userProfile->gothra == 'other') ? 'selected' : ((old('gender') == 'other') ? 'selected' : '') }} value="other">Other</option>
+                                                <option {{ (isset($userProfile->gothra) && $userProfile->gothra == 'sanatan') ? 'selected' : ((old('gender') == 'sanatan') ? 'selected' : '') }} value="sanatan">
+                                                    Sanatan
+                                                </option>
+                                                <option {{ (isset($userProfile->gothra) && $userProfile->gothra == 'other') ? 'selected' : ((old('gender') == 'other') ? 'selected' : '') }} value="other">
+                                                    Other
+                                                </option>
 
                                             </select>
                                             @if ($errors->has('gothra'))
@@ -1321,7 +1388,9 @@
                                         <div class="form-group{{ $errors->has('family_income') ? ' has-danger' : '' }}">
                                             <input class="form-control{{ $errors->has('family_income') ? ' is-invalid' : '' }}"
                                                    name="family_income" id="input-family_income" type="text"
-                                                   placeholder="{{ __('Family Income') }}" value="{{ isset($userProfile->family_income) ? $userProfile->family_income : old('family_income') }}" required/>
+                                                   placeholder="{{ __('Family Income') }}"
+                                                   value="{{ isset($userProfile->family_income) ? $userProfile->family_income : old('family_income') }}"
+                                                   required/>
 
                                             @if ($errors->has('family_income'))
                                                 <span id="family_income-error"
@@ -1337,7 +1406,9 @@
                                         <div class="form-group{{ $errors->has('living_with_parents') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='living_with_parents'>
                                             <input class="{{ $errors->has('living_with_parents') ? ' is-invalid' : '' }}"
-                                                   name="living_with_parents" id="input-living_with_parents" type="checkbox" value="1" {{ (isset($userProfile->living_with_parents) && $userProfile->living_with_parents == 1) ? 'checked' : ((old('living_with_parents') == 1) ? 'checked' : '') }}/>
+                                                   name="living_with_parents" id="input-living_with_parents"
+                                                   type="checkbox"
+                                                   value="1" {{ (isset($userProfile->living_with_parents) && $userProfile->living_with_parents == 1) ? 'checked' : ((old('living_with_parents') == 1) ? 'checked' : '') }}/>
                                             @if ($errors->has('living_with_parents'))
                                                 <span id="living_with_parents-error" class="error text-danger"
                                                       for="input-living_with_parents">{{ $errors->first('living_with_parents') }}</span>
@@ -1352,7 +1423,8 @@
                                         <div class="form-group{{ $errors->has('abroad_willing') ? ' has-danger' : '' }}">
                                             <input type='hidden' value='0' name='abroad_willing'>
                                             <input class="{{ $errors->has('abroad_willing') ? ' is-invalid' : '' }}"
-                                                   name="abroad_willing" id="input-abroad_willing" type="checkbox" value="1" {{ (isset($userProfile->abroad_willing) && $userProfile->abroad_willing == 1) ? 'checked' : ((old('abroad_willing') == 1) ? 'checked' : '') }}/>
+                                                   name="abroad_willing" id="input-abroad_willing" type="checkbox"
+                                                   value="1" {{ (isset($userProfile->abroad_willing) && $userProfile->abroad_willing == 1) ? 'checked' : ((old('abroad_willing') == 1) ? 'checked' : '') }}/>
                                             @if ($errors->has('abroad_willing'))
                                                 <span id="abroad_willing-error" class="error text-danger"
                                                       for="input-abroad_willing">{{ $errors->first('abroad_willing') }}</span>
@@ -1368,8 +1440,8 @@
                             </div>
                         </div>
 
+                    </div>
                 </div>
-            </div>
             </form>
 
         </div>
@@ -1379,71 +1451,90 @@
 @section('script')
     <script>
 
-        $(document).ready(function(){
-            $('.datepicker').datepicker({ format:"yyyy-mm-dd" });
+        $(document).ready(function () {
+            $('.datepicker').datepicker({format: "yyyy-mm-dd"});
 
-          
+
         });
-        
-  
-    $(document).ready(function() {
-$('#country-dropdown').on('change', function() {
-var country_id = this.value;
-$("#state-dropdown").html('');
-$.ajax({
-url:"{{url('get-states-by-country')}}",
-type: "POST",
-data: {
-country_id: country_id,
-_token: '{{csrf_token()}}' 
-},
-dataType : 'json',
-success: function(result){
-$('#state-dropdown').html('<option value="">Select State</option>'); 
-$.each(result.states,function(key,value){
-$("#state-dropdown").append('<option value="'+value.id+'">'+value.name+'</option>');
-});
-$('#city-dropdown').html('<option value="">Select State First</option>'); 
-}
-});
-});    
-$('#state-dropdown').on('change', function() {
-var state_id = this.value;
-$("#city-dropdown").html('');
-$.ajax({
-url:"{{url('get-cities-by-state')}}",
-type: "POST",
-data: {
-state_id: state_id,
-_token: '{{csrf_token()}}' 
-},
-dataType : 'json',
-success: function(result){
-$('#city-dropdown').html('<option value="">Select City</option>'); 
-$.each(result.cities,function(key,value){
-$("#city-dropdown").append('<option value="'+value.id+'">'+value.name+'</option>');
-});
-}
-});
-});
-});
 
 
-    $("#country_state_city").submit(function(e) {
+        $(document).ready(function () {
+            $('#country-dropdown').on('change', function () {
+                var country_id = this.value;
+                $("#state-dropdown").html('');
+                $.ajax({
+                    url: "{{url('get-states-by-country')}}",
+                    type: "POST",
+                    data: {
+                        country_id: country_id,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#state-dropdown').html('<option value="">Select State</option>');
+                        $.each(result.states, function (key, value) {
+                            $("#state-dropdown").append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                        $('#city-dropdown').html('<option value="">Select State First</option>');
+                    }
+                });
+            });
+            $('#state-dropdown').on('change', function () {
+                var state_id = this.value;
+                $("#city-dropdown").html('');
+                $.ajax({
+                    url: "{{url('get-cities-by-state')}}",
+                    type: "POST",
+                    data: {
+                        state_id: state_id,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#city-dropdown').html('<option value="">Select City</option>');
+                        $.each(result.cities, function (key, value) {
+                            $("#city-dropdown").append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+            $('.caste_id').on('change', function () {
+                var caste_id = $(this).val();
+                $(".sub_caste_id").html('');
+                $.ajax({
+                    url: "{{ route('caste.sub_castes') }}",
+                    type: "POST",
+                    data: {
+                        caste_id: caste_id,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('.sub_caste_id').html('<option value="">Select Subcaste</option>');
 
-       
-        var country =  $("#country-dropdown option:selected").text();
-        var state =  $("#state-dropdown option:selected").text();
-        var city =  $("#city-dropdown option:selected").text();
-        
-        $('#country-dropdown option:selected').val(country);
-        $('#state-dropdown option:selected').val(state);
-        $('#city-dropdown option:selected').val(city);
-         
-        
+                        $.each(result.castes, function (key, value) {
+                            $(".sub_caste_id").append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
 
-    });
-</script>
+
+        $("#country_state_city").submit(function (e) {
+
+
+            var country = $("#country-dropdown option:selected").text();
+            var state = $("#state-dropdown option:selected").text();
+            var city = $("#city-dropdown option:selected").text();
+
+            $('#country-dropdown option:selected').val(country);
+            $('#state-dropdown option:selected').val(state);
+            $('#city-dropdown option:selected').val(city);
+
+
+        });
+    </script>
 
 @endsection
 

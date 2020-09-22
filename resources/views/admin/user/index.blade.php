@@ -1,7 +1,8 @@
 @extends('layouts.dashboard', [ 'titlePage' => __('User Profile')])
 
 @section('content')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <script src="{{ asset('assets/js/jquery-3.5.1.slim.min.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -32,6 +33,8 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone</th>
+                                        <th>Vip Profile</th>
+                                        <th>Status</th>
                                         <th width="280px">Action</th>
                                     </tr>
                                     </thead>
@@ -95,6 +98,11 @@
     </div>
 @endsection
 @section('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jquery.enhanced-switch-apple.css') }}"/>
+
+    <script src="{{ asset('assets/js/jquery.enhanced-switch.js') }}"></script>
     <script type="text/javascript">
         $(function () {
 
@@ -108,14 +116,98 @@
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('user.index') }}",
+                "initComplete":function( settings, json){
+                    console.log(json);
+                    // call your function here
+                  /*  $(".switch").enhancedSwitch();
+                    // Set the second switch to be active after it has been initialised
+                    $(".switch.active").enhancedSwitch('setTrue');*/
+                },
+                "drawCallback": function( settings ) {
+                    $(".switch").enhancedSwitch();
+                    $(".switch_vip").enhancedSwitch();
+                    // Set the second switch to be active after it has been initialised
+                    $(".switch.active").enhancedSwitch('setTrue');
+                    $(".switch_vip.active").enhancedSwitch('setTrue');
+                },
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'first_name', name: 'first_name'},
                     {data: 'email', name: 'email'},
                     {data: 'phone', name: 'phone'},
+                    {data: 'vip_status', name: 'vip_status'},
+                    {data: 'userStatus', name: 'userStatus'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
+
+            $('body').on('click', '.deleteProduct', function () {
+                var user_id = $(this).data("id");
+                swal({
+                        title: "Are you sure to delete this user ?",
+                        text: "Delete Confirmation?",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Delete",
+                        closeOnConfirm: false
+                    },
+                    function () {
+
+                        $.ajax({
+                            type: "DELETE",
+                            url: "{{ url('admin/users') }}" + '/' + user_id,
+                            success: function (data) {
+                                table.draw();
+                                swal("Deleted!", "User successfully Deleted!", "success");
+                            },
+                            error: function (data) {
+                                console.log('Error:', data);
+                            }
+                        });
+                    });
             });
-        </script>
-    @endsection
+
+
+           // $(".switch").enhancedSwitch();
+
+            $('body').on('click', '.switch', function() {
+                var selectedSwitch = $(this);
+                var user_id = $(this).data("id");
+                selectedSwitch.enhancedSwitch('toggle');
+                var status = selectedSwitch.enhancedSwitch('state') ? 1 : 0;
+                $.ajax({
+                    type: "post",
+                    url: "{{ url('admin/users/status') }}" + '/' + user_id,
+                    data: {'status': status},
+                    success: function (data) {
+                       // table.draw();
+                        swal("Updated!", "Status successfully updated!", "success");
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+                });
+            });
+
+            $('body').on('click', '.switch_vip', function() {
+                var selectedSwitch = $(this);
+                var user_id = $(this).data("id");
+                selectedSwitch.enhancedSwitch('toggle');
+                var status = selectedSwitch.enhancedSwitch('state') ? 1 : 0;
+                $.ajax({
+                    type: "post",
+                    url: "{{ url('admin/users/vip') }}" + '/' + user_id,
+                    data: {'status': status},
+                    success: function (data) {
+                        // table.draw();
+                        swal("Updated!", "Vip Status updated!", "success");
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+                });
+            });
+        });
+    </script>
+@endsection

@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Caste;
 use App\User;
 use App\Country;
 use App\UserProfile;
@@ -29,18 +30,29 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = User::latest()->get();
+            $data = User::where('role_id',2)->latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function($row){
+                ->addColumn('userStatus', function($row){
+                    $statusClass = ($row->status == 1) ? 'active' : '';
+                    $btn = '<div data-id="'.$row->id.'" class="switch '.$statusClass.'" ></div>';
 
+                    return $btn;
+                })
+                ->addColumn('action', function($row){
                     $btn = '<a href="'.route("user.edit" , ["user_id" => $row->id]).'" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
 
                     $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
 
                     return $btn;
                 })
-                ->rawColumns(['action'])
+                ->addColumn('vip_status', function($row){
+                    $statusClass = ($row->is_vip == 1) ? 'active' : '';
+                    $btn = '<div data-id="'.$row->id.'" class="switch_vip '.$statusClass.'" ></div>';
+
+                    return $btn;
+                })
+                ->rawColumns(['userStatus','action','vip_status'])
                 ->make(true);
         }
         $users = User::get();
@@ -80,10 +92,20 @@ class UserController extends Controller
      */
     public function edit($userId)
     {
-        $countries= Country::get(["name","id"]);
+
         $user = User::where('id', $userId)->first();
         $userProfile = $user->userProfile()->first();
-        return view('admin.user.edit', compact('user', 'userProfile','countries'));
+        $mainCast = !empty($userProfile->caste_id) ? $userProfile->caste_id : 0;
+        $castes = Caste::where('parent_id',0)->orderBy('name')->get();
+        //dd($userProfile);
+        if($mainCast) {
+            $subCastes = Caste::where('parent_id',$mainCast)->orderBy('name')->get();
+        } else {
+            $subCastes = Caste::where('parent_id','!=',0)->orderBy('name')->get();
+        }
+
+        $countries= Country::get(["name","id"]);
+        return view('admin.user.edit', compact('user', 'userProfile','countries','castes','subCastes'));
     }
 
     /**
@@ -105,6 +127,32 @@ class UserController extends Controller
         return redirect()->back()->with('success','Information Updated successfully!');
     }
 
+    public function updateStatus(Request $request, $id)
+    {
+        $status = $request->status;
+        $data = [
+            'status' => $status
+        ];
+        $user = User::where('id', $id)->first();
+        $user->update($data);
+
+        return redirect()->back()->with('success','Information Updated successfully!');
+    }
+
+    public function updateVip(Request $request, $id)
+    {
+        $status = $request->status;
+        $data = [
+            'is_vip' => $status
+        ];
+        $user = User::where('id', $id)->first();
+        $user->update($data);
+
+        return redirect()->back()->with('success','Information Updated successfully!');
+    }
+
+
+
     /**
      * @param Request $request
      * @param $userId
@@ -117,6 +165,13 @@ class UserController extends Controller
         $user->userProfile()->update($data);
 
         return redirect()->back()->with('success','Information Updated successfully!');
+    }
+
+    public function destroy($id){
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return response()->json(['status' => 200]);
     }
 
 

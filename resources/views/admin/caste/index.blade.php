@@ -50,12 +50,13 @@
                     <div class="form-group{{ $errors->has('parent_id') ? ' has-danger' : '' }}">
                       <select class="form-control{{ $errors->has('parent_id') ? ' is-invalid' : '' }}" name="parent_id"  id="input-parent_id" >
                           <option value="0">Please Select</option>
-                          @foreach ($pcast as $p) 
+                          @if($pCasts->count())
+                          @foreach ($pCasts as $p)
                                 <option value="{{$p->id}}">
                                                 {{$p->name}}
                                 </option>
                             @endforeach
-
+@endif
                       </select>
                       @if ($errors->has('parent_id'))
                         <span id="parent_id-error" class="error text-danger" >{{ $errors->first('parent_id') }}</span>
@@ -105,24 +106,44 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @if($cast->count())
-                                    @foreach($cast as $casts)
+                                    @if($pCasts->count())
+                                    @foreach($pCasts as $cast)
                                         <tr>
                                             <td>
-                                                {{$casts->name}}
+                                                {{$cast->name}}
                                             </td>
 
                                             
                                             <td class="td-actions text-right">
 
                                                 <a rel="tooltip" class="btn btn-success btn-link"
-                                                   href="{{ route('caste.edit' , ['caste_id' => $casts->id]) }}"
+                                                   href="{{ route('caste.edit' , ['caste_id' => $cast->id]) }}"
                                                    data-original-title="" title="">
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>
                                             </td>
                                         </tr>
+                                        @if($cast->subCastes)
+                                            @foreach($cast->subCastes as $subCast)
+                                                <tr>
+                                                    <td>
+                                                        ---- {{$subCast->name}}
+                                                    </td>
+
+
+                                                    <td class="td-actions text-right">
+
+                                                        <a rel="tooltip" class="btn btn-success btn-link"
+                                                           href="{{ route('caste.edit' , ['caste_id' => $subCast->id]) }}"
+                                                           data-original-title="" title="">
+                                                            <i class="material-icons">edit</i>
+                                                            <div class="ripple-container"></div>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            @endif
 
                                         @endforeach
                                     @endif

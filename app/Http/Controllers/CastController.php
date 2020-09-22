@@ -3,7 +3,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Cast;
+use App\Models\Caste;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -14,10 +14,11 @@ class CastController extends Controller
 {
    public function index()
     {
-        $cast = Cast::get();
-        $pcast = Cast::where('parent_id', 0)->get();
-        return view('admin.caste.index', compact('cast','pcast'));
-        
+        dd('11');
+        $pCasts = Caste::with(['subCastes'])->where('parent_id', 0)->get();
+        dd($pCasts);
+        //return view('admin.caste.index', compact('pCasts'));
+
     }
     
      public function store(Request $request)
@@ -27,15 +28,15 @@ class CastController extends Controller
         ]);
         $data = $request->all();
       
-        $cast = Cast::create($data);
+        $cast = Caste::create($data);
       
         return redirect()->route('caste.index')->with('success',' successfully Added!');;
     }
     
     public function edit($castId)
     {
-        $cast = Cast::where('id', $castId)->first();
-        $pcast = Cast::where('parent_id', 0)->get();
+        $cast = Caste::where('id', $castId)->first();
+        $pcast = Caste::where('parent_id', 0)->get();
         return view('admin.caste.edit', compact('cast','pcast'));
     }
     
@@ -46,7 +47,7 @@ class CastController extends Controller
                ]);
         $data = $request->all();
       
-        $cast = Cast::where('id', $castId)->first();
+        $cast = Caste::where('id', $castId)->first();
         $cast->update($data);
         return redirect()->back()->with('success','Caste Updated successfully!');
     }

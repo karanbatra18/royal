@@ -21,8 +21,12 @@ class CreateUserProfilesTable extends Migration
                 ->onDelete('set null');
             $table->string('height',100)->nullable();
             $table->string('religion',255)->nullable();
-            $table->string('cast',20)->nullable();
-            $table->string('sub_cast',20)->nullable();
+            $table->string('folio_no',100)->nullable();
+            $table->foreignId('caste_id')
+                ->nullable()
+                ->constrained()
+                ->onDelete('set null');
+            $table->unsignedBigInteger('sub_caste_id')->nullable();
             $table->string('mother_tongue',20)->nullable();
             $table->string('country',50)->nullable();
             $table->string('state',255)->nullable();
@@ -61,6 +65,8 @@ class CreateUserProfilesTable extends Migration
             $table->tinyInteger('abroad_willing')->nullable()->default(0);
 
             $table->timestamps();
+
+            $table->foreign('sub_caste_id')->references('id')->on('castes')->onDelete('set null');
         });
     }
 

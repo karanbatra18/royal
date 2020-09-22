@@ -13,7 +13,7 @@ class CreateCastsTable extends Migration
      */
     public function up()
     {
-        Schema::create('casts', function (Blueprint $table) {
+        Schema::create('castes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->integer('parent_id');
