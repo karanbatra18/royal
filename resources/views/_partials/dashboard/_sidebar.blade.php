@@ -87,7 +87,10 @@
                       </ul>
                     </div>
         </li>
-
+        
+        
+        
+      
              <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#membership" aria-expanded="false">
                         <span class="sidebar-mini"> <i class="material-icons">person</i></span>
@@ -113,6 +116,36 @@
                       </ul>
                     </div>
         </li>
+        
+        
+        
+          <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#leadm" aria-expanded="false">
+                        <span class="sidebar-mini"> <i class="material-icons">person</i></span>
+                         
+                        <p>Lead Management
+                        <b class="caret"></b>
+                      </p>
+                    </a>
+                    <div class="collapse" id="leadm" style="">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('lead.create') }}">
+                            <span class="sidebar-mini">  <i class="material-icons">person</i> </span>
+                            <span class="sidebar-normal">Add Lead </span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('lead.index') }}">
+                            <span class="sidebar-mini"> <i class="material-icons">person</i></span>
+                            <span class="sidebar-normal"> All Lead</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+        </li>
+        
+
         
            <li class="nav-item">
             <a class="nav-link" href="{{ route('email.index') }}">
