@@ -51,6 +51,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::get('memberships/edit/{membership_id}', 'Admin\MembershipController@edit')->name('membership.edit');
     Route::put('memberships/{membership_id}', 'Admin\MembershipController@update')->name('membership.update');
     Route::get('match', 'Admin\MatchController@index')->name('admin.match');
+    Route::post('match/selected-user', 'Admin\MatchController@serachUser')->name('admin.match.search_user');
 
     Route::get('caste/create', 'Admin\CasteController@create')->name('caste.create');
 Route::post('get_sub_castes', 'Admin\CasteController@getSubCastes')->name('caste.sub_castes');

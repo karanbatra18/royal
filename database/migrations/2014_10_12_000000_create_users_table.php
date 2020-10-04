@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('alternate_email')->nullable();
             $table->string('gender')->nullable();
             $table->date('dob')->nullable();
+            $table->integer('age')->nullable();
             $table->string('marital_status')->nullable();
             $table->string('phone')->nullable();
             $table->string('alternate_phone')->nullable();

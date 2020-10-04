@@ -34,6 +34,7 @@ class User extends Authenticatable
         'status',
         'is_vip',
         'role_id',
+        'age',
     ];
 
     /**

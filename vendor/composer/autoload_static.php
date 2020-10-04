@@ -35,6 +35,7 @@ class ComposerStaticInit3ca7c544988d13cdde3eaf395a3f5431
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
+        '4e610a3d5a12b82d0e0ff3f43feae26b' => __DIR__ . '/../..' . '/app/Helpers/Global.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -506,8 +507,10 @@ class ComposerStaticInit3ca7c544988d13cdde3eaf395a3f5431
         'App\\Country' => __DIR__ . '/../..' . '/app/Country.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\BirthdayController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BirthdayController.php',
-        'App\\Http\\Controllers\\Admin\\CastController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CastController.php',
+        'App\\Http\\Controllers\\Admin\\CastController' => __DIR__ . '/../..' . '/app/Http/Controllers/CastController.php',
+        'App\\Http\\Controllers\\Admin\\CasteController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CasteController.php',
         'App\\Http\\Controllers\\Admin\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/DashboardController.php',
+        'App\\Http\\Controllers\\Admin\\EmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/EmailController.php',
         'App\\Http\\Controllers\\Admin\\MatchController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MatchController.php',
         'App\\Http\\Controllers\\Admin\\MembershipController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MembershipController.php',
         'App\\Http\\Controllers\\Admin\\SwyamberController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SwyamberController.php',
@@ -531,6 +534,7 @@ class ComposerStaticInit3ca7c544988d13cdde3eaf395a3f5431
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Caste' => __DIR__ . '/../..' . '/app/Models/Caste.php',
+        'App\\Models\\Email' => __DIR__ . '/../..' . '/app/Models/Email.php',
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
         'App\\Models\\Swyamber' => __DIR__ . '/../..' . '/app/Models/Swyamber.php',
         'App\\Models\\UserProfile' => __DIR__ . '/../..' . '/app/Models/UserProfile.php',
@@ -633,6 +637,7 @@ class ComposerStaticInit3ca7c544988d13cdde3eaf395a3f5431
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'CasteSeeder' => __DIR__ . '/../..' . '/database/seeds/CasteSeeder.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -3625,6 +3630,7 @@ class ComposerStaticInit3ca7c544988d13cdde3eaf395a3f5431
         'PhpParser\\Parser\\Tokens' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/Parser/Tokens.php',
         'PhpParser\\PrettyPrinterAbstract' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinterAbstract.php',
         'PhpParser\\PrettyPrinter\\Standard' => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser/PrettyPrinter/Standard.php',
+        'ProfileSeeder' => __DIR__ . '/../..' . '/database/seeds/ProfileSeeder.php',
         'Prophecy\\Argument' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument.php',
         'Prophecy\\Argument\\ArgumentsWildcard' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/ArgumentsWildcard.php',
         'Prophecy\\Argument\\Token\\AnyValueToken' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/Token/AnyValueToken.php',
