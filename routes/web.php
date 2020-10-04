@@ -68,6 +68,13 @@ Route::post('emails', 'Admin\EmailController@store')->name('email.store');
 Route::get('emails/edit/{email_id}', 'Admin\EmailController@edit')->name('email.edit');
 Route::put('emails/{email_id}', 'Admin\EmailController@update')->name('email.update');
  
+
+ Route::get('lead/create', 'Admin\LeadController@create')->name('lead.create');
+    Route::post('leads', 'Admin\LeadController@store')->name('lead.store');
+    Route::put('leads/{lead_id}', 'Admin\LeadController@update')->name('lead.update');
+    Route::get('leads', 'Admin\LeadController@index')->name('lead.index');
+    Route::get('leads/edit/{lead_id}', 'Admin\LeadController@edit')->name('lead.edit');
+   
     
 });
 
