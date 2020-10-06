@@ -3,6 +3,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Country;
+use App\Models\Caste;
 use App\User;
 use App\UserProfile;
 use Illuminate\Http\Request;
@@ -27,9 +29,10 @@ class MatchController extends Controller
      */
     public function index(Request $request,$birthdayDate = null)
     {
-
-        $users = User::get();
-        return view('admin.match.index', compact('users'));
+        $countries= Country::get(["name","id"]);
+        $castes = Caste::where('parent_id',0)->orderBy('name')->get();
+        $users = User::where('role_id',2)->get();
+        return view('admin.match.index', compact('users', 'countries', 'castes'));
 
     }
 
@@ -105,12 +108,10 @@ class MatchController extends Controller
 
     public function serachUser(Request $request){
        // dd($request->all());
-        $conditionEmail = !empty($request->selected_email) ? ['users.email' => $request->selected_email] : [];
-        $conditionFolio = !empty($request->selected_folio) ? ['user_profiles.folio_no' => $request->selected_folio] : [];
+        $conditionId = !empty($request->id) ? ['users.id' => $request->id] : [];
         $user = DB::table('users')->join('user_profiles', 'user_profiles.user_id', '=', 'users.id')
             ->select('users.id','users.gender','users.first_name', 'users.last_name','users.email','users.dob','users.marital_status', 'users.age','user_profiles.state', 'user_profiles.city', 'user_profiles.mangalik_status', 'user_profiles.caste_id', 'user_profiles.sub_caste_id', 'user_profiles.higher_education', 'user_profiles.college')
-            ->where($conditionEmail)
-            ->where($conditionFolio)
+            ->where($conditionId)
             ->first();
 
 
@@ -129,6 +130,7 @@ class MatchController extends Controller
             $genderCondition = $userGender == 'male' ? ['users.gender' => 'female'] : ['users.gender' => 'male'];
             $casteCondition = !empty($userCasteId) ? ['user_profiles.caste_id' => $userCasteId] : [];
             $maritalStatusCondition = !empty($maritalStatus) ? ['users.marital_status' => $maritalStatus] : [];
+            $ageCondition = !empty($userAge) ? [['users.age', '<=', $upperAge], ['users.age', '>=', $lowerAge]] : [];
             $ageCondition = !empty($userAge) ? [['users.age', '<=', $upperAge], ['users.age', '>=', $lowerAge]] : [];
 
             $otherProfiles = DB::table('users')->join('user_profiles', 'user_profiles.user_id', '=', 'users.id')
