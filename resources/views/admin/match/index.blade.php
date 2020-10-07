@@ -26,6 +26,7 @@
                                              <a class="dropdown-item" href="#">Something else here</a>
                                          </div>
                                      </div>--}}
+                                    <label class="position-static">Search Profile</label>
                                     <select class="form-control user_profiles">
                                         <option value="" data-email="" data-folio="" selected>--Search Profile--</option>
                                         @if($users->count())
@@ -36,6 +37,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4">
+                                    <label class="position-static">Search By Email</label>
                                     <select class="form-control selected_email" name="selected_email">
                                         <option value="" data-email="" data-folio="" selected>--Search Email--</option>
                                         @if($users->count())
@@ -48,6 +50,7 @@
                                            name="selected_email">--}}
                                 </div>
                                 <div class="col-md-3">
+                                    <label class="position-static">Search By Folio No</label>
                                     <select class="form-control selected_folio" name="selected_folio">
                                     <option value="" data-email="" data-folio="" selected>--Search Folio No--</option>
                                     @if($users->count())
@@ -219,7 +222,7 @@
                                                         name="country" id="country-dropdown" required>
                                                     <option value="">Please select</option>
                                                     @foreach ($countries as $country)
-                                                        <option value="{{$country->id}}">
+                                                        <option data-id="{{$country->id}}" value="{{$country->name}}">
                                                             {{$country->name}}
                                                         </option>
                                                     @endforeach
@@ -227,17 +230,17 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="state" class="position-static">State</label>
+                                                <label for="state-dropdown" class="position-static">State</label>
                                                 <select class="form-control"
-                                                        name="state" id="state" required>
+                                                        name="state" id="state-dropdown" required>
                                                     <option value="" selected>Please select</option>
                                                 </select>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="city" class="position-static">City</label>
+                                                <label for="city-dropdown" class="position-static">City</label>
                                                 <select class="form-control"
-                                                        name="city" id="city">
+                                                        name="city" id="city-dropdown">
                                                     <option value="">Please select</option>
                                                 </select>
 
@@ -388,7 +391,7 @@
             });
 
             $('#country-dropdown').on('change', function () {
-                var country_id = this.value;
+                var country_id = $(this).find(':selected').data('id');
                 $("#state-dropdown").html('');
                 $.ajax({
                     url: "{{url('get-states-by-country')}}",
@@ -401,14 +404,14 @@
                     success: function (result) {
                         $('#state-dropdown').html('<option value="">Select State</option>');
                         $.each(result.states, function (key, value) {
-                            $("#state-dropdown").append('<option value="' + value.id + '">' + value.name + '</option>');
+                            $("#state-dropdown").append('<option value="' + value.name + '" data-id="'+value.id+'">' + value.name + '</option>');
                         });
                         $('#city-dropdown').html('<option value="">Select State First</option>');
                     }
                 });
             });
             $('#state-dropdown').on('change', function () {
-                var state_id = this.value;
+                var state_id = $(this).find(':selected').data('id');
                 $("#city-dropdown").html('');
                 $.ajax({
                     url: "{{url('get-cities-by-state')}}",
@@ -421,7 +424,7 @@
                     success: function (result) {
                         $('#city-dropdown').html('<option value="">Select City</option>');
                         $.each(result.cities, function (key, value) {
-                            $("#city-dropdown").append('<option value="' + value.id + '">' + value.name + '</option>');
+                            $("#city-dropdown").append('<option value="' + value.name + '" data-id="' + value.id + '">' + value.name + '</option>');
                         });
                     }
                 });
@@ -436,9 +439,9 @@
                 var religion = $('#religion').val();
                 var caste_id = $('#caste_id').val();
                 var sub_caste_id = $('#sub_caste_id').val();
-                var country = $('#country').val();
-                var state = $('#state').val();
-                var city = $('#city').val();
+                var country = $('#country-dropdown').val();
+                var state = $('#state-dropdown').val();
+                var city = $('#city-dropdown').val();
                 var higher_education = $('#higher_education').val();
                 var smoke = $('#smoke').is(':checked') ? 1 : 0;
                 var drink = $('#drink').is(':checked') ? 1 : 0;
@@ -447,18 +450,30 @@
 
                 $.ajax({
                     type: "post",
-                    url: "{{ route('admin.match.search_user') }}",
-                    data: {'id': id, 'marital_status': marital_status, 'mother_tongue': mother_tongue, 'religion': religion,
-                    'caste_id': caste_id, 'sub_caste_id': sub_caste_id, 'country': country, 'state': state, 'city': city,
-                    'higher_education': higher_education, 'smoke': smoke, 'drink': drink, 'own_house': own_house, 'non_veg': non_veg
+                    url: "{{ route('admin.match.search_filtered_user') }}",
+                    data: {
+                        'id': id,
+                        'marital_status': marital_status,
+                        'mother_tongue': mother_tongue,
+                        'religion': religion,
+                        'caste_id': caste_id,
+                        'sub_caste_id': sub_caste_id,
+                        'country': country,
+                        'state': state,
+                        'city': city,
+                        'higher_education': higher_education,
+                        'smoke': smoke,
+                        'drink': drink,
+                        'own_house': own_house,
+                        'non_veg': non_veg
                     },
                     success: function (data) {
                         // table.draw();
-                        $('.insert_user_profile').html(data.html);
+                        //$('.insert_user_profile').html(data.html);
                         $('.other_profiles').html(data.otherHtml);
                         if (data.status == 200) {
 
-                            swal("Success!", "Profile Found!", "success");
+                          //  swal("Success!", "Profile Found!", "success");
                         } else {
                             swal("Warning!", "No Profile Found!", "error");
                         }
