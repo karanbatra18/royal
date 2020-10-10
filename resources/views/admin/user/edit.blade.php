@@ -116,24 +116,20 @@
                                             <select class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}"
                                                     name="marital_status" id="input-marital_status" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'single') ? 'selected' : ((old('gender') == 'single') ? 'selected' : '') }} value="single">
-                                                    Single
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'never_married') ? 'selected' : ((old('marital_status') == 'never_married') ? 'selected' : '') }} value="never_married">
+                                                    Never Married
                                                 </option>
-                                                (
-                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'married') ? 'selected' : ((old('gender') == 'married') ? 'selected' : '') }} value="married">
-                                                    Married
-                                                </option>
-                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'divorced') ? 'selected' : ((old('gender') == 'divorced') ? 'selected' : '') }} value="divorced">
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'divorced') ? 'selected' : ((old('marital_status') == 'divorced') ? 'selected' : '') }} value="divorced">
                                                     Divorced
                                                 </option>
-                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'engaged') ? 'selected' : ((old('gender') == 'engaged') ? 'selected' : '') }} value="engaged">
-                                                    Engaged
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'awaiting_divorce') ? 'selected' : ((old('marital_status') == 'awaiting_divorce') ? 'selected' : '') }} value="awaiting_divorce">
+                                                    Awaiting Divorce
                                                 </option>
-                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'remarriage') ? 'selected' : ((old('gender') == 'remarriage') ? 'selected' : '') }} value="remarriage">
-                                                    ReMarriage
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'widowed') ? 'selected' : ((old('marital_status') == 'widowed') ? 'selected' : '') }} value="widowed">
+                                                    Widowed
                                                 </option>
-                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'rokkadone') ? 'selected' : ((old('gender') == 'rokkadone') ? 'selected' : '') }} value="rokkadone">
-                                                    Rokka Done
+                                                <option {{ (isset($user->marital_status) && $user->marital_status == 'annulled') ? 'selected' : ((old('marital_status') == 'annulled') ? 'selected' : '') }} value="annulled">
+                                                    Annulled
                                                 </option>
                                             </select>
                                             @if ($errors->has('marital_status'))
@@ -197,6 +193,36 @@
                                         </div>
                                     </div>
                                 @endif
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">{{ __('Profile Managed By') }}</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group{{ $errors->has('profile_managed_by') ? ' has-danger' : '' }}">
+                                                <select class="form-control{{ $errors->has('profile_managed_by') ? ' is-invalid' : '' }}"
+                                                        name="profile_managed_by" id="input-profile_managed_by" type="text"
+                                                        placeholder="{{ __('Profile Managed By') }}">
+                                                    <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'self') ? 'selected' : ((old('profile_managed_by') == 'self') ? 'selected' : '') }} value="self">
+                                                        Self
+                                                    </option>
+                                                    <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'parent') ? 'selected' : ((old('profile_managed_by') == 'parent') ? 'selected' : '') }} value="parent">
+                                                        Parent
+                                                    </option>
+                                                    <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'sibling') ? 'selected' : ((old('profile_managed_by') == 'sibling') ? 'selected' : '') }} value="sibling">
+                                                        Sibling
+                                                    </option>
+                                                    <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'relative') ? 'selected' : ((old('profile_managed_by') == 'relative') ? 'selected' : '') }} value="relative">
+                                                        Relative
+                                                    </option>
+                                                    <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'friend') ? 'selected' : ((old('profile_managed_by') == 'friend') ? 'selected' : '') }} value="friend">
+                                                        Friend
+                                                    </option>
+                                                    <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'bureau') ? 'selected' : ((old('profile_managed_by') == 'bureau') ? 'selected' : '') }} value="bureau">
+                                                        Marriage Bureau
+                                                    </option>
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <label class="col-sm-2 col-form-label">{{ __('Portfolio Number*') }}</label>
                                         <div class="col-sm-7">
@@ -428,11 +454,44 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Annual Income') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('annual_income') ? ' has-danger' : '' }}">
-                                            <input class="form-control{{ $errors->has('annual_income') ? ' is-invalid' : '' }}"
+                                            <select class="form-control{{ $errors->has('annual_income') ? ' is-invalid' : '' }}"
                                                    name="annual_income" id="input-annual_income" type="text"
-                                                   placeholder="{{ __('Annual Income') }}"
-                                                   value="{{ isset($userProfile->annual_income) ? $userProfile->annual_income : old('annual_income') }}"
-                                            />
+                                                   placeholder="{{ __('Annual Income') }}">
+                                                <option value="">Please select</option>
+                                                <option {{ (isset($userProfile->annual_income) && $userProfile->annual_income == '03') ? 'selected' : ((old('annual_income') == '03') ? 'selected' : '') }}  value="03">
+                                                    0 - 3 Lakh
+                                                </option>
+                                                <option {{ (isset($userProfile->annual_income) && $userProfile->annual_income == '35') ? 'selected' : ((old('annual_income') == '35') ? 'selected' : '') }} value="35">
+                                                    3 - 5 Lakh
+                                                </option>
+                                                <option {{ (isset($userProfile->annual_income) && $userProfile->annual_income == '58') ? 'selected' : ((old('annual_income') == '58') ? 'selected' : '') }}  value="58">
+                                                    5 - 8 Lakh
+                                                </option>
+                                                <option {{ (isset($userProfile->annual_income) && $userProfile->annual_income == 'sikh') ? 'selected' : ((old('annual_income') == 'sikh') ? 'selected' : '') }}  value="810">
+                                                    8 - 10 Lakh
+                                                </option>
+                                                <option {{ (isset($userProfile->annual_income) && $userProfile->annual_income == '1015') ? 'selected' : ((old('annual_income') == '1015') ? 'selected' : '') }}  value="1015">
+                                                    10 - 15 Lakh
+                                                </option>
+                                                <option {{ (isset($userProfile->annual_income) && $userProfile->annual_income == 'jain') ? 'selected' : ((old('annual_income') == 'jain') ? 'selected' : '') }}  value="1520">
+                                                    15 - 20 Lakh
+                                                </option>
+                                                <option {{ (isset($userProfile->annual_income) && $userProfile->annual_income == '2025') ? 'selected' : ((old('annual_income') == '2025') ? 'selected' : '') }}  value="2025">
+                                                    20 - 25 Lakh
+                                                </option>
+                                                <option {{ (isset($userProfile->annual_income) && $userProfile->annual_income == '2530') ? 'selected' : ((old('annual_income') == '2530') ? 'selected' : '') }}  value="2530">
+                                                    25 - 30 Lakh
+                                                </option>
+                                                <option {{ (isset($userProfile->annual_income) && $userProfile->annual_income == '3040') ? 'selected' : ((old('annual_income') == '3040') ? 'selected' : '') }}  value="3040">
+                                                    30 - 40 Lakh
+                                                </option>
+                                                <option {{ (isset($userProfile->annual_income) && $userProfile->annual_income == '4050') ? 'selected' : ((old('annual_income') == '4050') ? 'selected' : '') }}  value="4050">
+                                                    40 - 50 Lakh
+                                                </option>
+                                                <option {{ (isset($userProfile->annual_income) && $userProfile->annual_income == '5000') ? 'selected' : ((old('annual_income') == '5000') ? 'selected' : '') }}  value="5000">
+                                                    50 Lakh and above
+                                                </option>
+                                            </select>
 
                                             @if ($errors->has('annual_income'))
                                                 <span id="annual_income-error"
@@ -717,10 +776,13 @@
                                         <label class="col-sm-2 col-form-label">{{ __('Challanged') }}</label>
                                         <div class="col-sm-7">
                                             <div class="form-group{{ $errors->has('challanged') ? ' has-danger' : '' }}">
-                                                <input class="form-control{{ $errors->has('challanged') ? ' is-invalid' : '' }}"
+                                                <select class="form-control{{ $errors->has('challanged') ? ' is-invalid' : '' }}"
                                                        name="challanged" id="input-challanged" type="text"
-                                                       placeholder="{{ __('Challanged') }}"
-                                                       value="{{ isset($userProfile->challanged) ? $userProfile->challanged : old('challanged') }}"/>
+                                                       placeholder="{{ __('Challanged') }}">
+                                                    <option {{ (isset($userProfile->challanged) && $userProfile->challanged == 'handicapped') ? 'selected' : ((old('challanged') == 'handicapped') ? 'selected' : '') }} value="handicapped">
+                                                        Handicapped
+                                                    </option>
+                                                </select>
                                                 @if ($errors->has('challanged'))
                                                     <span id="challanged-error" class="error text-danger"
                                                           for="input-challanged">{{ $errors->first('challanged') }}</span>
@@ -895,10 +957,24 @@
                                     <label class="col-sm-2 col-form-label">{{ __('Occupation') }}</label>
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('occupation') ? ' has-danger' : '' }}">
-                                            <input class="form-control{{ $errors->has('occupation') ? ' is-invalid' : '' }}"
+                                            <select class="form-control{{ $errors->has('occupation') ? ' is-invalid' : '' }}"
                                                    name="occupation" id="input-occupation" type="text"
-                                                   placeholder="{{ __('Occupation') }}"
-                                                   value="{{ isset($userProfile->occupation) ? $userProfile->occupation : old('occupation') }}"/>
+                                                   placeholder="{{ __('Occupation') }}">
+                                                <option value="">Please select</option>
+                                                <option {{ (isset($userProfile->occupation) && $userProfile->occupation == 'business') ? 'selected' : ((old('occupation') == 'business') ? 'selected' : '') }} value="business">
+                                                    Business
+                                                </option>
+                                                <option {{ (isset($userProfile->occupation) && $userProfile->occupation == 'job') ? 'selected' : ((old('occupation') == 'job') ? 'selected' : '') }} value="job">
+                                                    Job
+                                                </option>
+                                                <option {{ (isset($userProfile->occupation) && $userProfile->occupation == 'professional') ? 'selected' : ((old('occupation') == 'professional') ? 'selected' : '') }} value="Professional">
+                                                    Professional
+                                                </option>
+                                                <option {{ (isset($userProfile->occupation) && $userProfile->occupation == 'doctor') ? 'selected' : ((old('occupation') == 'doctor') ? 'selected' : '') }} value="doctor">
+                                                    Doctor
+                                                </option>
+                                            </select>
+                                                   {{--value="{{ isset($userProfile->occupation) ? $userProfile->occupation : old('occupation') }}"/>--}}
                                             @if ($errors->has('occupation'))
                                                 <span id="occupation-error" class="error text-danger"
                                                       for="input-occupation">{{ $errors->first('occupation') }}</span>
@@ -1137,11 +1213,14 @@
                                             <select class="form-control{{ $errors->has('mangalik_status') ? ' is-invalid' : '' }}"
                                                     name="mangalik_status" id="input-mangalik_status" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'yes') ? 'selected' : ((old('mangalik_status') == 'yes') ? 'selected' : '') }} value="yes">
-                                                    Yes
+                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'mangalik') ? 'selected' : ((old('mangalik_status') == 'mangalik') ? 'selected' : '') }} value="mangalik">
+                                                    Mangalik
                                                 </option>
-                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'no') ? 'selected' : ((old('mangalik_status') == 'no') ? 'selected' : '') }}  value="no">
-                                                    No
+                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'anshik_manglik') ? 'selected' : ((old('mangalik_status') == 'anshik_manglik') ? 'selected' : '') }}  value="anshik_manglik">
+                                                    Anshik manglik
+                                                </option>
+                                                <option {{ (isset($userProfile->mangalik_status) && $userProfile->mangalik_status == 'non_mangalik') ? 'selected' : ((old('mangalik_status') == 'non_mangalik') ? 'selected' : '') }}  value="non_mangalik">
+                                                    Non Manglik
                                                 </option>
                                             </select>
                                             @if ($errors->has('mangalik_status'))

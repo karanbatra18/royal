@@ -19,6 +19,7 @@ class UserProfile extends Model
         'country',
         'state',
         'city',
+        'profile_managed_by',
         'annual_income',
         'profile_picture1',
         'profile_picture2',
