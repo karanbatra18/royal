@@ -99,11 +99,11 @@
                                 <div class="col-md-4">
                                     <div class="border p-3 bg-light">
                                         <form action="">
-                                            <div class="form-group">
+                                           {{-- <div class="form-group">
                                                 <label for="age" class="position-static">Age</label>
                                                 <input type="text" class="form-control"
                                                        id="age" value="">
-                                            </div>
+                                            </div>--}}
                                             <div class="form-group ">
                                                 <label for="gender" class="position-static">Gender</label>
                                                 <select class="form-control" name="gender" id="gender">
@@ -117,23 +117,20 @@
                                                 <label for="marital_status" class="position-static">Marital Status</label>
                                                 <select class="form-control" name="marital_status" id="marital_status">
                                                     <option value="" selected>--Select Marital Status--</option>
-                                                    <option value="single">
-                                                        Single
-                                                    </option>
-                                                    <option value="married">
-                                                        Married
+                                                    <option value="never_married">
+                                                        Never Married
                                                     </option>
                                                     <option value="divorced">
                                                         Divorced
                                                     </option>
-                                                    <option value="engaged">
-                                                        Engaged
+                                                    <option value="awaiting_divorce">
+                                                        Awaiting Divorce
                                                     </option>
-                                                    <option value="remarriage">
-                                                        ReMarriage
+                                                    <option value="widowed">
+                                                        Widowed
                                                     </option>
-                                                    <option value="rokkadone">
-                                                        Rokka Done
+                                                    <option value="annulled">
+                                                        Annulled
                                                     </option>
                                                 </select>
                                             </div>
@@ -251,6 +248,7 @@
                                                 <select class="form-control"
                                                         name="challanged" id="challanged">
                                                     <option value="">Please select</option>
+                                                    <option value="handicapped">Handicapped</option>
                                                 </select>
 
                                             </div>
@@ -270,19 +268,96 @@
                                             </div>
                                             <div class="form-group ">
                                                 <label for="occupation" class="position-static">Occupation</label>
-                                                <input type="text" class="form-control"
-                                                       name="occupation" id="occupation" value="">
+                                                <select type="text" class="form-control"
+                                                       name="occupation" id="occupation">
+                                                    <option value="">Please select</option>
+                                                    <option value="business">
+                                                        Business
+                                                    </option>
+                                                    <option value="job">
+                                                        Job
+                                                    </option>
+                                                    <option value="professional">
+                                                        Professional
+                                                    </option>
+                                                    <option value="doctor">
+                                                        Doctor
+                                                    </option>
+                                                </select>
+
                                             </div>
                                             <div class="form-group ">
-                                                <label for="annual_income" class="position-static">Monthly Income</label>
-                                                <input type="text" class="form-control"
-                                                       name="annual_income" id="annual_income" value="">
+                                                <label for="annual_income" class="position-static">Annual Income</label>
+                                                <select type="text" class="form-control"
+                                                       name="annual_income" id="annual_income">
+                                                    <option value="">Please select</option>
+                                                    <option value="03">
+                                                        0 - 3 Lakh
+                                                    </option>
+                                                    <option value="35">
+                                                        3 - 5 Lakh
+                                                    </option>
+                                                    <option value="58">
+                                                        5 - 8 Lakh
+                                                    </option>
+                                                    <option value="810">
+                                                        8 - 10 Lakh
+                                                    </option>
+                                                    <option value="1015">
+                                                        10 - 15 Lakh
+                                                    </option>
+                                                    <option value="1520">
+                                                        15 - 20 Lakh
+                                                    </option>
+                                                    <option value="2025">
+                                                        20 - 25 Lakh
+                                                    </option>
+                                                    <option value="2530">
+                                                        25 - 30 Lakh
+                                                    </option>
+                                                    <option value="3040">
+                                                        30 - 40 Lakh
+                                                    </option>
+                                                    <option value="4050">
+                                                        40 - 50 Lakh
+                                                    </option>
+                                                    <option value="5000">
+                                                        50 Lakh and above
+                                                    </option>
+                                                </select>
                                             </div>
+
                                             <div class="form-group ">
+                                                <label for="profile_managed_by" class="position-static">Profile Managed By</label>
+                                                <select type="text" class="form-control"
+                                                        name="profile_managed_by" id="profile_managed_by">
+                                                    <option value="">Please select</option>
+                                                    <option value="self">
+                                                        Self
+                                                    </option>
+                                                    <option value="parent">
+                                                        Parent
+                                                    </option>
+                                                    <option value="sibling">
+                                                        Sibling
+                                                    </option>
+                                                    <option value="relative">
+                                                        Relative
+                                                    </option>
+                                                    <option value="friend">
+                                                        Friend
+                                                    </option>
+                                                    <option value="bureau">
+                                                        Marriage Bureau
+                                                    </option>
+                                                </select>
+                                            </div>
+
+                                            {{--<div class="form-group ">
                                                 <label for="staticEmail" class="position-static">Height</label>
                                                 <input type="text" class="form-control"
                                                        id="staticEmail" value="">
-                                            </div>
+                                            </div>--}}
                                            {{-- <div class="form-group ">
                                                 <label for="staticEmail" class="position-static">Weight</label>
                                                 <input type="text" class="form-control" id="staticEmail"
@@ -433,6 +508,10 @@
 
             $('.search_filters').on('click', function () {
                 var id = $('.selected_folio').val();
+                var profile_managed_by = $('#profile_managed_by').val();
+                var occupation = $('#occupation').val();
+                var challanged = $('#challanged').val();
+                var annual_income = $('#annual_income').val();
                 var gender = $('#gender').val();
                 var marital_status = $('#marital_status').val();
                 var mother_tongue = $('#mother_tongue').val();
@@ -453,6 +532,10 @@
                     url: "{{ route('admin.match.search_filtered_user') }}",
                     data: {
                         'id': id,
+                        'profile_managed_by': profile_managed_by,
+                        'occupation': occupation,
+                        'challanged': challanged,
+                        'annual_income': annual_income,
                         'marital_status': marital_status,
                         'mother_tongue': mother_tongue,
                         'religion': religion,
@@ -533,6 +616,86 @@
                     }
                 });
             });
+
+            $(document).on('click', '.pagination a',function(event)
+            {
+                event.preventDefault();
+
+                $('li').removeClass('active');
+                $(this).parent('li').addClass('active');
+
+                var myurl = $(this).attr('href');
+                var page=$(this).attr('href').split('page=')[1];
+
+                getData(page);
+            });
+
+
         });
+
+        $(window).on('hashchange', function() {
+            if (window.location.hash) {
+                var page = window.location.hash.replace('#', '');
+                if (page == Number.NaN || page <= 0) {
+                    return false;
+                }else{
+                    getData(page);
+                }
+            }
+        });
+
+        function getData(page){
+            var id = $('.selected_folio').val();
+            var gender = $('#gender').val();
+            var marital_status = $('#marital_status').val();
+            var mother_tongue = $('#mother_tongue').val();
+            var religion = $('#religion').val();
+            var caste_id = $('#caste_id').val();
+            var sub_caste_id = $('#sub_caste_id').val();
+            var country = $('#country-dropdown').val();
+            var state = $('#state-dropdown').val();
+            var city = $('#city-dropdown').val();
+            var higher_education = $('#higher_education').val();
+            var smoke = $('#smoke').is(':checked') ? 1 : 0;
+            var drink = $('#drink').is(':checked') ? 1 : 0;
+            var own_house = $('#own_house').is(':checked') ? 1 : 0;
+            var non_veg = $('#non_veg').is(':checked') ? 1 : 0;
+
+            $.ajax({
+                type: "post",
+                url: "{{ route('admin.match.search_filtered_user').'?page=' }}"+page,
+                data: {
+                    'id': id,
+                    'marital_status': marital_status,
+                    'mother_tongue': mother_tongue,
+                    'religion': religion,
+                    'caste_id': caste_id,
+                    'sub_caste_id': sub_caste_id,
+                    'country': country,
+                    'state': state,
+                    'city': city,
+                    'higher_education': higher_education,
+                    'smoke': smoke,
+                    'drink': drink,
+                    'own_house': own_house,
+                    'non_veg': non_veg
+                },
+                success: function (data) {
+                    // table.draw();
+                    //$('.insert_user_profile').html(data.html);
+                    $('.other_profiles').html(data.otherHtml);
+                    if (data.status == 200) {
+                        location.hash = page;
+                        //  swal("Success!", "Profile Found!", "success");
+                    } else {
+                        swal("Warning!", "No Profile Found!", "error");
+                    }
+
+                },
+                error: function (data) {
+                    console.log('Error:', data);
+                }
+            });
+        }
     </script>
 @endsection

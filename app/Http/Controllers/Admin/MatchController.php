@@ -132,16 +132,21 @@ class MatchController extends Controller
             $maritalStatusCondition = !empty($maritalStatus) ? ['users.marital_status' => $maritalStatus] : [];
             //$ageCondition = !empty($userAge) ? [['users.age', '<=', $upperAge], ['users.age', '>=', $lowerAge]] : [];
 
+            $profileManagedByCondition = !empty($request->profile_managed_by) ? ['user_profiles.profile_managed_by' => $request->profile_managed_by] : [];
+            $occupationCondition = !empty($request->occupation) ? ['user_profiles.occupation' => $request->occupation] : [];
+            $challangedCondition = !empty($request->challanged) ? ['user_profiles.challanged' => $request->challanged] : [];
+            $annualIncomeCondition = !empty($request->annual_income) ? ['user_profiles.annual_income' => $request->annual_income] : [];
+
             $motherTongueCondition = !empty($request->mother_tongue) ? ['user_profiles.mother_tongue' => $request->mother_tongue] : [];
             $subCastCondition = !empty($request->sub_caste_id) ? ['user_profiles.sub_caste_id' => $request->sub_caste_id] : [];
             $religionCondition = !empty($request->religion) ? ['user_profiles.religion' => $request->religion] : [];
             $countryCondition = !empty($request->country) ? ['user_profiles.country' => $request->country] : [];
             $stateCondition = !empty($request->state) ? ['user_profiles.state' => $request->state] : [];
             $cityCondition = !empty($request->city) ? ['user_profiles.city' => $request->city] : [];
-            $smokeCondition = ['user_profiles.smoke' => $request->smoke];
-            $drinkCondition = ['user_profiles.drink' => $request->drink];
-            $ownHouseCondition = ['user_profiles.own_house' => $request->own_house];
-            $nonVegCondition = ['user_profiles.non_veg' => $request->non_veg];
+            $smokeCondition = !empty($request->smoke) ? ['user_profiles.smoke' => $request->smoke] : [];
+            $drinkCondition = !empty($request->drink) ? ['user_profiles.drink' => $request->drink] : [];
+            $ownHouseCondition = !empty($request->own_house) ? ['user_profiles.own_house' => $request->own_house] : [];
+            $nonVegCondition = !empty($request->non_veg) ? ['user_profiles.non_veg' => $request->non_veg] : [];
 
             $otherProfiles = DB::table('users')->join('user_profiles', 'user_profiles.user_id', '=', 'users.id')
                 ->select('users.id','users.first_name', 'users.last_name','users.email','users.dob','users.marital_status', 'users.age','user_profiles.state', 'user_profiles.city', 'user_profiles.mangalik_status', 'user_profiles.caste_id', 'user_profiles.sub_caste_id', 'user_profiles.higher_education', 'user_profiles.college')
@@ -158,7 +163,12 @@ class MatchController extends Controller
                 ->where($smokeCondition)
                 ->where($ownHouseCondition)
                 ->where($nonVegCondition)
-                ->get();
+                ->where($profileManagedByCondition)
+                ->where($occupationCondition)
+                ->where($challangedCondition)
+                ->where($annualIncomeCondition)
+                ->paginate(1);
+                //->get();
 
             $returnHTML = view('admin.match.search_profile')->with(compact('user'))->render();
             if($otherProfiles->count()){
@@ -212,7 +222,7 @@ class MatchController extends Controller
                 ->where($casteCondition)
                 ->where($ageCondition)
                 ->where($maritalStatusCondition)
-                ->get();
+                ->paginate(1);
 
             $returnHTML = view('admin.match.search_profile')->with(compact('user'))->render();
             if($otherProfiles->count()){

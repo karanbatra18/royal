@@ -31,6 +31,7 @@ class CreateUserProfilesTable extends Migration
             $table->string('country',50)->nullable();
             $table->string('state',255)->nullable();
             $table->string('city',255)->nullable();
+            $table->string('profile_managed_by',255)->nullable();
             $table->string('annual_income',255)->nullable();
             $table->string('profile_picture1',255)->nullable();
             $table->string('profile_picture2',255)->nullable();
