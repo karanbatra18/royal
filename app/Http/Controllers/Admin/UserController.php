@@ -160,7 +160,20 @@ class UserController extends Controller
      */
     public function updateProfile(Request $request, $userId)
     {
+        //dd($request->all());
+
         $data = $request->except(['_method', '_token']);
+
+        if(isset($request->upload_images) && isset($request->file) && count($request->file)) {
+            $data = [];
+            foreach($request->file as $key => $oneFile) {
+                $imageName = time().'.'.$oneFile->extension();
+
+                $oneFile->move(public_path('assets/images/users'), $imageName);
+                $data[$key] = $imageName;
+            }
+        }
+
         $user = User::where('id', $userId)->first();
         $user->userProfile()->update($data);
 

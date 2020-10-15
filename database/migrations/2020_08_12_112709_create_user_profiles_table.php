@@ -35,6 +35,9 @@ class CreateUserProfilesTable extends Migration
             $table->string('annual_income',255)->nullable();
             $table->string('profile_picture1',255)->nullable();
             $table->string('profile_picture2',255)->nullable();
+            $table->string('profile_picture3',255)->nullable();
+            $table->string('profile_picture4',255)->nullable();
+            $table->string('profile_picture5',255)->nullable();
             $table->string('weight',255)->nullable();
             $table->text('personal_detail')->nullable();
             $table->string('body_type',255)->nullable();

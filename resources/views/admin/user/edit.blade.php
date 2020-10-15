@@ -193,52 +193,52 @@
                                         </div>
                                     </div>
                                 @endif
-                                    <div class="row">
-                                        <label class="col-sm-2 col-form-label">{{ __('Profile Managed By') }}</label>
-                                        <div class="col-sm-7">
-                                            <div class="form-group{{ $errors->has('profile_managed_by') ? ' has-danger' : '' }}">
-                                                <select class="form-control{{ $errors->has('profile_managed_by') ? ' is-invalid' : '' }}"
-                                                        name="profile_managed_by" id="input-profile_managed_by" type="text"
-                                                        placeholder="{{ __('Profile Managed By') }}">
-                                                    <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'self') ? 'selected' : ((old('profile_managed_by') == 'self') ? 'selected' : '') }} value="self">
-                                                        Self
-                                                    </option>
-                                                    <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'parent') ? 'selected' : ((old('profile_managed_by') == 'parent') ? 'selected' : '') }} value="parent">
-                                                        Parent
-                                                    </option>
-                                                    <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'sibling') ? 'selected' : ((old('profile_managed_by') == 'sibling') ? 'selected' : '') }} value="sibling">
-                                                        Sibling
-                                                    </option>
-                                                    <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'relative') ? 'selected' : ((old('profile_managed_by') == 'relative') ? 'selected' : '') }} value="relative">
-                                                        Relative
-                                                    </option>
-                                                    <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'friend') ? 'selected' : ((old('profile_managed_by') == 'friend') ? 'selected' : '') }} value="friend">
-                                                        Friend
-                                                    </option>
-                                                    <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'bureau') ? 'selected' : ((old('profile_managed_by') == 'bureau') ? 'selected' : '') }} value="bureau">
-                                                        Marriage Bureau
-                                                    </option>
-                                                </select>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">{{ __('Profile Managed By') }}</label>
+                                    <div class="col-sm-7">
+                                        <div class="form-group{{ $errors->has('profile_managed_by') ? ' has-danger' : '' }}">
+                                            <select class="form-control{{ $errors->has('profile_managed_by') ? ' is-invalid' : '' }}"
+                                                    name="profile_managed_by" id="input-profile_managed_by" type="text"
+                                                    placeholder="{{ __('Profile Managed By') }}">
+                                                <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'self') ? 'selected' : ((old('profile_managed_by') == 'self') ? 'selected' : '') }} value="self">
+                                                    Self
+                                                </option>
+                                                <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'parent') ? 'selected' : ((old('profile_managed_by') == 'parent') ? 'selected' : '') }} value="parent">
+                                                    Parent
+                                                </option>
+                                                <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'sibling') ? 'selected' : ((old('profile_managed_by') == 'sibling') ? 'selected' : '') }} value="sibling">
+                                                    Sibling
+                                                </option>
+                                                <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'relative') ? 'selected' : ((old('profile_managed_by') == 'relative') ? 'selected' : '') }} value="relative">
+                                                    Relative
+                                                </option>
+                                                <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'friend') ? 'selected' : ((old('profile_managed_by') == 'friend') ? 'selected' : '') }} value="friend">
+                                                    Friend
+                                                </option>
+                                                <option {{ (isset($userProfile->profile_managed_by) && $userProfile->profile_managed_by == 'bureau') ? 'selected' : ((old('profile_managed_by') == 'bureau') ? 'selected' : '') }} value="bureau">
+                                                    Marriage Bureau
+                                                </option>
+                                            </select>
 
-                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <label class="col-sm-2 col-form-label">{{ __('Portfolio Number*') }}</label>
-                                        <div class="col-sm-7">
-                                            <div class="form-group{{ $errors->has('folio_no') ? ' has-danger' : '' }}">
-                                                <input class="form-control{{ $errors->has('folio_no') ? ' is-invalid' : '' }}"
-                                                       name="folio_no" id="input-folio_no" type="text"
-                                                       placeholder="{{ __('Portfolio Number') }}"
-                                                       value="{{ isset($userProfile->folio_no) ? $userProfile->folio_no : old('folio_no') }}"
-                                                       required/>
-                                                @if ($errors->has('folio_no'))
-                                                    <span id="folio_no-error" class="error text-danger"
-                                                          for="input-email">{{ $errors->first('folio_no') }}</span>
-                                                @endif
-                                            </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">{{ __('Portfolio Number*') }}</label>
+                                    <div class="col-sm-7">
+                                        <div class="form-group{{ $errors->has('folio_no') ? ' has-danger' : '' }}">
+                                            <input class="form-control{{ $errors->has('folio_no') ? ' is-invalid' : '' }}"
+                                                   name="folio_no" id="input-folio_no" type="text"
+                                                   placeholder="{{ __('Portfolio Number') }}"
+                                                   value="{{ isset($userProfile->folio_no) ? $userProfile->folio_no : old('folio_no') }}"
+                                                   required/>
+                                            @if ($errors->has('folio_no'))
+                                                <span id="folio_no-error" class="error text-danger"
+                                                      for="input-email">{{ $errors->first('folio_no') }}</span>
+                                            @endif
                                         </div>
                                     </div>
+                                </div>
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Height*') }}</label>
                                     <div class="col-sm-7">
@@ -455,8 +455,8 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('annual_income') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('annual_income') ? ' is-invalid' : '' }}"
-                                                   name="annual_income" id="input-annual_income" type="text"
-                                                   placeholder="{{ __('Annual Income') }}">
+                                                    name="annual_income" id="input-annual_income" type="text"
+                                                    placeholder="{{ __('Annual Income') }}">
                                                 <option value="">Please select</option>
                                                 <option {{ (isset($userProfile->annual_income) && $userProfile->annual_income == '03') ? 'selected' : ((old('annual_income') == '03') ? 'selected' : '') }}  value="03">
                                                     0 - 3 Lakh
@@ -514,8 +514,11 @@
             </form>
             <div class="row">
                 <div class="col-md-12">
-                    <form method="post" action="" class="form-horizontal">
+                    <form method="post" action="{{ route('user.update_profile', ['user' => $user]) }}" autocomplete="off"
+                          class="form-horizontal" enctype="multipart/form-data">
                         @csrf
+                        <input name="_method" type="hidden" value="PUT">
+                        <input name="upload_images" type="hidden" value="1">
 
                         <div class="card ">
                             <div class="card-header card-header-primary">
@@ -539,26 +542,72 @@
 
 
                                 <div class="row">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group mb-3 img_sec_border">
                                         <div class="custom-file">
-                                            <input type="file" name="file[]" class="custom-file-input"
-                                                   id="inputGroupFile02">
-                                            <label class="custom-file-label" for="inputGroupFile02"
+                                            <input type="file" name="file[profile_picture1]" class="custom-file-input"
+                                                   id="inputGroupFile01">
+                                            <label class="custom-file-label" for="inputGroupFile01"
                                                    aria-describedby="inputGroupFileAddon02">Choose file</label>
                                         </div>
-
+                                        <div class="preview_image">
+                                            <img class="thumb_image" src="{{ $userProfile->profile_picture1 ? asset('assets/images/users/'.$userProfile->profile_picture1) : asset('assets/images/users/default.jpg') }}" alt="no image">
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group mb-3 img_sec_border">
                                         <div class="custom-file">
-                                            <input type="file" name="file[]" class="custom-file-input"
+                                            <input type="file" name="file[profile_picture2]" class="custom-file-input"
                                                    id="inputGroupFile02">
                                             <label class="custom-file-label" for="inputGroupFile02"
                                                    aria-describedby="inputGroupFileAddon02">Choose file</label>
                                         </div>
+                                        <div class="preview_image">
+                                            <img class="thumb_image" src="{{ $userProfile->profile_picture2 ? asset('assets/images/users/'.$userProfile->profile_picture2) : asset('assets/images/users/default.jpg') }}" alt="no image">
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="row">
+                                    <div class="input-group mb-3 img_sec_border">
+                                        <div class="custom-file">
+                                            <input type="file" name="file[profile_picture3]" class="custom-file-input"
+                                                   id="inputGroupFile03">
+                                            <label class="custom-file-label" for="inputGroupFile03"
+                                                   aria-describedby="inputGroupFileAddon02">Choose file</label>
+                                        </div>
+                                        <div class="preview_image">
+                                            <img class="thumb_image" src="{{ $userProfile->profile_picture3 ? asset('assets/images/users/'.$userProfile->profile_picture3) : asset('assets/images/users/default.jpg') }}" alt="no image">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-group mb-3 img_sec_border">
+                                        <div class="custom-file">
+                                            <input type="file" name="file[profile_picture4]" class="custom-file-input"
+                                                   id="inputGroupFile04">
+                                            <label class="custom-file-label" for="inputGroupFile04"
+                                                   aria-describedby="inputGroupFileAddon02">Choose file</label>
+                                        </div>
+                                        <div class="preview_image">
+                                            <img class="thumb_image" src="{{ $userProfile->profile_picture4 ? asset('assets/images/users/'.$userProfile->profile_picture4) : asset('assets/images/users/default.jpg') }}" alt="no image">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-group mb-3 img_sec_border">
+                                        <div class="custom-file">
+                                            <input type="file" name="file[profile_picture5]" class="custom-file-input"
+                                                   id="inputGroupFile05">
+                                            <label class="custom-file-label" for="inputGroupFile05"
+                                                   aria-describedby="inputGroupFileAddon02">Choose file</label>
+                                        </div>
+                                        <div class="preview_image">
+                                            <img class="thumb_image" src="{{ $userProfile->profile_picture5 ? asset('assets/images/users/'.$userProfile->profile_picture5) : asset('assets/images/users/default.jpg') }}" alt="no image">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -777,8 +826,8 @@
                                         <div class="col-sm-7">
                                             <div class="form-group{{ $errors->has('challanged') ? ' has-danger' : '' }}">
                                                 <select class="form-control{{ $errors->has('challanged') ? ' is-invalid' : '' }}"
-                                                       name="challanged" id="input-challanged" type="text"
-                                                       placeholder="{{ __('Challanged') }}">
+                                                        name="challanged" id="input-challanged" type="text"
+                                                        placeholder="{{ __('Challanged') }}">
                                                     <option {{ (isset($userProfile->challanged) && $userProfile->challanged == 'handicapped') ? 'selected' : ((old('challanged') == 'handicapped') ? 'selected' : '') }} value="handicapped">
                                                         Handicapped
                                                     </option>
@@ -958,8 +1007,8 @@
                                     <div class="col-sm-7">
                                         <div class="form-group{{ $errors->has('occupation') ? ' has-danger' : '' }}">
                                             <select class="form-control{{ $errors->has('occupation') ? ' is-invalid' : '' }}"
-                                                   name="occupation" id="input-occupation" type="text"
-                                                   placeholder="{{ __('Occupation') }}">
+                                                    name="occupation" id="input-occupation" type="text"
+                                                    placeholder="{{ __('Occupation') }}">
                                                 <option value="">Please select</option>
                                                 <option {{ (isset($userProfile->occupation) && $userProfile->occupation == 'business') ? 'selected' : ((old('occupation') == 'business') ? 'selected' : '') }} value="business">
                                                     Business
@@ -974,7 +1023,7 @@
                                                     Doctor
                                                 </option>
                                             </select>
-                                                   {{--value="{{ isset($userProfile->occupation) ? $userProfile->occupation : old('occupation') }}"/>--}}
+                                            {{--value="{{ isset($userProfile->occupation) ? $userProfile->occupation : old('occupation') }}"/>--}}
                                             @if ($errors->has('occupation'))
                                                 <span id="occupation-error" class="error text-danger"
                                                       for="input-occupation">{{ $errors->first('occupation') }}</span>

@@ -1,12 +1,23 @@
 @if($otherProfiles->count())
     @foreach($otherProfiles as $user)
-
 <div class="media mb-4 border-bottom">
-    <svg class="bd-placeholder-img mr-3" width="64" height="64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 64x64"><title>
-            Placeholder</title>
-        <rect width="100%" height="100%" fill="#868e96"></rect>
-        <text x="50%" y="50%" fill="#dee2e6" dy=".3em">64x64</text>
-    </svg>
+    @php
+        $profileImg = '';
+        if(!empty($user->profile_picture1)) {
+            $profileImg = asset('assets/images/users/'.$user->profile_picture1);
+        } else if(!empty($user->profile_picture2)) {
+            $profileImg = asset('assets/images/users/'.$user->profile_picture2);
+        } else if(!empty($user->profile_picture3)) {
+            $profileImg = asset('assets/images/users/'.$user->profile_picture3);
+        } else if(!empty($user->profile_picture4)) {
+            $profileImg = asset('assets/images/users/'.$user->profile_picture3);
+        } else if(!empty($user->profile_picture5)) {
+            $profileImg = asset('assets/images/users/'.$user->profile_picture3);
+        } else {
+            $profileImg = asset('assets/images/users/default.jpg');
+        }
+    @endphp
+    <img class="thumb_image" src="{{ $profileImg }}" alt="no image">
     <div class="media-body">
         <h6 class="mb-1 mt-0">{{ $user->first_name.' '.$user->last_name }}</h6>
         <div>

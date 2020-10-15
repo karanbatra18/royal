@@ -59,3 +59,19 @@
   height: calc(100vh - 70px);
   margin-top: 70px;
 }
+
+.preview_image {
+  /*width: 100%;*/
+  margin-left: 15px;
+}
+
+.thumb_image{
+  width: 65px;
+  height: 65px;
+  margin-right: 10px;
+}
+
+.img_sec_border {
+  border: 1px dashed;
+  padding: 5px;
+}

@@ -109,7 +109,28 @@ class MatchController extends Controller
     public function serachFilteredUser(Request $request){
         $conditionId = !empty($request->id) ? ['users.id' => $request->id] : [];
         $user = DB::table('users')->join('user_profiles', 'user_profiles.user_id', '=', 'users.id')
-            ->select('users.id','users.gender','users.first_name', 'users.last_name','users.email','users.dob','users.marital_status', 'users.age','user_profiles.state', 'user_profiles.city', 'user_profiles.mangalik_status', 'user_profiles.caste_id', 'user_profiles.sub_caste_id', 'user_profiles.higher_education', 'user_profiles.college')
+            ->select(
+                'users.id',
+                'users.gender',
+                'users.first_name',
+                'users.last_name',
+                'users.email',
+                'users.dob',
+                'users.marital_status',
+                'users.age',
+                'user_profiles.state',
+                'user_profiles.city',
+                'user_profiles.mangalik_status',
+                'user_profiles.caste_id',
+                'user_profiles.sub_caste_id',
+                'user_profiles.higher_education',
+                'user_profiles.college',
+                'user_profiles.profile_picture1',
+                'user_profiles.profile_picture2',
+                'user_profiles.profile_picture3',
+                'user_profiles.profile_picture4',
+                'user_profiles.profile_picture5'
+            )
             ->where($conditionId)
             ->first();
 
@@ -149,7 +170,27 @@ class MatchController extends Controller
             $nonVegCondition = !empty($request->non_veg) ? ['user_profiles.non_veg' => $request->non_veg] : [];
 
             $otherProfiles = DB::table('users')->join('user_profiles', 'user_profiles.user_id', '=', 'users.id')
-                ->select('users.id','users.first_name', 'users.last_name','users.email','users.dob','users.marital_status', 'users.age','user_profiles.state', 'user_profiles.city', 'user_profiles.mangalik_status', 'user_profiles.caste_id', 'user_profiles.sub_caste_id', 'user_profiles.higher_education', 'user_profiles.college')
+                ->select(
+                    'users.id',
+                    'users.first_name',
+                    'users.last_name',
+                    'users.email',
+                    'users.dob',
+                    'users.marital_status',
+                    'users.age',
+                    'user_profiles.state',
+                    'user_profiles.city',
+                    'user_profiles.mangalik_status',
+                    'user_profiles.caste_id',
+                    'user_profiles.sub_caste_id',
+                    'user_profiles.higher_education',
+                    'user_profiles.college',
+                    'user_profiles.profile_picture1',
+                    'user_profiles.profile_picture2',
+                    'user_profiles.profile_picture3',
+                    'user_profiles.profile_picture4',
+                    'user_profiles.profile_picture5'
+                )
                 ->where($genderCondition)
                 ->where($casteCondition)
                 ->where($maritalStatusCondition)
@@ -193,7 +234,28 @@ class MatchController extends Controller
        // dd($request->all());
         $conditionId = !empty($request->id) ? ['users.id' => $request->id] : [];
         $user = DB::table('users')->join('user_profiles', 'user_profiles.user_id', '=', 'users.id')
-            ->select('users.id','users.gender','users.first_name', 'users.last_name','users.email','users.dob','users.marital_status', 'users.age','user_profiles.state', 'user_profiles.city', 'user_profiles.mangalik_status', 'user_profiles.caste_id', 'user_profiles.sub_caste_id', 'user_profiles.higher_education', 'user_profiles.college')
+            ->select(
+                'users.id',
+                'users.gender',
+                'users.first_name',
+                'users.last_name',
+                'users.email',
+                'users.dob',
+                'users.marital_status',
+                'users.age',
+                'user_profiles.state',
+                'user_profiles.city',
+                'user_profiles.mangalik_status',
+                'user_profiles.caste_id',
+                'user_profiles.sub_caste_id',
+                'user_profiles.higher_education',
+                'user_profiles.college',
+                'user_profiles.profile_picture1',
+                'user_profiles.profile_picture2',
+                'user_profiles.profile_picture3',
+                'user_profiles.profile_picture4',
+                'user_profiles.profile_picture5'
+            )
             ->where($conditionId)
             ->first();
 
@@ -217,7 +279,27 @@ class MatchController extends Controller
             $ageCondition = !empty($userAge) ? [['users.age', '<=', $upperAge], ['users.age', '>=', $lowerAge]] : [];
 
             $otherProfiles = DB::table('users')->join('user_profiles', 'user_profiles.user_id', '=', 'users.id')
-                ->select('users.id','users.first_name', 'users.last_name','users.email','users.dob','users.marital_status', 'users.age','user_profiles.state', 'user_profiles.city', 'user_profiles.mangalik_status', 'user_profiles.caste_id', 'user_profiles.sub_caste_id', 'user_profiles.higher_education', 'user_profiles.college')
+                ->select(
+                    'users.id',
+                    'users.first_name',
+                    'users.last_name',
+                    'users.email',
+                    'users.dob',
+                    'users.marital_status',
+                    'users.age',
+                    'user_profiles.state',
+                    'user_profiles.city',
+                    'user_profiles.mangalik_status',
+                    'user_profiles.caste_id',
+                    'user_profiles.sub_caste_id',
+                    'user_profiles.higher_education',
+                    'user_profiles.college',
+                    'user_profiles.profile_picture1',
+                    'user_profiles.profile_picture2',
+                    'user_profiles.profile_picture3',
+                    'user_profiles.profile_picture4',
+                    'user_profiles.profile_picture5'
+                )
                 ->where($genderCondition)
                 ->where($casteCondition)
                 ->where($ageCondition)

@@ -18,7 +18,7 @@
 }
 
 *,
-*::before,
+*::before,img_sec_border
 *::after {
   box-sizing: border-box;
 }
@@ -4206,7 +4206,7 @@ tbody.collapse.show {
   width: 100%;
   height: calc(2.4375rem + 2px);
   margin: 0;
-  opacity: 0;
+  /*opacity: 0;*/
 }
 
 .custom-file-input:focus~.custom-file-control {
