@@ -98,25 +98,25 @@
                             <div class="row mt-5">
                                 <div class="col-md-4">
                                     <div class="border p-3 bg-light">
-                                        <form action="">
+                                        <form action="" class="row">
                                            {{-- <div class="form-group">
                                                 <label for="age" class="position-static">Age</label>
                                                 <input type="text" class="form-control"
                                                        id="age" value="">
                                             </div>--}}
-                                            <div class="form-group ">
+                                            <div class="form-group col-md-6">
                                                 <label for="gender" class="position-static">Gender</label>
                                                 <select class="form-control" name="gender" id="gender">
-                                                    <option value="" selected>--Select gender--</option>
+                                                    <option value="" selected>Please Select</option>
                                                     <option value="male">Male</option>
                                                     <option value="female">Female</option>
                                                     <option value="transgender">Transgender</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group ">
+                                            <div class="form-group col-md-6">
                                                 <label for="marital_status" class="position-static">Marital Status</label>
                                                 <select class="form-control" name="marital_status" id="marital_status">
-                                                    <option value="" selected>--Select Marital Status--</option>
+                                                    <option value="" selected>Please Select</option>
                                                     <option value="never_married">
                                                         Never Married
                                                     </option>
@@ -134,10 +134,10 @@
                                                     </option>
                                                 </select>
                                             </div>
-                                            <div class="form-group ">
+                                            <div class="form-group col-md-6">
                                                 <label for="mother_tongue" class="position-static">Mother Tongue</label>
                                                 <select class="form-control" name="mother_tongue" id="mother_tongue">
-                                                    <option value="" selected>--Select Marital Status--</option>
+                                                    <option value="" selected>Please Select</option>
                                                     <option value="hindi">
                                                         Hindi
                                                     </option>
@@ -158,7 +158,7 @@
                                                     </option>
                                                 </select>
                                             </div>
-                                            <div class="form-group ">
+                                            <div class="form-group col-md-6">
                                                 <label for="religion" class="position-static">Religion</label>
                                                 <select class="form-control"
                                                         name="religion" id="religion" required>
@@ -190,7 +190,7 @@
 
                                                 </select>
                                             </div>
-                                            <div class="form-group ">
+                                            <div class="form-group col-md-6">
                                                 <label for="caste_id" class="position-static">Caste</label>
                                                 <select class="caste_id form-control"
                                                         name="caste_id" id="caste_id" required>
@@ -205,7 +205,7 @@
 
                                                 </select>
                                             </div>
-                                            <div class="form-group ">
+                                            <div class="form-group col-md-6">
                                                 <label for="sub_caste_id" class="position-static">Sub
                                                     Caste</label>
                                                 <select class="sub_caste_id form-control"
@@ -213,7 +213,7 @@
                                                     <option value="">Please select</option>
                                                 </select>
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-md-6">
                                                 <label for="country-dropdown" class="position-static">Country</label>
                                                 <select class="form-control"
                                                         name="country" id="country-dropdown" required>
@@ -226,7 +226,7 @@
                                                 </select>
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group col-md-6">
                                                 <label for="state-dropdown" class="position-static">State</label>
                                                 <select class="form-control"
                                                         name="state" id="state-dropdown" required>
@@ -234,7 +234,7 @@
                                                 </select>
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group col-md-6">
                                                 <label for="city-dropdown" class="position-static">City</label>
                                                 <select class="form-control"
                                                         name="city" id="city-dropdown">
@@ -243,7 +243,7 @@
 
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group col-md-6">
                                                 <label for="challanged" class="position-static">Challanged</label>
                                                 <select class="form-control"
                                                         name="challanged" id="challanged">
@@ -252,7 +252,7 @@
                                                 </select>
 
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-md-6">
                                                 <label for="higher_education" class="position-static">Higher
                                                     Education</label>
                                                 <select class="form-control"
@@ -266,7 +266,7 @@
                                                     </option>
                                                 </select>
                                             </div>
-                                            <div class="form-group ">
+                                            <div class="form-group col-md-6">
                                                 <label for="occupation" class="position-static">Occupation</label>
                                                 <select type="text" class="form-control"
                                                        name="occupation" id="occupation">
@@ -286,7 +286,7 @@
                                                 </select>
 
                                             </div>
-                                            <div class="form-group ">
+                                            <div class="form-group col-md-6">
                                                 <label for="annual_income" class="position-static">Annual Income</label>
                                                 <select type="text" class="form-control"
                                                        name="annual_income" id="annual_income">
@@ -327,7 +327,7 @@
                                                 </select>
                                             </div>
 
-                                            <div class="form-group ">
+                                            <div class="form-group col-md-6">
                                                 <label for="profile_managed_by" class="position-static">Profile Managed By</label>
                                                 <select type="text" class="form-control"
                                                         name="profile_managed_by" id="profile_managed_by">
@@ -363,7 +363,7 @@
                                                 <input type="text" class="form-control" id="staticEmail"
                                                        value="">
                                             </div>--}}
-                                            <div class="form-group">
+                                            <div class="form-group col-md-6">
 
                                                 <input class="" name="smoke"
                                                        id="smoke" type="checkbox"
@@ -373,7 +373,7 @@
 
 
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-md-6">
 
                                                 <input class="" name="own_house"
                                                        id="own_house" type="checkbox"
@@ -383,7 +383,7 @@
 
 
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-md-6">
                                                 <input class="" name="drink"
                                                        id="drink" type="checkbox"
                                                        value="1"/>
@@ -392,7 +392,7 @@
 
 
                                             </div>
-                                            <div class="form-group">
+                                            <div class="form-group col-md-6">
                                                 <input class="" name="non_veg"
                                                        id="non_veg" type="checkbox"
                                                        value="1"/>

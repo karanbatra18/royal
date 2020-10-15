@@ -28,7 +28,22 @@
                     <td>{{ display_caste($user->id) }}</td>
                 </tr>
                 <tr>
-                    <td>{{ $user->marital_status }}</td>
+                    <td>@php
+                        if($user->marital_status == 'never_married') {
+                            $marriedStatus = 'Never Married';
+                       } else if($user->marital_status == 'divorced'){
+                       $marriedStatus = 'Divorced';
+                       } else if($user->marital_status == 'awaiting_divorce'){
+                       $marriedStatus = 'Awaiting Divorce';
+                       } else if($user->marital_status == 'widowed'){
+                       $marriedStatus = 'Widowed';
+                       } else if($user->marital_status == 'annulled'){
+                       $marriedStatus = 'Annulled';
+                       } else {
+                       $marriedStatus = '';
+                       }
+                    @endphp
+                    {{ $marriedStatus }}</td>
                     <td>{{ $user->mangalik_status == 'yes' ? 'Manglik' : 'Not Manglik' }}</td>
                     <td>{{ $user->higher_education }} {{ !empty($user->college) ? ','.$user->college : '' }}</td>
                 </tr>
