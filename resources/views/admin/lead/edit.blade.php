@@ -1,402 +1,352 @@
-@extends('layouts.dashboard', [ 'titlePage' => __('Swyamber')])
+@extends('layouts.dashboard', [ 'titlePage' => __('Lead Management')])
 
 @section('content')
 
-    <style>
-    	#main-secc{
-                   width: 100%;
-                   display: flex;
-                   justify-content: center;
-                   align-items: center;
-                   background-color: #e7e6e6;
-                   padding:10px 10px;
-    	}
-
-    	.grid0{
-    		width: 75%;
-    		background:white;}
-
-    	.grid-parent{
-    		display: grid;
-    		grid-template-columns: 1fr 2fr 1fr;
-    		grid-template-rows: 1fr;   
-        height: 215px;
-        overflow: hidden; 		
-    	}
-    	.grid-image img{width: 100%;}
-        #share-mater{background:#34495e;}
-        #share-mater ul{
-        	padding:0;}
-
-        #share-mater ul li{
-        	list-style: none;
-        	width: 100%;
-        }
-
-        #share-mater ul li a{
-        	color: white;
-        	text-decoration: none;
-        	text-transform: capitalize;
-        	font-size: 20px;
-        	display: block;
-        	padding: 12px 25px;
-        }
-
-        #bg-ger{background:#f0f2f7;padding: 20px 20px 0px 20px;}
-
-        #padd-20{padding-left:20px;}
-         
-        #share-mater ul li a:hover{background:#d9475c;} 
-        #bg-ger-child{
-        	border-bottom: 1px solid;
-            font-size: 24px;
-            margin-bottom: 10px;}
-        .fa-question-circle-o{font-size: 20px;padding: 0px 10px}
-        .fa-shield{font-size: 20px;}
-        .fa-shield sup{
-            background: #d9475c;
-		    color: white;
-		    padding: 0px 4px;
-		    border-radius: 50px;
-		    margin: -3px;}
-		#bg-ger-right{
-			float: right;
-			font-size: 12px;
-			padding-top:10px;
-			color: grey;}
-        
-        #bg-ger-ul{
-        	list-style: none;
-        	display: grid;
-        	grid-template-columns: 1fr 1fr;
-        	padding: 0;
-        }
-
-        #bg-ger-ul li{
-        	font-size: 13px; 
-            padding: 3px 0px;}
-
-        #bg-ger-suce-ul ul{
-        	padding: 0;
-        	margin:0;
-        }
-        #bg-ger-suce-ul ul li{
-        	list-style: none;
-        	display: inline-block;
-            padding: 0px 10px 0px 0px;
-            margin-top: 6px;}   
-        
-        #bg-ger-suce-ul ul li a{
-        	font-size: 20px;
-        	color: #34495e;
-        }
-
-        .grid-second{
-        	display: grid;
-        	grid-template-columns: 3fr 1fr;
-        	grid-gap: 0px 20px;
-        	width: 75%;
-
-        }
-        
-    .grid-second-child{background: white; height: fit-content;}
- 
-  .spadd{padding: 30px 22px 10px 50px;}
-  .spadd p{font-size: 15px;}
-  .lh18{line-height: 18px;color: #34495e}
-  .pt20{padding-top: 15px;color: silver;}
-  #section1 {height:auto;border-bottom: 1px solid #34495e}
- 
-  #section2 {height:auto;border-bottom: 1px solid #34495e}
-  #section3 {height:auto;border-bottom: 1px solid #34495e}
-  #section4 {height:auto;border-bottom: 1px solid #34495e}
-  #section5 {height:auto;border-bottom: 1px solid #34495e}
-  .navbar-sticky-top{position: sticky;top: 0;padding: 0}
-  .navbar-sticky-top ul{width: 100%;border-bottom: 1px solid}
-  .navbar-sticky-top ul li{width: 25%!important;text-align: center;}
-  .navbar-sticky-top ul li a{
-  	        width: 100%!important;
-  	        display: grid;
-  	        color: #34495e;
-  	        font-size: 16px;
-  	        z-index: 99999;
-  	        background: white;
-  	     }
-
-
-  	.navbar-sticky-top ul li a:hover{background: white} 
-  	.left-same-col{
-  		font-size: 17px;
-	    color: #d9475c;
-	    font-weight: inherit;
-	    position: relative;}   
-
-	.left-same-col i{
-			padding-right: 10px;
-		    margin-left: -33px;
-		    position: absolute;
-            margin-top: -3px;
-            z-index: 1;}  
-    .spadd-ul{
-    	padding: 0;
-    	margin:0;
-    	list-style: none;
-    	display: grid;
-    	grid-template-columns: 1fr 1fr;}  
-
-    .spadd-ul li{
-    	padding-top: 15px;
-    	display: grid;
-    	color:#999;
-    	font-size: 15px;
-        letter-spacing: .50px;
-    }
-
-    .spadd-ul-s{color: #34495e}
-    .spadd-ul-lp{
-    	text-align:  right;
-        letter-spacing: .50px;
-        padding-top: 20px;}
-    .spadd-ul-lp i{
-    	transform: rotate(45deg);
-    	font-size: 20px;
-    	margin-right: 10px;}
-
-    .pt1-5{padding-top:20px;letter-spacing: .50px}
-    .pt1-5 i{padding-right:  88px;}
-    .spaddl-p{text-align: right;letter-spacing: .50px;margin-top: 30px;}
-    .rd-col{color: #d9475c;}
-    .lhauto{padding: 15px;}
-    .same-gre{color:#999}
-    tr{    
-    	padding: 15px 0;
-        border-bottom: 1px solid #f1f1f1!important;}
-    .pt-49{    
-    	       padding-top: 44px;
-               border-bottom: 1px solid;
-                   margin-bottom: 15px;
-    }
-    .pt-49 p{
-            font-size: 17px;
-            padding-left: 16px;}
-
-    .pr-17{padding: 15px 16px 0px 16px;}
-
-    .pr-17a{background: #34495e;
-		    font-size: 14px;
-		    color: white;
-		    width: 100%;
-		    display: inline-block;
-		    padding: 10px 10px;
-		    text-align: center;}
-      .pr-17a:hover{color: white;text-decoration: none;}
-    </style>
   <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-            
-            <section id="main-secc">
-		<div class="grid0">
-			<div class="grid-parent">
-				<div class="grid-child-3">
-					<!-- <img  src="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg"> -->
-            <div id="lightgallery" class="grid-image">
-               <a href="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg">
-                  <img src="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg" />
-                </a>
-              
-               <a style="display: none;" href="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg">
-                  <img src="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg" />
-                </a>
-
-                <a style="display: none;" href="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg">
-                  <img src="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg" />
-                </a>
+          <form method="post" action="{{ route('lead.update', ['lead_id' => $lead->id]) }}" autocomplete="off" class="form-horizontal">
+            @csrf
+            <input name="_method" type="hidden" value="PUT">
+            <div class="card ">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">{{ __('Update Lead') }}</h4>
+                <p class="card-category">{{ __('Lead Management') }}</p>
               </div>
-				</div>
-				<div class="grid-child-3" id="bg-ger">
-					<div id="bg-ger-child">
-						<span>XYRX9881</span><span><i class="fa fa-question-circle-o"></i></span><span><i class="fa fa-shield"><sup>1</sup></i></span><span id="bg-ger-right">Last seen on 02-Oct-20</span>
-					</div>
-					<ul id="bg-ger-ul">
-						<li>26, 5' 5"</li>
-						<li>BCA</li>
-						<li>New Delhi</li>
-						<li>Not working</li>
-						<li>Hindu: Others</li>
-						<li>No Income</li>
-						<li>Hindi-Delhi</li>
-						<li>Never Married</li>
-					</ul>
-					<div id="bg-ger-suce-ul">
-						<ul>
-							<li><a href="#"><i class="material-icons">history</i></a></li>
-							<li><a href="#"><i class="material-icons">share</i></a></li>
-							<li><a href="#"><i class="material-icons">block</i></a></li>
-							<li><a href="#"><i class="material-icons">flag</i></a></li>
-						</ul>
-					</div>
-				</div>
+              <div class="card-body ">
+                @if (session('status'))
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <i class="material-icons">close</i>
+                        </button>
+                        <span>{{ session('status') }}</span>
+                      </div>
+                    </div>
+                  </div>
+                @endif
+                
+                    <div class="row">
+                    <label class="col-sm-2 col-form-label">Name*</label>
+                    <div class="col-sm-7">
+                      <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                        <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" id="input-name" type="text" placeholder="Name" required="true" aria-required="true" value="{{ isset($lead) ? $lead->name : old('name') }}"/>
+                        @if ($errors->has('name'))
+                          <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
+                        @endif
+                      </div>
+                    </div>
+                </div>
+                
+              
+                 <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Email*') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="input-email" type="email" placeholder="{{ __('Email') }}" value="{{ isset($lead) ? $lead->email : old('email') }}" required />
+                      @if ($errors->has('email'))
+                        <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Alternate Email') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('alternate_email') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('alternate_email') ? ' is-invalid' : '' }}" name="alternate_email" id="input-alternate_email" type="email" placeholder="{{ __('Alternate Email') }}" value="{{ isset($lead) ? $lead->alternate_email : old('alternate_email') }}" />
+                      @if ($errors->has('alternate_email'))
+                        <span id="alternate_email-error" class="error text-danger" for="input-alternate_email">{{ $errors->first('alternate_email') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                  <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Phone*') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                       <input class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" id="input-phone" type="text" placeholder="{{ __('Phone') }}" value="{{ isset($lead) ? $lead->phone : old('phone') }}" required />
+                   
+                      @if ($errors->has('phone'))
+                        <span id="phone-error" class="error text-danger" >{{ $errors->first('phone') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                
+                 <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Alternate Phone') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('alternate_phone') ? ' has-danger' : '' }}">
+                       <input class="form-control{{ $errors->has('alternate_phone') ? ' is-invalid' : '' }}" name="alternate_phone" id="input-alternate_phone" type="text" placeholder="{{ __('Alternate Phone') }}" value="{{ isset($lead) ? $lead->alternate_phone : old('alternate_phone') }}" />
+                   
+                      @if ($errors->has('alternate_phone'))
+                        <span id="alternate_phone-error" class="error text-danger" >{{ $errors->first('alternate_phone') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                
+                
+                
+                   <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Contact Owner') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('assign_user') ? ' has-danger' : '' }}">
+                      <select class="form-control{{ $errors->has('assign_user') ? ' is-invalid' : '' }}" name="assign_user"   id="input-assign_user" >
+                         <option value="">Please select</option>
+                          @foreach($users as $user)
+                                        @if($user->email != 'admin@gmail.com')
+                                        
+                                        <option  {{ (isset($lead->assign_user) && $lead->assign_user == $user->id) ? 'selected' :  ((old('assign_user') == $user->id) ? 'selected' : '')  }}value="{{$user->id}}">{{$user->first_name.' '.$user->last_name}}</option>
+                      @endif
+                      @endforeach
+                      </select>
+                      @if ($errors->has('assign_user'))
+                        <span id="assign_user-error" class="error text-danger" >{{ $errors->first('assign_user') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+               
+               
+                       <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Status') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('lead_status') ? ' has-danger' : '' }}">
+                      <select class="form-control{{ $errors->has('lead_status') ? ' is-invalid' : '' }}" name="lead_status" id="input-status"  >
+                          <option value="">Please select</option>
 
-				<div class="grid-child-3"id="share-mater">
-					<ul>
-						<li><a href="#"><i class="fa fa-share-alt"></i><span id="padd-20">Share</span></a></li>
-						<li><a href="#"><i class="fa fa-phone"></i><span id="padd-20">Share</span></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- div second sctoll-spy -->
-	<section  id="main-secc">
-		<div class="grid-second">
-			<div class="grid-second-child">
-		          <div class="collapse navbar-collapse navbar-sticky-top" id="myNavbar">
-			        <ul class="nav navbar-nav">
-				          <li><a href="#section1"><span><i class="material-icons"> person</i></span><span>About Her</span></a></li>
-				          <li><a href="#section2"><span><i class="material-icons"> 	school</i></span><span>Education & Career</span></a></li>
-				          <li><a href="#section3"><span><i class="material-icons"> 	supervisor_account</i></span><span>Family Details</span></a></li>
-				          <li><a href="#section4"><span><i class="material-icons"> remove_red_eye</i></span><span>Desired Partner</span></a></li>
-			          </ul>
+                             <option {{ (isset($lead->lead_status) && $lead->lead_status == 'Untouched') ? 'selected' :  ((old('lead_status') == 'Untouched') ? 'selected' : '')  }} value="Untouched">Untouched</option>
+                            <option {{ (isset($lead->lead_status) && $lead->lead_status == 'ATC1') ? 'selected' :  ((old('lead_status') == 'ATC1') ? 'selected' : '')  }} value="ATC1">ATC 1</option>
+                            <option {{ (isset($lead->lead_status) && $lead->lead_status == 'ATC2') ? 'selected' :  ((old('lead_status') == 'ATC2') ? 'selected' : '')  }} value="ATC2">ATC 2</option>
+                           <option {{ (isset($lead->lead_status) && $lead->lead_status == 'ATC3') ? 'selected' :  ((old('lead_status') == 'ATC3') ? 'selected' : '')  }} value="ATC3">ATC 3</option>
+                           <option {{ (isset($lead->lead_status) && $lead->lead_status == 'contactbutnotprequalify') ? 'selected' :  ((old('lead_status') == 'contactbutnotprequalify') ? 'selected' : '')  }} value="contactbutnotprequalify">Contacted But Not PreQualified</option>
+                           <option {{ (isset($lead->lead_status) && $lead->lead_status == 'PreQualified') ? 'selected' :  ((old('lead_status') == 'PreQualified') ? 'selected' : '')  }} value="PreQualified">PreQualified</option>
+                           <option {{ (isset($lead->lead_status) && $lead->lead_status == 'Potential') ? 'selected' :  ((old('lead_status') == 'Potential') ? 'selected' : '')  }} value="Potential">Potential</option>
+                           <option {{ (isset($lead->lead_status) && $lead->lead_status == 'Closer') ? 'selected' :  ((old('lead_status') == 'Closer') ? 'selected' : '')  }} value="Closer">Closer</option>
+                           <option {{ (isset($lead->lead_status) && $lead->lead_status == 'NegativeDuplicate') ? 'selected' :  ((old('lead_status') == 'NegativeDuplicate') ? 'selected' : '')  }} value="NegativeDuplicate">Negative Duplicate</option>
+                           <option {{ (isset($lead->lead_status) && $lead->lead_status == 'CouldNotContactWrongNumber') ? 'selected' :  ((old('lead_status') == 'CouldNotContactWrongNumber') ? 'selected' : '')  }} value="CouldNotContactWrongNumber">Could Not Contact - Wrong Number</option>
+                           <option {{ (isset($lead->lead_status) && $lead->lead_status == 'CouldNotContactNoResponse') ? 'selected' :  ((old('lead_status') == 'CouldNotContactNoResponse') ? 'selected' : '')  }} value="CouldNotContactNoResponse">Could Not Contact - No Response</option>
+                             <option {{ (isset($lead->lead_status) && $lead->lead_status == 'NegativeRelavintProfile') ? 'selected' :  ((old('lead_status') == 'NegativeRelavintProfile') ? 'selected' : '')  }} value="NegativeRelavintProfile">Negative Relavint Profile</option>
+                           <option {{ (isset($lead->lead_status) && $lead->lead_status == 'NegativeNonRelavintProfile') ? 'selected' :  ((old('lead_status') == 'NegativeNonRelavintProfile') ? 'selected' : '')  }} value="NegativeNonRelavintProfile">Negative Non Relavint Profile</option>
+                              <option {{ (isset($lead->lead_status) && $lead->lead_status == 'NegativeFutureRequirement') ? 'selected' :  ((old('lead_status') == 'NegativeFutureRequirement') ? 'selected' : '')  }} value="NegativeFutureRequirement">Negative Future Requirement</option>
 
-			           
-			      </div>
+                        </select>
+                      @if ($errors->has('lead_status'))
+                        <span id="status-error" class="error text-danger" >{{ $errors->first('lead_status') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                 <div class="row">
+                  <label class="col-sm-2 col-form-label">Source</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('source') ? ' has-danger' : '' }}">
+                       <select class="form-control{{ $errors->has('source') ? ' is-invalid' : '' }}" name="source" id="input-source"  >
+                          <option value="">Please select</option>
 
-				<div id="section1" class="container-fluid spadd">
-				  <p>Profile managed by Parent</p>
-				  <p class="lh18">I made this profile on behalf of my Grand Daughter [Name Hidden] ,Brought up by Grandparents Sh.Mp.Singh & Smt. Laxmi Raghav(Ranga). Her Mother Ms.Urmila Rani is a single mother. [Name Hidden] is Born n brought up in Delhi only. She is currently pursuing her BCA Correspondence. she is very good at painting, also love hearing to music.</p>
-				  <p class="pt20">About her Family<br>
-				   Not filled in</p>
-				  <p class="pt20">Education<br>Not filled in</p>
-				  <p class="pt20">Occupation<br>Not filled in</p>
-				</div>
-				  
-				<div id="section2" class="container-fluid spadd">
-					<span class="left-same-col"><i class="material-icons"> 	school</i>Education & Career</span>
+                                   <option {{ (isset($lead->source) && $lead->source == 'Adwords') ? 'selected' :  ((old('source') == 'Adwords') ? 'selected' : '')  }} value="Adwords">Adwords</option>
+    <option {{ (isset($lead->source) && $lead->source == 'Chat') ? 'selected' :  ((old('source') == 'Chat') ? 'selected' : '')  }} value="Chat">Chat</option>
+    <option {{ (isset($lead->source) && $lead->source == 'Email') ? 'selected' :  ((old('source') == 'Email') ? 'selected' : '')  }} value="Email">Email</option>
+    <option {{ (isset($lead->source) && $lead->source == 'Event') ? 'selected' :  ((old('source') == 'Event') ? 'selected' : '')  }} value="Event">Event</option>
+    <option {{ (isset($lead->source) && $lead->source == 'FBAds') ? 'selected' :  ((old('source') == 'FBAds') ? 'selected' : '')  }} value="FBAds">FBAds</option>
+    <option {{ (isset($lead->source) && $lead->source == 'InboundCall') ? 'selected' :  ((old('source') == 'InboundCall') ? 'selected' : '')  }} value="InboundCall">Inbound Call</option>
+    <option {{ (isset($lead->source) && $lead->source == 'EmailMarketing') ? 'selected' :  ((old('source') == 'EmailMarketing') ? 'selected' : '')  }} value="EmailMarketing">Email Marketing</option>
+    <option {{ (isset($lead->source) && $lead->source == 'LinkedinAds') ? 'selected' :  ((old('source') == 'LinkedinAds') ? 'selected' : '')  }} value="LinkedinAds">Linkedin Ads</option>
+    <option {{ (isset($lead->source) && $lead->source == 'InstagramAds') ? 'selected' :  ((old('source') == 'InstagramAds') ? 'selected' : '')  }} value="InstagramAds">Instagram Ads</option>
+    <option {{ (isset($lead->source) && $lead->source == 'OutboundCall') ? 'selected' :  ((old('source') == 'OutboundCall') ? 'selected' : '')  }} value="OutboundCall">Outbound Call</option>
+    <option {{ (isset($lead->source) && $lead->source == 'SEO') ? 'selected' :  ((old('source') == 'SEO') ? 'selected' : '')  }} value="SEO">SEO</option>
+    <option {{ (isset($lead->source) && $lead->source == 'Webinar') ? 'selected' :  ((old('source') == 'Webinar') ? 'selected' : '')  }} value="Webinar">Webinar</option>
+    <option {{ (isset($lead->source) && $lead->source == 'LeadNurturing') ? 'selected' :  ((old('source') == 'LeadNurturing') ? 'selected' : '')  }} value="LeadNurturing">Lead Nurturing</option>
+    <option {{ (isset($lead->source) && $lead->source == 'OrganicSocial') ? 'selected' :  ((old('source') == 'OrganicSocial') ? 'selected' : '')  }} value="OrganicSocial">Organic Social</option>
+    <option {{ (isset($lead->source) && $lead->source == 'Partners') ? 'selected' :  ((old('source') == 'Partners') ? 'selected' : '')  }} value="Partners">Partners</option>
+    <option {{ (isset($lead->source) && $lead->source == 'DataBulkUpload') ? 'selected' :  ((old('source') == 'DataBulkUpload') ? 'selected' : '')  }} value="DataBulkUpload">Data Bulk Upload</option>
+      <option {{ (isset($lead->source) && $lead->source == 'Other') ? 'selected' :  ((old('source') == 'Other') ? 'selected' : '')  }} value="Other">Other</option>
+                      
+                        </select>
+                       @if ($errors->has('source'))
+                        <span id="name-error" class="error text-danger" for="input-name">{{ $errors->first('source') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                
+                
+             <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Gender') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('gender') ? ' has-danger' : '' }}">
+                      <select class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" id="input-gender" >
+                          <option value="">Please select</option>
+                         <option {{ (isset($lead->gender) && $lead->gender == 'male') ? 'selected' :  ((old('gender') == 'male') ? 'selected' : '')  }} value="male">Male</option>
+                        <option {{ (isset($lead->gender) && $lead->gender == 'female') ? 'selected' :  ((old('gender') == 'female') ? 'selected' : '')  }} value="female">Female</option>
+                        <option {{ (isset($lead->gender) && $lead->gender == 'transGender') ? 'selected' :  ((old('gender') == 'transGender') ? 'selected' : '')  }} value="transGender">TransGender</option>
+                               </select>
+                      @if ($errors->has('email'))
+                        <span id="gender-error" class="error text-danger" >{{ $errors->first('gender') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Date of Birth') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('dob') ? ' has-danger' : '' }}">
+                      <input class="datepicker form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" id="birthday_date" type="text" placeholder="{{ __('Date Of Birth') }}" value="{{ isset($lead) ? $lead->dob : old('dob') }}"  autocomplete="off" />
+                    
+                      @if ($errors->has('dob'))
+                        <span id="dob-error" class="error text-danger" >{{ $errors->first('dob') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                
+                
+                 
+                 <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Comment') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('comment') ? ' has-danger' : '' }}">
+                       <textarea class="form-control{{ $errors->has('comment') ? ' is-invalid' : '' }}" name="comment" id="input-comment">{{ isset($lead) ? $lead->comment : old('comment') }}</textarea> 
+                   
+                      @if ($errors->has('comment'))
+                        <span id="comment-error" class="error text-danger" >{{ $errors->first('comment') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                
+                
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">{{ __('Country') }}</label>
+                                    <div class="col-sm-7">
+                                        <div class="form-group{{ $errors->has('country') ? ' has-danger' : '' }}">
+                                            <select class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}"
+                                                    name="country" id="country-dropdown">
+                                                <option value="">Please select</option>
 
-					<ul class="spadd-ul">
-						<li><span>Highest Education</span><span class="spadd-ul-s">BCA</span></li>
-						<li><span>School Name</span><span>Not filled in</span></li>
-						<li><span>UG Degree</span><span class="spadd-ul-s">BCA</span></li>
-						<li><span>UG College </span><span>Not filled in</span></li>
-						<li><span>Other UG Degree</span><span>Not filled in</span></li>
-						<li><span>Employed In</span><span class="spadd-ul-s">Not working</span></li>
-						<li><span>Occupation</span><span class="spadd-ul-s">Not working</span></li>
-						<li><span>Organization Name</span><span>Not filled in</span></li>
-						<li><span>Annual Income</span><span class="spadd-ul-s">No Income</span></li>
-					</ul>
-					<p class="spadd-ul-lp spadd-ul-s"><i class="fa fa-thumb-tack"></i>Not interested in settling abroad</p>
-				</div>
-				<div id="section3" class="container-fluid spadd">
-					<span class="left-same-col"><i class="material-icons"> 	supervisor_account</i>Family Details</span>
+                                                @foreach ($countries as $country)
+                                                    <option value="{{$country->id}}" {{ (isset($lead->country) && $lead->country == $country->name) ? 'selected' : ((old('country') == $country->name) ? 'selected' : '') }} >
+                                                        {{$country->name}}
+                                                    </option>
+                                                @endforeach
 
-					<ul class="spadd-ul">
-						<li><span>Mother's Occupation</span><span class="spadd-ul-s">Housewife</span></li>
-						<li><span>Father's Occupation</span><span>Not filled in</span></li>
-						<li><span>Sister(s)</span><span class="spadd-ul-s">0 sister</span></li>
-						<li><span>Brother(s)</span><span>0 brother</span></li>
-						<li><span>Gothra</span><span>Sandilya</span></li>
-						<li><span>Gothra (maternal)</span><span class="spadd-ul-s">Ranga</span></li>
-						<li><span>Family Status</span><span class="spadd-ul-s">Middle Class</span></li>
-						<li><span>Family Income</span><span>Not filled in</span></li>
-						<li><span>Family Type</span><span class="spadd-ul-s">Joint Family</span></li>
-						<li><span>Family Values</span><span class="spadd-ul-s">Liberal</span></li>
-						<li><span>Family based out of</span><span class="spadd-ul-s">New Delhi</span></li>
-					</ul>
-					<p class="spadd-ul-lp spadd-ul-s"><i class="fa fa-thumb-tack"></i>Not interested in settling abroad</p>
-				</div>
-				
-				<div id="section3" class="container-fluid spadd">
-					<span class="left-same-col"><i class="material-icons"> 	supervisor_account</i>Lifestyle	</span>
-
-					<ul class="spadd-ul">
-						<li><span>Habits</span><span class="spadd-ul-s">Not filled in</span></li>
-						<li><span>Assets</span><span>Not filled in</span></li>
-						<li><span>Languages Known</span><span class="spadd-ul-s">Not filled in</span></li>
-						<li><span>Blood Group</span><span>Not filled in</span></li>
-						<li><span>Residential Status</span><span>Not filled in</span></li>
-						<li><span>Special Cases</span><span class="spadd-ul-s">HIV+ - No</span></li>
-					</ul>
-				</div>
-				<div id="section4" class="container-fluid spadd">
-					<span class="left-same-col"><i class="material-icons"> 	supervisor_account</i>She Likes	</span>
-
-
-					 		<p class="pt1-5"><i class="fa fa-paint-brush"></i>
-					 		Painting, Cooking</p>
-
-					 		<p class="pt1-5"><i class="fa fa-headphones"></i>
-					 		Listening to music, Watching television</p>
-
-				</div>
-
-
-				<div id="section3" class="container-fluid spadd">
-					<span class="left-same-col"><i class="material-icons"> remove_red_eye</i>Desired Partner</span>
-					<p class="spaddl-p"><span class="rd-col">Her Preference</span ><span class="lhauto">---------</span><span>7 of 12 matching</span><span class="lhauto">------</span><span class="rd-col">Matches You</span></p>
-                    <table class="table">
-                    	<tr>
-                    		<td class="same-gre">Age</td>
-                    		<td>26 to 32 Years</td>
-                    		<td>----</td>
-                    	</tr>
-                    	<tr>
-                    		<td class="same-gre">Height</td>
-                    		<td> 5' 6" to 6' 0"</td>
-                    		<td class="rd-col"><i class="fa fa-check"></i></td>
-                    	</tr>
-                    	<tr>
-                    		<td class="same-gre">Marital Status</td>
-                    		<td>Never Married</td>
-                    		<td class="rd-col"><i class="fa fa-check"></i></td>
-                    	</tr>
-                    	<tr>
-                    		<td class="same-gre">Country</td>
-                    		<td>India</td>
-                    		<td class="rd-col"><i class="fa fa-check"></i></td>
-                    	</tr>
-                    	<tr>
-                    		<td class="same-gre">State/City</td>
-                    		<td> Delhi, Noida, Gurgaon, Faridabad, Ghaziabad, Greater Noida, Sahibabad</td>
-                    		<td class="rd-col"><i class="fa fa-check"></i></td>
-                    	</tr>
-                    	<tr>
-                    		<td class="same-gre">Religion</td>
-                    		<td>Hindu, Other</td>
-                    		<td class="rd-col"><i class="fa fa-check"></i></td>
-                    	</tr>
-                    	<tr>
-                    		<td class="same-gre">Mother tongue</td>
-                    		<td>Hindi-Delhi, Hindi-MP/CG, Hindi-UP/UK, Hindi-Bihar/Jharkhand, Haryanvi</td>
-                    		<td class="rd-col"><i class="fa fa-check"></i></td>
-                    	</tr>
-                    </table>
+                                            </select>
+                                            @if ($errors->has('country'))
+                                                <span id="country-error"
+                                                      class="error text-danger">{{ $errors->first('country') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
 
 
-				</div>
-			</div>
-			<div class="grid-second-child">
-				<div class="pt-49">
-				   <p>Horoscope</p>
-				</div>
-				  <p class="pt20 pr-17" >Place of Birth<br>Not filled in</p>
-				  <p class="pt20 pr-17">Date of Birth<br>Jun 27, 1994</p>
-				  <p class="pt20 pr-17">Time of Birth<br>Not filled in</p>
-				  <p class="pt20 pr-17">Horoscope match is not necessary</p>
-				  <p class="pt20 pr-17">Sun sign<br>Not filled in</p>
-				  <p class="pt20 pr-17">Rashi/Moon Sign<br>Jun 27, 1994</p>
-				  <p class="pt20 pr-17">Nakshatra<br>Not filled in</p>
-				  <p class="pt20 pr-17">Manglik<br>Non Manglik</p>
-				 <p class="pt20 pr-17"> <a href="#" class="pr-17a">Request horoscope</a></p>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">{{ __('State') }}</label>
+                                    <div class="col-sm-7">
+                                        <div class="form-group{{ $errors->has('state') ? ' has-danger' : '' }}">
+                                            <select class="form-control{{ $errors->has('state') ? ' is-invalid' : '' }}"
+                                                    name="state" id="state-dropdown">
+                                                <option value="">Please select</option>
+                                             <option value="{{$lead->state}}" selected>
+                                                {{$lead->state}}
 
-			</div>
-		</div>
-	</section>
+                                            </select>
+                                            @if ($errors->has('state'))
+                                                <span id="state-error"
+                                                      class="error text-danger">{{ $errors->first('state') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
 
 
-            
-           </div>
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">{{ __('City') }}</label>
+                                    <div class="col-sm-7">
+                                        <div class="form-group{{ $errors->has('city') ? ' has-danger' : '' }}">
+                                            <select class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
+                                                    name="city" id="city-dropdown">
+                                                <option value="">Please select</option>
+                                            <option value="{{$lead->city}}" selected>
+                                                {{$lead->city}}
+
+
+                                            </select>
+                                            @if ($errors->has('city'))
+                                                <span id="city-error"
+                                                      class="error text-danger">{{ $errors->first('city') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                
+                  <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Hot Lead') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('hot') ? ' has-danger' : '' }}">
+                      <select class="form-control{{ $errors->has('hot') ? ' is-invalid' : '' }}" name="hot" id="input-hot" >
+                          <option value="">Please select</option>
+                         <option {{ (isset($lead->hot) && $lead->hot == 'yes') ? 'selected' :  ((old('hot') == 'yes') ? 'selected' : '')  }} value="yes">Yes</option>
+                        <option {{ (isset($lead->hot) && $lead->hot == 'no') ? 'selected' :  ((old('hot') == 'no') ? 'selected' : '')  }} value="no">No</option>
+                           </select>
+                      @if ($errors->has('hot'))
+                        <span id="hot-error" class="error text-danger" >{{ $errors->first('hot') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+                
+                  <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Facebook Url') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('facebook_url') ? ' has-danger' : '' }}">
+                       <input class="form-control{{ $errors->has('facebook_url') ? ' is-invalid' : '' }}" name="facebook_url" id="input-facebook_url" type="url" placeholder="{{ __('Facebook Url') }}" value="{{ isset($lead) ? $lead->facebook_url : old('facebook_url') }}" />
+                   
+                      @if ($errors->has('facebook_url'))
+                        <span id="facebook_url-error" class="error text-danger" >{{ $errors->first('facebook_url') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+               
+                  <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Linkedin Url') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('linkedin_url') ? ' has-danger' : '' }}">
+                       <input class="form-control{{ $errors->has('linkedin_url') ? ' is-invalid' : '' }}" name="linkedin_url" id="input-linkedin_url" type="url" placeholder="{{ __('Linkedin Url') }}" value="{{ isset($lead) ? $lead->linkedin_url : old('linkedin_url') }}" />
+                   
+                      @if ($errors->has('linkedin_url'))
+                        <span id="linkedin_url-error" class="error text-danger" >{{ $errors->first('linkedin_url') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
+          
+              </div>
+              <div class="card-footer ml-auto mr-auto">
+                <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
    </div>
   </div>
@@ -405,33 +355,70 @@
 @section('script')
     <script>
 
-        $(document).ready(function() {
-           $('#lightgallery').lightGallery(); 
-  // Add scrollspy to <body>
-  $('body').scrollspy({target: "#myNavbar", offset: 50});   
+        $(document).ready(function () {
+            $('.datepicker').datepicker({format: "yyyy-mm-dd"});
 
-  // Add smooth scrolling on all links inside the navbar
-  $("#myNavbar a").on('click', function(event) {
-    // Make sure this.hash has a value before overriding default behavior
-    if (this.hash !== "") {
-      // Prevent default anchor click behavior
-      event.preventDefault();
 
-      // Store hash
-      var hash = this.hash;
+        });
 
-      // Using jQuery's animate() method to add smooth page scroll
-      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 800, function(){
-   
-        // Add hash (#) to URL when done scrolling (default click behavior)
-        window.location.hash = hash-100;
-      });
-    }  // End if
-  });
-});
+
+        $(document).ready(function () {
+            $('#country-dropdown').on('change', function () {
+                var country_id = this.value;
+                $("#state-dropdown").html('');
+                $.ajax({
+                    url: "{{url('get-states-by-country')}}",
+                    type: "POST",
+                    data: {
+                        country_id: country_id,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#state-dropdown').html('<option value="">Select State</option>');
+                        $.each(result.states, function (key, value) {
+                            $("#state-dropdown").append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                        $('#city-dropdown').html('<option value="">Select State First</option>');
+                    }
+                });
+            });
+            $('#state-dropdown').on('change', function () {
+                var state_id = this.value;
+                $("#city-dropdown").html('');
+                $.ajax({
+                    url: "{{url('get-cities-by-state')}}",
+                    type: "POST",
+                    data: {
+                        state_id: state_id,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        $('#city-dropdown').html('<option value="">Select City</option>');
+                        $.each(result.cities, function (key, value) {
+                            $("#city-dropdown").append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+         
+        });
+
+
+        $("#country_state_city").submit(function (e) {
+
+
+            var country = $("#country-dropdown option:selected").text();
+            var state = $("#state-dropdown option:selected").text();
+            var city = $("#city-dropdown option:selected").text();
+
+            $('#country-dropdown option:selected').val(country);
+            $('#state-dropdown option:selected').val(state);
+            $('#city-dropdown option:selected').val(city);
+
+
+        });
     </script>
 
 @endsection

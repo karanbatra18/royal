@@ -17,7 +17,22 @@
             $profileImg = asset('assets/images/users/default.jpg');
         }
     @endphp
-    <img class="thumb_image" src="{{ $profileImg }}" alt="no image">
+    <div class="position-relative">
+    	 <img class="thumb_image"   src="{{ $profileImg }}" alt="no image"> 
+         <div class="pop-gallery position-absolute overflow-hidden" style="left:0; top:0; opacity:0">
+         	 <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/lSXpV8bDeMA/1536x2304">
+             	<img src="{{ $profileImg }}" alt="">
+			 </a>	
+         	 <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/O7qK1vQY3p0/1519x2279">
+             	<img src="{{ $profileImg }}" alt="">
+			 </a>	
+         	 <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/IbLZjKcelpM/1020x858">
+             	<img src="{{ $profileImg }}" alt="">
+			 </a>	
+         </div>	
+    </div>
+   
+   
     <div class="media-body">
         <h6 class="mb-1 mt-0">{{ $user->first_name.' '.$user->last_name }}</h6>
         <div>
