@@ -10,16 +10,24 @@ class Lead extends Model
     //use SoftDeletes;
 
     protected $fillable = [
-         'name',
-            'email',
-            'gender',
-           'dob',
-            'phone',
-            'comment',
-            'source',
-            'lead_status',
-            'assign_user',
-        
+        'name',
+        'email',
+        'alternate_email',
+        'phone',
+        'alternate_phone',
+        'comment',
+        'source',
+        'lead_status',
+        'assign_user',
+        'gender',
+        'dob',
+        'country',
+        'state',
+        'city',
+        'hot',
+        'facebook_url',
+        'linkedin_url'
+                  
     ];
 
     public function users()

@@ -1,6 +1,7 @@
 @extends('layouts.dashboard', [ 'titlePage' => __('User Profile')])
 
 @section('content')
+<link rel='stylesheet' id='fancy-css'  href='https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css' type='text/css' media='all' />
 
     <div class="content">
         <div class="container-fluid">
@@ -419,6 +420,7 @@
     </div>
 @endsection
 @section('script')
+<script type='text/javascript' src='https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js'></script>
     <script>
         $(function () {
 

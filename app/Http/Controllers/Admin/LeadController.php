@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Lead;
 use App\User;
+use App\Country;
 use App\UserProfile;
 use Illuminate\Http\Request;
 use DB;
@@ -20,7 +21,8 @@ class LeadController extends Controller
     public function create()
     {
         $users = User::get();
-        return view('admin.lead.create',compact('users'));
+        $countries= Country::get(["name","id"]);
+        return view('admin.lead.create',compact('users','countries'));
     }
 
     /**
@@ -59,7 +61,10 @@ class LeadController extends Controller
             'phone' => 'required',
         ]);
         $data = $request->all();
+        if($request->dob!="" || $request->dob!="0000-00-00")
+        {
         $data['dob'] = date('Y-m-d', strtotime($request->dob));
+        }
         $lead = Lead::create($data);
      
         return redirect()->route('lead.index')->with('success','Lead successfully Added!');;
@@ -73,7 +78,9 @@ class LeadController extends Controller
     {
         $users = User::get();
         $lead = Lead::where('id', $leadId)->first();
-        return view('admin.lead.edit', compact('lead', 'users'));
+        $countries= Country::get(["name","id"]);
+     
+        return view('admin.lead.edit', compact('lead', 'users','countries'));
     }
 
     /**
@@ -88,9 +95,11 @@ class LeadController extends Controller
             'email' => 'required|min:3|max:180',
             'phone' => 'required',
         ]);
-
+         $data = $request->all();
+         if($request->dob!="" || $request->dob!="0000-00-00")
+        {
         $data['dob'] = date('Y-m-d', strtotime($request->dob));
-     
+        }
         $lead = Lead::where('id', $leadId)->first();
         $lead->update($data);
         return redirect()->back()->with('success','Information Updated successfully!');
