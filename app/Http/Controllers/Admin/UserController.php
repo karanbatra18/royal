@@ -109,6 +109,27 @@ class UserController extends Controller
     }
 
     /**
+     * @param $userId
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($userId)
+    {
+
+        $user = User::where('id', $userId)->first();
+        $userProfile = $user->userProfile()->first();
+        $mainCast = !empty($userProfile->caste_id) ? $userProfile->caste_id : 0;
+        $castes = Caste::where('parent_id',0)->orderBy('name')->get();
+        if($mainCast) {
+            $subCastes = Caste::where('parent_id',$mainCast)->orderBy('name')->get();
+        } else {
+            $subCastes = Caste::where('parent_id','!=',0)->orderBy('name')->get();
+        }
+
+        $countries= Country::get(["name","id"]);
+        return view('admin.user.show', compact('user', 'userProfile','countries','castes','subCastes'));
+    }
+
+    /**
      * @param Request $request
      * @param $userId
      * @return mixed

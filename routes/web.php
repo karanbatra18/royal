@@ -32,7 +32,8 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     // Route::post('create', 'VideoRoomsController@createRoom');
     Route::get('users/create', 'Admin\UserController@create')->name('user.create');
     Route::get('users', 'Admin\UserController@index')->name('user.index');
-    Route::get('users/{user_id}', 'Admin\UserController@edit')->name('user.edit');
+    Route::get('users/{user_id}/edit', 'Admin\UserController@edit')->name('user.edit');
+    Route::get('users/{user_id}', 'Admin\UserController@show')->name('user.show');
     Route::post('users', 'Admin\UserController@store')->name('user.store');
     Route::put('users/{user}', 'Admin\UserController@update')->name('user.update');
     Route::DELETE('users/{id}', 'Admin\UserController@destroy')->name('user.destroy');

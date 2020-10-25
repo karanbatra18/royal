@@ -558,7 +558,7 @@
 
                           //  swal("Success!", "Profile Found!", "success");
                         } else {
-                            swal("Warning!", "No Profile Found!", "error");
+                           // swal("Warning!", "No Profile Found!", "error");
                         }
 
                     },
@@ -584,9 +584,9 @@
                         $('.other_profiles').html(data.otherHtml);
                         if (data.status == 200) {
 
-                            swal("Success!", "Profile Found!", "success");
+                           // swal("Success!", "Profile Found!", "success");
                         } else {
-                            swal("Warning!", "No Profile Found!", "error");
+                           // swal("Warning!", "No Profile Found!", "error");
                         }
 
                     },

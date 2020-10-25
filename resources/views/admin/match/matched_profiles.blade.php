@@ -17,7 +17,9 @@
             $profileImg = asset('assets/images/users/default.jpg');
         }
     @endphp
+    <a href="{{ route('user.show', ['user_id' => $user->id]) }}">
     <img class="thumb_image" src="{{ $profileImg }}" alt="no image">
+    </a>
     <div class="media-body">
         <h6 class="mb-1 mt-0">{{ $user->first_name.' '.$user->last_name }}</h6>
         <div>
