@@ -201,52 +201,105 @@
 			<div class="grid-parent">
 				<div class="grid-child-3">
 					<!-- <img  src="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg"> -->
-            <div id="lightgallery" class="grid-image">
+            {{--<div id="lightgallery" class="grid-image">
 				@for($i = 1; $i <= 5; $i++)
-					{{--@if($userProfile->)--}}
+					--}}{{--@if($userProfile->)--}}{{--
                <a href="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg">
                   <img src="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg" />
                 </a>
 				@endfor
               
-              {{-- <a style="display: none;" href="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg">
+              --}}{{-- <a style="display: none;" href="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg">
                   <img src="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg" />
                 </a>
 
                 <a style="display: none;" href="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg">
                   <img src="https://imagecdn.jeevansathi.com/18702/16/374056319-1593341057.jpeg" />
-                </a>--}}
-              </div>
+                </a>--}}{{--
+              </div>--}}
+					@php
+						$profileImg = '';
+                        if(!empty($user->profile_picture1)) {
+                            $profileImg = asset('assets/images/users/'.$user->profile_picture1);
+                        } else if(!empty($user->profile_picture2)) {
+                            $profileImg = asset('assets/images/users/'.$user->profile_picture2);
+                        } else if(!empty($user->profile_picture3)) {
+                            $profileImg = asset('assets/images/users/'.$user->profile_picture3);
+                        } else if(!empty($user->profile_picture4)) {
+                            $profileImg = asset('assets/images/users/'.$user->profile_picture3);
+                        } else if(!empty($user->profile_picture5)) {
+                            $profileImg = asset('assets/images/users/'.$user->profile_picture3);
+                        } else {
+                            $profileImg = asset('assets/images/users/medium_avatar.png');
+                        }
+					@endphp
+					<div class="position-relative">
+						<img  src="{{ $profileImg }}" alt="no image">
+						<div class="pop-gallery position-absolute overflow-hidden" style="left:0; top:0; opacity:0">
+							@for($i = 1; $i <= 5; $i++)
+                                <?php $imageName = 'profile_picture'.$i; ?>
+								@if(!empty($user->$imageName))
+									<a data-fancybox="gallery-{{ $user->id }}" href="{{ asset('assets/images/users/'.$user->$imageName) }}">
+										<img src="{{ asset('assets/images/users/'.$user->$imageName) }}" alt="">
+									</a>
+								@endif
+							@endfor
+							{{--
+                                          <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/O7qK1vQY3p0/1519x2279">
+                                             <img src="{{ $profileImg }}" alt="">
+                                         </a>
+                                          <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/IbLZjKcelpM/1020x858">
+                                             <img src="{{ $profileImg }}" alt="">
+                                         </a>	--}}
+						</div>
+					</div>
+
 				</div>
 				<div class="grid-child-3" id="bg-ger">
 					<div id="bg-ger-child">
-						<span>XYRX9881</span><span><i class="fa fa-question-circle-o"></i></span><span><i class="fa fa-shield"><sup>1</sup></i></span><span id="bg-ger-right">Last seen on 02-Oct-20</span>
+						<span>{{ !empty($userProfile->folio_no) ? $userProfile->folio_no : '' }}</span><span><i class="fa fa-question-circle-o"></i></span>{{--<span><i class="fa fa-shield"><sup>1</sup></i></span>--}}{{--<span id="bg-ger-right">Last seen on 02-Oct-20</span>--}}
 					</div>
 					<ul id="bg-ger-ul">
-						<li>26, 5' 5"</li>
-						<li>BCA</li>
-						<li>New Delhi</li>
-						<li>Not working</li>
-						<li>Hindu: Others</li>
-						<li>No Income</li>
-						<li>Hindi-Delhi</li>
-						<li>Never Married</li>
+						<li>{{ !empty($userProfile->height) ? $userProfile->height : '' }}</li>
+						<li>{{ !empty($userProfile->higher_education) ? $userProfile->higher_education : '' }}</li>
+						<li>{{ !empty($userProfile->state) ? $userProfile->state : '' }}</li>
+						{{--<li>Not working</li>--}}
+						<li>{{ !empty($userProfile->religion) ? $userProfile->religion : '' }}</li>
+						<li>{{ !empty($userProfile->annual_income) ? $userProfile->annual_income : '' }}</li>
+						<li>{{ !empty($userProfile->mother_tongue) ? $userProfile->mother_tongue : '' }}</li>
+						<li>@php
+								if($user->marital_status == 'never_married') {
+                                    $marriedStatus = 'Never Married';
+                               } else if($user->marital_status == 'divorced'){
+                               $marriedStatus = 'Divorced';
+                               } else if($user->marital_status == 'awaiting_divorce'){
+                               $marriedStatus = 'Awaiting Divorce';
+                               } else if($user->marital_status == 'widowed'){
+                               $marriedStatus = 'Widowed';
+                               } else if($user->marital_status == 'annulled'){
+                               $marriedStatus = 'Annulled';
+                               } else {
+                               $marriedStatus = '';
+                               }
+							@endphp
+							{{ $marriedStatus }}</li>
+
 					</ul>
-					<div id="bg-ger-suce-ul">
+					{{--<div id="bg-ger-suce-ul">
 						<ul>
 							<li><a href="#"><i class="material-icons">history</i></a></li>
 							<li><a href="#"><i class="material-icons">share</i></a></li>
 							<li><a href="#"><i class="material-icons">block</i></a></li>
 							<li><a href="#"><i class="material-icons">flag</i></a></li>
 						</ul>
-					</div>
+					</div>--}}
 				</div>
 
 				<div class="grid-child-3"id="share-mater">
-					<ul>
+					{{--<ul>
 						<li><a href="#"><i class="fa fa-share-alt"></i><span id="padd-20">Share</span></a></li>
 						<li><a href="#"><i class="fa fa-phone"></i><span id="padd-20">Share</span></a></li>
-					</ul>
+					</ul>--}}
 				</div>
 			</div>
 		</div>
@@ -267,50 +320,50 @@
 			      </div>
 
 				<div id="section1" class="container-fluid spadd">
-				  <p>Profile managed by Parent</p>
-				  <p class="lh18">I made this profile on behalf of my Grand Daughter [Name Hidden] ,Brought up by Grandparents Sh.Mp.Singh & Smt. Laxmi Raghav(Ranga). Her Mother Ms.Urmila Rani is a single mother. [Name Hidden] is Born n brought up in Delhi only. She is currently pursuing her BCA Correspondence. she is very good at painting, also love hearing to music.</p>
-				  <p class="pt20">About her Family<br>
-				   Not filled in</p>
-				  <p class="pt20">Education<br>Not filled in</p>
-				  <p class="pt20">Occupation<br>Not filled in</p>
+				  <p>Profile managed by {{ !empty($userProfile->profile_managed_by) ? $userProfile->profile_managed_by : 'Not filled in' }}</p>
+				  <p class="lh18">{{ !empty($userProfile->personal_detail) ? $userProfile->personal_detail : '' }}</p>
+				  {{--<p class="pt20">About her Family<br>
+				   Not filled in</p>--}}
+				  <p class="pt20">Education<br>{{ !empty($userProfile->education) ? $userProfile->education : 'Not filled in' }}</p>
+				  <p class="pt20">Occupation<br>{{ !empty($userProfile->occupation) ? $userProfile->occupation : 'Not filled in' }}</p>
 				</div>
 				  
 				<div id="section2" class="container-fluid spadd">
 					<span class="left-same-col"><i class="material-icons"> 	school</i>Education & Career</span>
 
 					<ul class="spadd-ul">
-						<li><span>Highest Education</span><span class="spadd-ul-s">BCA</span></li>
-						<li><span>School Name</span><span>Not filled in</span></li>
-						<li><span>UG Degree</span><span class="spadd-ul-s">BCA</span></li>
+						<li><span>Highest Education</span><span class="spadd-ul-s">{{ !empty($userProfile->higher_education) ? $userProfile->higher_education : 'Not filled in' }}</span></li>
+						<li><span>School Name</span><span>{{ !empty($userProfile->school) ? $userProfile->school : 'Not filled in' }}</span></li>
+{{--						<li><span>UG Degree</span><span class="spadd-ul-s">BCA</span></li>
 						<li><span>UG College </span><span>Not filled in</span></li>
-						<li><span>Other UG Degree</span><span>Not filled in</span></li>
-						<li><span>Employed In</span><span class="spadd-ul-s">Not working</span></li>
-						<li><span>Occupation</span><span class="spadd-ul-s">Not working</span></li>
-						<li><span>Organization Name</span><span>Not filled in</span></li>
-						<li><span>Annual Income</span><span class="spadd-ul-s">No Income</span></li>
+						<li><span>Other UG Degree</span><span>Not filled in</span></li>--}}
+						<li><span>Employed In</span><span class="spadd-ul-s">{{ !empty($userProfile->employed_in) ? $userProfile->employed_in : 'Not filled in' }}</span></li>
+						<li><span>Occupation</span><span class="spadd-ul-s">{{ !empty($userProfile->occupation) ? $userProfile->occupation : 'Not filled in' }}</span></li>
+						<li><span>Organization Name</span><span>{{ !empty($userProfile->organization_name) ? $userProfile->organization_name : 'Not filled in' }}</span></li>
+						<li><span>Annual Income</span><span class="spadd-ul-s">{{ !empty($userProfile->annual_income) ? $userProfile->annual_income : 'Not filled in' }}</span></li>
 					</ul>
-					<p class="spadd-ul-lp spadd-ul-s"><i class="fa fa-thumb-tack"></i>Not interested in settling abroad</p>
+					{{--<p class="spadd-ul-lp spadd-ul-s"><i class="fa fa-thumb-tack"></i>Not interested in settling abroad</p>--}}
 				</div>
 				<div id="section3" class="container-fluid spadd">
 					<span class="left-same-col"><i class="material-icons"> 	supervisor_account</i>Family Details</span>
 
 					<ul class="spadd-ul">
-						<li><span>Mother's Occupation</span><span class="spadd-ul-s">Housewife</span></li>
-						<li><span>Father's Occupation</span><span>Not filled in</span></li>
-						<li><span>Sister(s)</span><span class="spadd-ul-s">0 sister</span></li>
-						<li><span>Brother(s)</span><span>0 brother</span></li>
-						<li><span>Gothra</span><span>Sandilya</span></li>
-						<li><span>Gothra (maternal)</span><span class="spadd-ul-s">Ranga</span></li>
-						<li><span>Family Status</span><span class="spadd-ul-s">Middle Class</span></li>
-						<li><span>Family Income</span><span>Not filled in</span></li>
-						<li><span>Family Type</span><span class="spadd-ul-s">Joint Family</span></li>
+						<li><span>Mother's Occupation</span><span class="spadd-ul-s">{{ !empty($userProfile->mother_occupation) ? $userProfile->mother_occupation : 'Not filled in' }}</span></li>
+						<li><span>Father's Occupation</span><span>{{ !empty($userProfile->father_occupation) ? $userProfile->father_occupation : 'Not filled in' }} </span></li>
+					{{--	<li><span>Sister(s)</span><span class="spadd-ul-s">0 sister</span></li>
+						<li><span>Brother(s)</span><span>0 brother</span></li>--}}
+						<li><span>Gothra</span><span>{{ !empty($userProfile->gothra) ? $userProfile->gothra : 'Not filled in' }} </span></li>
+						{{--<li><span>Gothra (maternal)</span><span class="spadd-ul-s">Ranga</span></li>--}}
+						{{--<li><span>Family Status</span><span class="spadd-ul-s">Middle Class</span></li>--}}
+						<li><span>Family Income</span><span>{{ !empty($userProfile->family_income) ? $userProfile->family_income : 'Not filled in' }}</span></li>
+						{{--<li><span>Family Type</span><span class="spadd-ul-s">Joint Family</span></li>
 						<li><span>Family Values</span><span class="spadd-ul-s">Liberal</span></li>
-						<li><span>Family based out of</span><span class="spadd-ul-s">New Delhi</span></li>
+						<li><span>Family based out of</span><span class="spadd-ul-s">New Delhi</span></li>--}}
 					</ul>
-					<p class="spadd-ul-lp spadd-ul-s"><i class="fa fa-thumb-tack"></i>Not interested in settling abroad</p>
+					{{--<p class="spadd-ul-lp spadd-ul-s"><i class="fa fa-thumb-tack"></i>Not interested in settling abroad</p>--}}
 				</div>
 				
-				<div id="section3" class="container-fluid spadd">
+				{{--<div id="section3" class="container-fluid spadd">
 					<span class="left-same-col"><i class="material-icons"> 	supervisor_account</i>Lifestyle	</span>
 
 					<ul class="spadd-ul">
@@ -321,8 +374,8 @@
 						<li><span>Residential Status</span><span>Not filled in</span></li>
 						<li><span>Special Cases</span><span class="spadd-ul-s">HIV+ - No</span></li>
 					</ul>
-				</div>
-				<div id="section4" class="container-fluid spadd">
+				</div>--}}
+				{{--<div id="section4" class="container-fluid spadd">
 					<span class="left-same-col"><i class="material-icons"> 	supervisor_account</i>She Likes	</span>
 
 
@@ -332,12 +385,12 @@
 					 		<p class="pt1-5"><i class="fa fa-headphones"></i>
 					 		Listening to music, Watching television</p>
 
-				</div>
+				</div>--}}
 
 
 				<div id="section3" class="container-fluid spadd">
 					<span class="left-same-col"><i class="material-icons"> remove_red_eye</i>Desired Partner</span>
-					<p class="spaddl-p"><span class="rd-col">Her Preference</span ><span class="lhauto">---------</span><span>7 of 12 matching</span><span class="lhauto">------</span><span class="rd-col">Matches You</span></p>
+					{{--<p class="spaddl-p"><span class="rd-col">Her Preference</span ><span class="lhauto">---------</span><span>7 of 12 matching</span><span class="lhauto">------</span><span class="rd-col">Matches You</span></p>--}}
                     <table class="table">
                     	<tr>
                     		<td class="same-gre">Age</td>
@@ -351,27 +404,43 @@
                     	</tr>
                     	<tr>
                     		<td class="same-gre">Marital Status</td>
-                    		<td>Never Married</td>
+                    		<td>
+								@php
+									if($user->marital_status == 'never_married') {
+                                        $marriedStatus = 'Never Married';
+                                   } else if($user->marital_status == 'divorced'){
+                                   $marriedStatus = 'Divorced';
+                                   } else if($user->marital_status == 'awaiting_divorce'){
+                                   $marriedStatus = 'Awaiting Divorce';
+                                   } else if($user->marital_status == 'widowed'){
+                                   $marriedStatus = 'Widowed';
+                                   } else if($user->marital_status == 'annulled'){
+                                   $marriedStatus = 'Annulled';
+                                   } else {
+                                   $marriedStatus = '';
+                                   }
+								@endphp
+								{{ $marriedStatus }}</td>
                     		<td class="rd-col"><i class="fa fa-check"></i></td>
                     	</tr>
                     	<tr>
                     		<td class="same-gre">Country</td>
-                    		<td>India</td>
+                    		<td>{{ $userProfile->country }}</td>
                     		<td class="rd-col"><i class="fa fa-check"></i></td>
                     	</tr>
                     	<tr>
                     		<td class="same-gre">State/City</td>
-                    		<td> Delhi, Noida, Gurgaon, Faridabad, Ghaziabad, Greater Noida, Sahibabad</td>
+                    		<td> Delhi, {{ $userProfile->state.', '.$userProfile->city }}</td>
                     		<td class="rd-col"><i class="fa fa-check"></i></td>
                     	</tr>
                     	<tr>
                     		<td class="same-gre">Religion</td>
-                    		<td>Hindu, Other</td>
+                    		<td>{{ $userProfile->religion ? ucfirst($userProfile->religion) : null }}</td>
                     		<td class="rd-col"><i class="fa fa-check"></i></td>
                     	</tr>
                     	<tr>
                     		<td class="same-gre">Mother tongue</td>
-                    		<td>Hindi-Delhi, Hindi-MP/CG, Hindi-UP/UK, Hindi-Bihar/Jharkhand, Haryanvi</td>
+                    		<td>{{ $userProfile->mother_tongue ? ucfirst($userProfile->mother_tongue) : null }}</td>
                     		<td class="rd-col"><i class="fa fa-check"></i></td>
                     	</tr>
                     </table>
@@ -383,15 +452,15 @@
 				<div class="pt-49">
 				   <p>Horoscope</p>
 				</div>
-				  <p class="pt20 pr-17" >Place of Birth<br>Not filled in</p>
-				  <p class="pt20 pr-17">Date of Birth<br>Jun 27, 1994</p>
-				  <p class="pt20 pr-17">Time of Birth<br>Not filled in</p>
-				  <p class="pt20 pr-17">Horoscope match is not necessary</p>
+				  <p class="pt20 pr-17" >Place of Birth<br>{{ $userProfile->birth_place ? ucfirst($userProfile->birth_place) : null }}</p>
+				  <p class="pt20 pr-17">Date of Birth<br>{{ !empty($user->dob) ? date('M d, Y', strtotime($user->dob)) : null }}</p>
+				  <p class="pt20 pr-17">Time of Birth<br>{{ !empty($userProfile->birth_time) ? $userProfile->birth_time : 'Not filled in' }}</p>
+				 {{-- <p class="pt20 pr-17">Horoscope match is not necessary</p>
 				  <p class="pt20 pr-17">Sun sign<br>Not filled in</p>
 				  <p class="pt20 pr-17">Rashi/Moon Sign<br>Jun 27, 1994</p>
-				  <p class="pt20 pr-17">Nakshatra<br>Not filled in</p>
-				  <p class="pt20 pr-17">Manglik<br>Non Manglik</p>
-				 <p class="pt20 pr-17"> <a href="#" class="pr-17a">Request horoscope</a></p>
+				  <p class="pt20 pr-17">Nakshatra<br>Not filled in</p>--}}
+				  <p class="pt20 pr-17">Manglik<br>{{ (!empty($userProfile->mangalik_status) && $userProfile->mangalik_status == 'Yes') ? 'Manglik' : 'Not Manglik' }}</p>
+				{{-- <p class="pt20 pr-17"> <a href="#" class="pr-17a">Request horoscope</a></p>--}}
 
 			</div>
 		</div>

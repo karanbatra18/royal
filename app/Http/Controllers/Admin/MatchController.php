@@ -208,7 +208,7 @@ class MatchController extends Controller
                 ->where($occupationCondition)
                 ->where($challangedCondition)
                 ->where($annualIncomeCondition)
-                ->paginate(1);
+                ->paginate(10);
                 //->get();
 
             $returnHTML = view('admin.match.search_profile')->with(compact('user'))->render();
@@ -304,7 +304,7 @@ class MatchController extends Controller
                 ->where($casteCondition)
                 ->where($ageCondition)
                 ->where($maritalStatusCondition)
-                ->paginate(1);
+                ->paginate(10);
 
             $returnHTML = view('admin.match.search_profile')->with(compact('user'))->render();
             if($otherProfiles->count()){

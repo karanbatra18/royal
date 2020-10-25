@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1a0febe-622e-48e1-b4a8-f7947ea90268" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bootstrap/error_log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_23_181327_create_leads_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/users/1602773285.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/users/1602773322.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/users/1602773338.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/users/1603355863.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/lead/create.blade.php_old" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/lead/edit.blade.php__html single user page" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/LeadController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/LeadController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Lead.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Lead.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_25_194242_create_leads_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/lead/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/lead/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/lead/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/lead/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/match/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/match/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MatchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MatchController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/match/matched_profiles.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/match/matched_profiles.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/match/search_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/match/search_profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/show.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,13 +105,13 @@
           <entry key="html" value="1" />
           <entry key="js" value="2" />
           <entry key="json" value="1" />
-          <entry key="php" value="114" />
+          <entry key="php" value="115" />
           <entry key="php--" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="41" />
+          <entry key="Blade" value="42" />
           <entry key="CSS" value="2" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="1" />
@@ -141,17 +129,17 @@
           <entry key="html" value="2" />
           <entry key="js" value="6" />
           <entry key="json" value="1" />
-          <entry key="php" value="9177" />
+          <entry key="php" value="9553" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="4556" />
+          <entry key="Blade" value="4903" />
           <entry key="CSS" value="58" />
           <entry key="HTML" value="2" />
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="6" />
-          <entry key="PHP" value="4621" />
+          <entry key="PHP" value="4650" />
           <entry key="PLAIN_TEXT" value="111" />
         </counts>
       </usages-collector>
@@ -173,6 +161,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="595">
               <caret line="35" column="30" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/match/matched_profiles.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="18" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -204,41 +201,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1870">
-              <caret line="118" column="20" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/MatchController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4148">
-              <caret line="252" column="47" selection-start-line="252" selection-start-column="31" selection-end-line="252" selection-end-column="47" />
-              <folding>
-                <element signature="e#47#63#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/match/matched_profiles.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/match/search_profile.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+            <state relative-caret-position="357">
+              <caret line="83" column="67" selection-start-line="83" selection-start-column="67" selection-end-line="83" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -246,8 +213,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/user/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="206" column="55" selection-start-line="206" selection-start-column="55" selection-end-line="206" selection-end-column="55" />
+            <state relative-caret-position="390">
+              <caret line="362" column="127" selection-start-line="362" selection-start-column="20" selection-end-line="362" selection-end-column="131" />
+              <folding>
+                <element signature="e#6375#6407#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/MatchController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="306" column="26" selection-start-line="306" selection-start-column="18" selection-end-line="306" selection-end-column="26" />
+              <folding>
+                <element signature="e#47#63#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/match/search_profile.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="393">
+              <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="115" />
             </state>
           </provider>
         </entry>
@@ -256,14 +247,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>users</find>
-      <find>form-control border</find>
-      <find>select</find>
-      <find>select2</find>
-      <find>user_profiles</find>
-      <find>selected_folio</find>
-      <find>age</find>
-      <find>country</find>
       <find>state</find>
       <find>country-dropdown</find>
       <find>selete</find>
@@ -286,6 +269,14 @@
       <find>.custom-file-input</find>
       <find>thumb_image</find>
       <find>lightGallery</find>
+      <find>Marital</find>
+      <find>&gt;&gt;</find>
+      <find>Family Detai</find>
+      <find>{{--&lt;li&gt;&lt;span&gt;Family Status&lt;/span&gt;&lt;span class=&quot;spadd-ul-s&quot;&gt;Middle Class&lt;/span&gt;&lt;/li&gt;--}}Life</find>
+      <find>share</find>
+      <find>request</find>
+      <find>Not interested in set</find>
+      <find>paginate</find>
     </findStrings>
     <replaceStrings>
       <replace>form-control</replace>
@@ -343,14 +334,14 @@
         <option value="$PROJECT_DIR$/database/migrations/2020_08_12_112709_create_user_profiles_table.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/css/material-dashboard.css" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/MatchController.php" />
         <option value="$PROJECT_DIR$/public/assets/demo/demo.css" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/match/search_profile.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/match/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/user/show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/match/search_profile.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/match/matched_profiles.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/user/show.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/MatchController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" />
       </list>
     </option>
   </component>
@@ -502,28 +493,20 @@
             <path>
               <item name="royal" type="b2602c69:ProjectViewProjectNode" />
               <item name="royal" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="royal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="royal" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="royal" type="b2602c69:ProjectViewProjectNode" />
               <item name="royal" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="royal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="royal" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="royal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="royal" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="match" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="royal" type="b2602c69:ProjectViewProjectNode" />
@@ -605,12 +588,12 @@
       <workItem from="1603387603188" duration="666000" />
       <workItem from="1603428030798" duration="607000" />
       <workItem from="1603542315362" duration="4000" />
-      <workItem from="1603626429674" duration="1402000" />
+      <workItem from="1603626429674" duration="7509000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116092000" />
+    <option name="totallyTimeSpent" value="122199000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -953,41 +936,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/match/search_profile.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="118" column="20" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="20" />
+        <state relative-caret-position="393">
+          <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/match/matched_profiles.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="18" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="362" column="127" selection-start-line="362" selection-start-column="20" selection-end-line="362" selection-end-column="131" />
+          <folding>
+            <element signature="e#6375#6407#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/MatchController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4148">
-          <caret line="252" column="47" selection-start-line="252" selection-start-column="31" selection-end-line="252" selection-end-column="47" />
+        <state relative-caret-position="178">
+          <caret line="306" column="26" selection-start-line="306" selection-start-column="18" selection-end-line="306" selection-end-column="26" />
           <folding>
             <element signature="e#47#63#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/match/search_profile.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="206" column="55" selection-start-line="206" selection-start-column="55" selection-end-line="206" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/match/matched_profiles.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+        <state relative-caret-position="357">
+          <caret line="83" column="67" selection-start-line="83" selection-start-column="67" selection-end-line="83" selection-end-column="67" />
         </state>
       </provider>
     </entry>

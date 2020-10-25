@@ -81,7 +81,7 @@ class UserController extends Controller
         $data = $request->all();
         $data['dob'] = date('Y-m-d', strtotime($request->dob));
         $user = User::create($data);
-        $user->userProfile()->create([]);
+        $user->userProfile()->create(['folio_no' => 'RMP'.$user->id]);
 
         return redirect()->route('user.create')->with('success','User successfully Added!');;
     }

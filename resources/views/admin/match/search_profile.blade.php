@@ -15,11 +15,32 @@
             $profileImg = asset('assets/images/users/default.jpg');
         }
     @endphp
-    <a href="{{ route('user.show', ['user_id' => $user->id]) }}">
+    {{--<a href="{{ route('user.show', ['user_id' => $user->id]) }}">
     <img class="thumb_image" src="{{ $profileImg }}" alt="no image">
-    </a>
+    </a>--}}
+
+    <div class="position-relative">
+        <img class="thumb_image"   src="{{ $profileImg }}" alt="no image">
+        <div class="pop-gallery position-absolute overflow-hidden" style="left:0; top:0; opacity:0">
+            @for($i = 1; $i <= 5; $i++)
+                <?php $imageName = 'profile_picture'.$i; ?>
+                @if(!empty($user->$imageName))
+                    <a data-fancybox="gallery-{{ $user->id }}" href="{{ asset('assets/images/users/'.$user->$imageName) }}">
+                        <img src="{{ asset('assets/images/users/'.$user->$imageName) }}" alt="">
+                    </a>
+                @endif
+            @endfor
+            {{--
+                          <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/O7qK1vQY3p0/1519x2279">
+                             <img src="{{ $profileImg }}" alt="">
+                         </a>
+                          <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/IbLZjKcelpM/1020x858">
+                             <img src="{{ $profileImg }}" alt="">
+                         </a>	--}}
+        </div>
+    </div>
     <div class="media-body">
-        <h3 class="mb-1 mt-0">{{ $user->first_name.' '.$user->last_name }}</h3>
+        <h3 class="mb-1 mt-0"><a href="{{ route('user.show', ['user_id' => $user->id]) }}">{{ $user->first_name.' '.$user->last_name }}</a></h3>
         <div>
             <ul class="list-unstyled row mb-0">
                 <li class="col-md-3 ">{{ $user->email }}</li>
@@ -46,6 +67,7 @@
                 <li class="col-md-3 ">{{ $user->mangalik_status == 'yes' ? 'Manglik' : 'Not Manglik' }}</li>
                 <li class="col-md-3 ">{{ $user->higher_education }} {{ !empty($user->college) ? ','.$user->college : '' }}</li>
                 <li class="col-md-3 ">{{ $user->city.', '.$user->state }}</li>
+                <li class="col-md-3 "><a href="{{ route('user.show', ['user_id' => $user->id]) }}">View Profile</a></li>
             </ul>
         </div>
     </div>
