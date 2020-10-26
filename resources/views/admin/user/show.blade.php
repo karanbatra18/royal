@@ -441,25 +441,25 @@
                                         <li>
 
 
-                                                    {{ $income }}</li>
-                                                <li>{{ !empty($userProfile->mother_tongue) ? $userProfile->mother_tongue : '' }}</li>
+                                            {{ $income }}</li>
+                                        <li>{{ !empty($userProfile->mother_tongue) ? $userProfile->mother_tongue : '' }}</li>
 
-                                                {{--<li>{{ !empty($userProfile->higher_education) ? $userProfile->higher_education : '' }}</li>--}}
-                                                <li>{{ !empty($userProfile->state) ? $userProfile->state : '' }}</li>
-                                                <li>@php
-                                                        if($user->marital_status == 'never_married') {
-                                                            $marriedStatus = 'Never Married';
-                                                       } else if($user->marital_status == 'divorced'){
-                                                       $marriedStatus = 'Divorced';
-                                                       } else if($user->marital_status == 'awaiting_divorce'){
-                                                       $marriedStatus = 'Awaiting Divorce';
-                                                       } else if($user->marital_status == 'widowed'){
-                                                       $marriedStatus = 'Widowed';
-                                                       } else if($user->marital_status == 'annulled'){
-                                                       $marriedStatus = 'Annulled';
-                                                       } else {
-                                                       $marriedStatus = '';
-                                                       }
+                                        {{--<li>{{ !empty($userProfile->higher_education) ? $userProfile->higher_education : '' }}</li>--}}
+                                        <li>{{ !empty($userProfile->state) ? $userProfile->state : '' }}</li>
+                                        <li>@php
+                                                if($user->marital_status == 'never_married') {
+                                                    $marriedStatus = 'Never Married';
+                                               } else if($user->marital_status == 'divorced'){
+                                               $marriedStatus = 'Divorced';
+                                               } else if($user->marital_status == 'awaiting_divorce'){
+                                               $marriedStatus = 'Awaiting Divorce';
+                                               } else if($user->marital_status == 'widowed'){
+                                               $marriedStatus = 'Widowed';
+                                               } else if($user->marital_status == 'annulled'){
+                                               $marriedStatus = 'Annulled';
+                                               } else {
+                                               $marriedStatus = '';
+                                               }
                                             @endphp
                                             {{ $marriedStatus }}</li>
 
@@ -822,7 +822,19 @@
                                  <p class="pt20 pr-17">Rashi/Moon Sign<br>Jun 27, 1994</p>
                                  <p class="pt20 pr-17">Nakshatra<br>Not filled in</p>--}}
                                 <p class="pt20 pr-17">
-                                    Manglik<br>{{ !empty($userProfile->mangalik_status) ? $userProfile->mangalik_status : 'Not Filled' }}
+                                    Manglik<br>
+                                    @if(empty($userProfile->mangalik_status))
+                                        Not Filled
+
+                                    @elseif($userProfile->mangalik_status == 'mangalik')
+                                        Mangalik
+                                    @elseif($userProfile->mangalik_status == 'anshik_manglik')
+                                        Anshik manglik
+                                    @elseif($userProfile->mangalik_status == 'non_mangalik')
+                                        Non Manglik
+
+
+                                    @endif
                                 </p>
                                 {{-- <p class="pt20 pr-17"> <a href="#" class="pr-17a">Request horoscope</a></p>--}}
 
@@ -842,26 +854,26 @@
 
         $(document).ready(function () {
             $('#lightgallery').lightGallery();
-            // Add scrollspy to <body>
+// Add scrollspy to <body>
             $('body').scrollspy({target: "#myNavbar", offset: 50});
 
-            // Add smooth scrolling on all links inside the navbar
+// Add smooth scrolling on all links inside the navbar
             $("#myNavbar a").on('click', function (event) {
-                // Make sure this.hash has a value before overriding default behavior
+// Make sure this.hash has a value before overriding default behavior
                 if (this.hash !== "") {
-                    // Prevent default anchor click behavior
+// Prevent default anchor click behavior
                     event.preventDefault();
 
-                    // Store hash
+// Store hash
                     var hash = this.hash;
 
-                    // Using jQuery's animate() method to add smooth page scroll
-                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+// Using jQuery's animate() method to add smooth page scroll
+// The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
                     $('html, body').animate({
                         scrollTop: $(hash).offset().top
                     }, 800, function () {
 
-                        // Add hash (#) to URL when done scrolling (default click behavior)
+// Add hash (#) to URL when done scrolling (default click behavior)
                         window.location.hash = hash - 100;
                     });
                 }  // End if
