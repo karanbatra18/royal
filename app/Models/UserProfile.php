@@ -58,6 +58,16 @@ class UserProfile extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function caste(): BelongsTo
+    {
+        return $this->belongsTo(Caste::class);
+    }
+
+    public function subCaste(): BelongsTo
+    {
+        return $this->belongsTo(Caste::class,'sub_caste_id','id');
+    }
 }
 
 
