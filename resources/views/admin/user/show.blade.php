@@ -822,7 +822,7 @@
                                  <p class="pt20 pr-17">Rashi/Moon Sign<br>Jun 27, 1994</p>
                                  <p class="pt20 pr-17">Nakshatra<br>Not filled in</p>--}}
                                 <p class="pt20 pr-17">
-                                    Manglik<br>{{ (!empty($userProfile->mangalik_status) && $userProfile->mangalik_status == 'Yes') ? 'Manglik' : 'Not Manglik' }}
+                                    Manglik<br>{{ !empty($userProfile->mangalik_status) ? $userProfile->mangalik_status : 'Not Filled' }}
                                 </p>
                                 {{-- <p class="pt20 pr-17"> <a href="#" class="pr-17a">Request horoscope</a></p>--}}
 

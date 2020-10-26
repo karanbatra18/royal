@@ -125,12 +125,12 @@
           <entry key="html" value="2" />
           <entry key="js" value="6" />
           <entry key="json" value="1" />
-          <entry key="php" value="10029" />
+          <entry key="php" value="10038" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="5344" />
+          <entry key="Blade" value="5353" />
           <entry key="CSS" value="58" />
           <entry key="HTML" value="2" />
           <entry key="JSON" value="1" />
@@ -183,7 +183,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/admin/user/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="178">
-              <caret line="583" column="81" selection-start-line="583" selection-start-column="81" selection-end-line="583" selection-end-column="81" />
+              <caret line="824" column="119" selection-start-line="824" selection-start-column="119" selection-end-line="824" selection-end-column="119" />
             </state>
           </provider>
         </entry>
@@ -240,7 +240,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mang</find>
       <find>occ</find>
       <find>prof</find>
       <find>port</find>
@@ -270,6 +269,7 @@
       <find>heigh</find>
       <find>annual_income</find>
       <find>annual</find>
+      <find>manglik</find>
     </findStrings>
     <replaceStrings>
       <replace>form-control</replace>
@@ -590,12 +590,12 @@
       <workItem from="1603428030798" duration="607000" />
       <workItem from="1603542315362" duration="4000" />
       <workItem from="1603626429674" duration="8109000" />
-      <workItem from="1603715352666" duration="5056000" />
+      <workItem from="1603715352666" duration="5370000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127855000" />
+    <option name="totallyTimeSpent" value="128169000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -972,7 +972,7 @@
     <entry file="file://$PROJECT_DIR$/resources/views/admin/user/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
-          <caret line="583" column="81" selection-start-line="583" selection-start-column="81" selection-end-line="583" selection-end-column="81" />
+          <caret line="824" column="119" selection-start-line="824" selection-start-column="119" selection-end-line="824" selection-end-column="119" />
         </state>
       </provider>
     </entry>
