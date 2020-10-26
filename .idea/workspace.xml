@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1a0febe-622e-48e1-b4a8-f7947ea90268" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/match/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/match/index.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -101,13 +101,13 @@
           <entry key="html" value="1" />
           <entry key="js" value="2" />
           <entry key="json" value="1" />
-          <entry key="php" value="118" />
+          <entry key="php" value="119" />
           <entry key="php--" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="43" />
+          <entry key="Blade" value="44" />
           <entry key="CSS" value="2" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="1" />
@@ -125,12 +125,12 @@
           <entry key="html" value="2" />
           <entry key="js" value="6" />
           <entry key="json" value="1" />
-          <entry key="php" value="10107" />
+          <entry key="php" value="10116" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="5422" />
+          <entry key="Blade" value="5431" />
           <entry key="CSS" value="58" />
           <entry key="HTML" value="2" />
           <entry key="JSON" value="1" />
@@ -143,11 +143,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/LeadController.php">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/match/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="83" column="5" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+            <state relative-caret-position="144">
+              <caret line="435" column="78" selection-start-line="435" selection-start-column="78" selection-end-line="435" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -179,7 +179,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/user/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="382">
@@ -218,7 +218,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/MatchController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5066">
+            <state relative-caret-position="1470">
               <caret line="306" column="26" selection-start-line="306" selection-start-column="18" selection-end-line="306" selection-end-column="26" />
               <folding>
                 <element signature="e#47#63#0#PHP" expanded="true" />
@@ -240,8 +240,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>prof</find>
-      <find>port</find>
       <find>chall</find>
       <find>Age</find>
       <find>challanged</find>
@@ -268,8 +266,10 @@
       <find>heigh</find>
       <find>annual_income</find>
       <find>annual</find>
-      <find>manglik</find>
       <find>mangalik_status</find>
+      <find>manglik</find>
+      <find>selected_folio</find>
+      <find>user_profiles</find>
     </findStrings>
     <replaceStrings>
       <replace>form-control</replace>
@@ -328,13 +328,13 @@
         <option value="$PROJECT_DIR$/public/assets/css/material-dashboard.css" />
         <option value="$PROJECT_DIR$/public/assets/demo/demo.css" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/match/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/match/search_profile.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/match/matched_profiles.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/MatchController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" />
         <option value="$PROJECT_DIR$/app/Models/UserProfile.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/user/show.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/match/index.blade.php" />
       </list>
     </option>
   </component>
@@ -507,6 +507,14 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="royal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="royal" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -590,12 +598,12 @@
       <workItem from="1603428030798" duration="607000" />
       <workItem from="1603542315362" duration="4000" />
       <workItem from="1603626429674" duration="8109000" />
-      <workItem from="1603715352666" duration="5676000" />
+      <workItem from="1603715352666" duration="8188000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128475000" />
+    <option name="totallyTimeSpent" value="130987000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -882,13 +890,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.git/MERGE_MSG" />
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/match/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10030">
-          <caret line="590" column="29" selection-start-line="590" selection-start-column="29" selection-end-line="590" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -924,23 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/MatchController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5066">
-          <caret line="306" column="26" selection-start-line="306" selection-start-column="18" selection-end-line="306" selection-end-column="26" />
-          <folding>
-            <element signature="e#47#63#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/match/search_profile.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -973,6 +957,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="382">
           <caret line="836" column="42" lean-forward="true" selection-start-line="836" selection-start-column="42" selection-end-line="836" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/MatchController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="306" column="26" selection-start-line="306" selection-start-column="18" selection-end-line="306" selection-end-column="26" />
+          <folding>
+            <element signature="e#47#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/match/search_profile.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/match/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="435" column="78" selection-start-line="435" selection-start-column="78" selection-end-line="435" selection-end-column="78" />
         </state>
       </provider>
     </entry>

@@ -433,8 +433,8 @@
                     $(".selected_email").val('').trigger('change');
                     $(".selected_folio").val('').trigger('change');
                 } else {
-                    $(".selected_email").select2("val", $(this).val());
-                    $(".selected_folio").select2("val", $(this).val());
+                    $(".selected_email").val($(this).val()).trigger('change');
+                    $(".selected_folio").val($(this).val()).trigger('change');
                 }
 
             });
@@ -444,8 +444,8 @@
                     $(".user_profiles").val('').trigger('change');
                     $(".selected_folio").val('').trigger('change');
                 } else {
-                    $(".user_profiles").select2("val", $(this).val());
-                    $(".selected_folio").select2("val", $(this).val());
+                    $(".user_profiles").val($(this).val()).trigger('change');
+                    $(".selected_folio").val($(this).val()).trigger('change');
                 }
 
             });
@@ -455,8 +455,8 @@
                     $(".user_profiles").val('').trigger('change');
                     $(".selected_email").val('').trigger('change');
                 } else {
-                    $(".user_profiles").select2("val", $(this).val());
-                    $(".selected_email").select2("val", $(this).val());
+                    $(".user_profiles").val($(this).val()).trigger('change');
+                    $(".selected_email").val($(this).val()).trigger('change');
                 }
 
             });
