@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1a0febe-622e-48e1-b4a8-f7947ea90268" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/UserProfile.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/UserProfile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/user/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/show.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -103,13 +101,13 @@
           <entry key="html" value="1" />
           <entry key="js" value="2" />
           <entry key="json" value="1" />
-          <entry key="php" value="117" />
+          <entry key="php" value="118" />
           <entry key="php--" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="42" />
+          <entry key="Blade" value="43" />
           <entry key="CSS" value="2" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="1" />
@@ -127,12 +125,12 @@
           <entry key="html" value="2" />
           <entry key="js" value="6" />
           <entry key="json" value="1" />
-          <entry key="php" value="9813" />
+          <entry key="php" value="10029" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="5128" />
+          <entry key="Blade" value="5344" />
           <entry key="CSS" value="58" />
           <entry key="HTML" value="2" />
           <entry key="JSON" value="1" />
@@ -145,15 +143,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/match/matched_profiles.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="18" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/LeadController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -193,8 +182,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/user/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="275" column="40" selection-start-line="275" selection-start-column="40" selection-end-line="275" selection-end-column="40" />
+            <state relative-caret-position="178">
+              <caret line="583" column="81" selection-start-line="583" selection-start-column="81" selection-end-line="583" selection-end-column="81" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/user/edit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="492" column="57" lean-forward="true" selection-start-line="460" selection-start-column="48" selection-end-line="492" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -242,10 +240,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>annual_income</find>
-      <find>religion</find>
-      <find>Income</find>
-      <find>manga</find>
       <find>mang</find>
       <find>occ</find>
       <find>prof</find>
@@ -272,6 +266,10 @@
       <find>profile</find>
       <find>profile_m</find>
       <find>Desired Partner</find>
+      <find>Profile Managed By</find>
+      <find>heigh</find>
+      <find>annual_income</find>
+      <find>annual</find>
     </findStrings>
     <replaceStrings>
       <replace>form-control</replace>
@@ -488,26 +486,28 @@
             <path>
               <item name="royal" type="b2602c69:ProjectViewProjectNode" />
               <item name="royal" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="royal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="royal" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="royal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="royal" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Models" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="royal" type="b2602c69:ProjectViewProjectNode" />
               <item name="royal" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="royal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="royal" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="royal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="royal" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="royal" type="b2602c69:ProjectViewProjectNode" />
@@ -590,12 +590,12 @@
       <workItem from="1603428030798" duration="607000" />
       <workItem from="1603542315362" duration="4000" />
       <workItem from="1603626429674" duration="8109000" />
-      <workItem from="1603715352666" duration="3824000" />
+      <workItem from="1603715352666" duration="5056000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126623000" />
+    <option name="totallyTimeSpent" value="127855000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -882,13 +882,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.git/MERGE_MSG" />
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10336">
-          <caret line="608" column="68" selection-start-line="608" selection-start-column="49" selection-end-line="608" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/match/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10030">
@@ -969,10 +962,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="492" column="57" lean-forward="true" selection-start-line="460" selection-start-column="48" selection-end-line="492" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/user/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="275" column="40" selection-start-line="275" selection-start-column="40" selection-end-line="275" selection-end-column="40" />
+        <state relative-caret-position="178">
+          <caret line="583" column="81" selection-start-line="583" selection-start-column="81" selection-end-line="583" selection-end-column="81" />
         </state>
       </provider>
     </entry>
