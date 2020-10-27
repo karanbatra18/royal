@@ -79,7 +79,14 @@ class UserController extends Controller
 
 
         $data = $request->all();
+
         $data['dob'] = date('Y-m-d', strtotime($request->dob));
+       // value['userData']['dob'] = date('Y-m-d', strtotime($value['userData']['dob']));
+        $from = new DateTime($data['dob']);
+        $to = new DateTime('today');
+        $age = $from->diff($to)->y;
+        $data['age'] = $age;
+
         $user = User::create($data);
         $user->userProfile()->create(['folio_no' => 'RMP'.$user->id]);
 
@@ -142,6 +149,17 @@ class UserController extends Controller
         ]);*/
 
         $data = $request->all();
+
+        if(isset($request->dob) && !empty($request->dob)) {
+            $data['dob'] = date('Y-m-d', strtotime($request->dob));
+            // value['userData']['dob'] = date('Y-m-d', strtotime($value['userData']['dob']));
+            $from = new DateTime($data['dob']);
+            $to = new DateTime('today');
+            $age = $from->diff($to)->y;
+            $data['age'] = $age;
+        }
+
+
         $user = User::where('id', $userId)->first();
         $user->update($data);
 
