@@ -1493,10 +1493,10 @@
                                             <select class="form-control{{ $errors->has('gothra') ? ' is-invalid' : '' }}"
                                                     name="gothra" id="input-gothra" required>
                                                 <option value="">Please select</option>
-                                                <option {{ (isset($userProfile->gothra) && $userProfile->gothra == 'sanatan') ? 'selected' : ((old('gender') == 'sanatan') ? 'selected' : '') }} value="sanatan">
+                                                <option {{ (isset($userProfile->gothra) && $userProfile->gothra == 'sanatan') ? 'selected' : ((old('gothra') == 'sanatan') ? 'selected' : '') }} value="sanatan">
                                                     Sanatan
                                                 </option>
-                                                <option {{ (isset($userProfile->gothra) && $userProfile->gothra == 'other') ? 'selected' : ((old('gender') == 'other') ? 'selected' : '') }} value="other">
+                                                <option {{ (isset($userProfile->gothra) && $userProfile->gothra == 'other') ? 'selected' : ((old('gothra') == 'other') ? 'selected' : '') }} value="other">
                                                     Other
                                                 </option>
 

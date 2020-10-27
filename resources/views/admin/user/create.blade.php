@@ -68,7 +68,7 @@
                           <option value="">Please select</option>
                           <option {{ old('gender') == 'male' ? 'selected' : '' }} value="male">Male</option>
                           <option {{ old('gender') == 'female' ? 'selected' : '' }} value="female">Female</option>
-                          <option {{ old('gender') == 'transGender' ? 'selected' : '' }} value="transGender">TransGender</option>
+                          <option {{ old('gender') == 'transgender' ? 'selected' : '' }} value="transgender">TransGender</option>
                     </select>
                       @if ($errors->has('email'))
                         <span id="gender-error" class="error text-danger" >{{ $errors->first('gender') }}</span>
@@ -96,9 +96,11 @@
                     <div class="form-group{{ $errors->has('marital_status') ? ' has-danger' : '' }}">
                       <select class="form-control{{ $errors->has('marital_status') ? ' is-invalid' : '' }}" name="marital_status" id="input-marital_status" required >
                           <option value="">Please select</option>
-                          <option {{ old('marital_status') == 'single' ? 'selected' : '' }} value="single">Single</option>
-                          <option {{ old('marital_status') == 'married' ? 'selected' : '' }} value="married">Married</option>
+                          <option {{ old('marital_status') == 'never_married' ? 'selected' : '' }} value="never_married">Never Married</option>
                           <option {{ old('marital_status') == 'divorced' ? 'selected' : '' }} value="divorced">Divorced</option>
+                          <option {{ old('marital_status') == 'awaiting_divorce' ? 'selected' : '' }} value="awaiting_divorce">Awaiting Divorce</option>
+                          <option {{ old('marital_status') == 'widowed' ? 'selected' : '' }} value="widowed">Widowed</option>
+                          <option {{ old('marital_status') == 'annulled' ? 'selected' : '' }} value="annulled">Annulled</option>
                     </select>
                       @if ($errors->has('marital_status'))
                         <span id="married-error" class="error text-danger" >{{ $errors->first('marital_status') }}</span>

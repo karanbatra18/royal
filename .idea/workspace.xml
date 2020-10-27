@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1a0febe-622e-48e1-b4a8-f7947ea90268" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -102,13 +103,13 @@
           <entry key="html" value="1" />
           <entry key="js" value="2" />
           <entry key="json" value="1" />
-          <entry key="php" value="120" />
+          <entry key="php" value="121" />
           <entry key="php--" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="44" />
+          <entry key="Blade" value="45" />
           <entry key="CSS" value="2" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="1" />
@@ -126,12 +127,12 @@
           <entry key="html" value="2" />
           <entry key="js" value="6" />
           <entry key="json" value="1" />
-          <entry key="php" value="10166" />
+          <entry key="php" value="10172" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="5431" />
+          <entry key="Blade" value="5437" />
           <entry key="CSS" value="58" />
           <entry key="HTML" value="2" />
           <entry key="JSON" value="1" />
@@ -145,15 +146,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/match/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="435" column="78" selection-start-line="435" selection-start-column="78" selection-end-line="435" selection-end-column="78" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database/seeds/ProfileSeeder.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-6614">
@@ -161,6 +153,24 @@
               <folding>
                 <element signature="e#7#20#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/user/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="70" column="66" selection-start-line="70" selection-start-column="66" selection-end-line="70" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/user/edit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="82" column="162" selection-start-line="82" selection-start-column="151" selection-end-line="82" selection-end-column="162" />
             </state>
           </provider>
         </entry>
@@ -188,15 +198,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="14212">
               <caret line="836" column="42" selection-start-line="836" selection-start-column="42" selection-end-line="836" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/user/edit.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21607">
-              <caret line="1271" column="63" selection-start-line="1271" selection-start-column="52" selection-end-line="1271" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -244,8 +245,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>chall</find>
-      <find>Age</find>
       <find>challanged</find>
       <find>month</find>
       <find>Profile Picture</find>
@@ -261,7 +260,6 @@
       <find>Not interested in set</find>
       <find>paginate</find>
       <find>dob</find>
-      <find>gender</find>
       <find>n</find>
       <find>profile</find>
       <find>profile_m</find>
@@ -274,6 +272,9 @@
       <find>manglik</find>
       <find>selected_folio</find>
       <find>user_profiles</find>
+      <find>married</find>
+      <find>single</find>
+      <find>gender</find>
     </findStrings>
     <replaceStrings>
       <replace>form-control</replace>
@@ -296,7 +297,6 @@
         <option value="$PROJECT_DIR$/resources/views/admin/swyamber/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/Swyamber.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/swyamber/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/user/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/_partials/dashboard/_header.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/swyamber/edit.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/SwyamberController.php" />
@@ -328,7 +328,6 @@
         <option value="$PROJECT_DIR$/app/Helpers/Global.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/database/migrations/2020_08_12_112709_create_user_profiles_table.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/css/material-dashboard.css" />
         <option value="$PROJECT_DIR$/public/assets/demo/demo.css" />
         <option value="$PROJECT_DIR$/routes/web.php" />
@@ -339,6 +338,8 @@
         <option value="$PROJECT_DIR$/resources/views/admin/user/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/match/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/user/create.blade.php" />
       </list>
     </option>
   </component>
@@ -490,17 +491,6 @@
             <path>
               <item name="royal" type="b2602c69:ProjectViewProjectNode" />
               <item name="royal" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="royal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="royal" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="seeds" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="royal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="royal" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -515,14 +505,6 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="royal" type="b2602c69:ProjectViewProjectNode" />
-              <item name="royal" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="match" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="royal" type="b2602c69:ProjectViewProjectNode" />
@@ -615,12 +597,12 @@
       <workItem from="1603626429674" duration="8109000" />
       <workItem from="1603715352666" duration="8452000" />
       <workItem from="1603770538897" duration="584000" />
-      <workItem from="1603798590681" duration="772000" />
+      <workItem from="1603798590681" duration="1401000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132607000" />
+    <option name="totallyTimeSpent" value="133236000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -677,13 +659,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="210" column="16" lean-forward="true" selection-start-line="210" selection-start-column="16" selection-end-line="210" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
@@ -949,13 +924,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21607">
-          <caret line="1271" column="63" selection-start-line="1271" selection-start-column="52" selection-end-line="1271" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Caste.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -1001,6 +969,20 @@
           <folding>
             <element signature="e#7#20#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="82" column="162" selection-start-line="82" selection-start-column="151" selection-end-line="82" selection-end-column="162" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="70" column="66" selection-start-line="70" selection-start-column="66" selection-end-line="70" selection-end-column="66" />
         </state>
       </provider>
     </entry>
