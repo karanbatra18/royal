@@ -1229,7 +1229,7 @@
                                             <input class="form-control{{ $errors->has('birth_time') ? ' is-invalid' : '' }}"
                                                    name="birth_time" id="input-birth_time" type="time"
                                                    placeholder="{{ __('Time of Birth') }}"
-                                                   value="{{ isset($userProfile->birth_time) ? $userProfile->birth_time : old('birth_time') }} required"/>
+                                                   value="{{ isset($userProfile->birth_time) ? date('H:i',strtotime($userProfile->birth_time)) : old('birth_time') }} required"/>
                                             @if ($errors->has('birth_time'))
                                                 <span id="birth_time-error" class="error text-danger"
                                                       for="input-birth_time">{{ $errors->first('birth_time') }}</span>
@@ -1315,7 +1315,7 @@
                                                    name="non_veg"
                                                    id="input-non_veg" type="checkbox"
                                                    {{ (isset($userProfile->non_veg) && $userProfile->non_veg == 1) ? 'selected' : ((old('non_veg') == 1) ? 'checked' : '') }} value="1"
-                                                   required/>
+                                                   />
                                             @if ($errors->has('non_veg'))
                                                 <span id="non_veg-error" class="error text-danger"
                                                       for="input-non_veg">{{ $errors->first('non_veg') }}</span>
