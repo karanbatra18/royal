@@ -126,12 +126,12 @@
           <entry key="html" value="2" />
           <entry key="js" value="6" />
           <entry key="json" value="1" />
-          <entry key="php" value="10193" />
+          <entry key="php" value="10194" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="5458" />
+          <entry key="Blade" value="5459" />
           <entry key="CSS" value="58" />
           <entry key="HTML" value="2" />
           <entry key="JSON" value="1" />
@@ -168,8 +168,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/user/edit.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="1231" column="104" selection-start-line="1231" selection-start-column="104" selection-end-line="1231" selection-end-column="104" />
+            <state relative-caret-position="280">
+              <caret line="1231" column="175" selection-start-line="1231" selection-start-column="175" selection-end-line="1231" selection-end-column="175" />
             </state>
           </provider>
         </entry>
@@ -213,8 +213,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Models/UserProfile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1122">
-              <caret line="68" column="63" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
+            <state relative-caret-position="178">
+              <caret line="41" column="16" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -244,7 +244,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Profile Picture</find>
       <find>.custom-file-input</find>
       <find>thumb_image</find>
       <find>lightGallery</find>
@@ -272,8 +271,9 @@
       <find>married</find>
       <find>gender</find>
       <find>single</find>
-      <find>non</find>
       <find>input-birth_time</find>
+      <find>non</find>
+      <find>non_veg</find>
     </findStrings>
     <replaceStrings>
       <replace>form-control</replace>
@@ -490,6 +490,12 @@
             <path>
               <item name="royal" type="b2602c69:ProjectViewProjectNode" />
               <item name="royal" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="royal" type="b2602c69:ProjectViewProjectNode" />
+              <item name="royal" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -596,12 +602,12 @@
       <workItem from="1603626429674" duration="8109000" />
       <workItem from="1603715352666" duration="8452000" />
       <workItem from="1603770538897" duration="584000" />
-      <workItem from="1603798590681" duration="2118000" />
+      <workItem from="1603798590681" duration="2443000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133953000" />
+    <option name="totallyTimeSpent" value="134278000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -930,13 +936,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/UserProfile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="68" column="63" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/MatchController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5066">
@@ -978,10 +977,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/UserProfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/user/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="1231" column="104" selection-start-line="1231" selection-start-column="104" selection-end-line="1231" selection-end-column="104" />
+        <state relative-caret-position="280">
+          <caret line="1231" column="175" selection-start-line="1231" selection-start-column="175" selection-end-line="1231" selection-end-column="175" />
         </state>
       </provider>
     </entry>
