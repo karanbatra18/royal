@@ -4806,6 +4806,7 @@ tbody.collapse.show {
   background-clip: border-box;
   border: 1px solid #eeeeee;
   border-radius: 0.25rem;
+
 }
 
 .card>hr {
@@ -15570,8 +15571,8 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .main-panel>.content {
-  margin-top: 70px;
-  padding: 30px 15px;
+  margin-top: 35px;
+  padding: 30px 0px;
   min-height: calc(100vh - 123px);
 }
 
@@ -17363,12 +17364,15 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 .card {
   border: 0;
   margin-bottom: 30px;
-  margin-top: 30px;
+  margin-top: 80px;
   border-radius: 6px;
   color: #333333;
   background: #fff;
   width: 100%;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+#mynavbar .active,.btn-mynav:hover{
+  background: #000;
 }
 
 .card .card-category:not([class*="text-"]) {
@@ -19752,5 +19756,47 @@ Copyright (c) 2015 Daniel Eden
     display: none !important;
   }
 }
+#mynavbar {
+  overflow: hidden;
+  background-color: #8e24aa;
+  position: sticky;
+  z-index: 9999;
+  top: 0;
+}
+html{
+  scroll-behavior: smooth;
+}
+#mynavbar a {
+  float: left;
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 14px 14px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
+#mynavbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#mynavbar a.active {
+  background-color: #000;
+  color: white;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
 /*# sourceMappingURL=dashboard-free.css.map */

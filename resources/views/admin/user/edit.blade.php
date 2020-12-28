@@ -1,6 +1,26 @@
 @extends('layouts.dashboard', [ 'titlePage' => __('User Profile')])
 
 @section('content')
+<div id="mynavbar">
+  <a href="#basic-information" class="btn-mynav active">Basic Information</a>
+  <a href="#update-user" class="btn-mynav">Update User</a>
+  <a href="#profile-picture" class="btn-mynav">Profile Picture</a>
+    <a href="#about-us" class="btn-mynav">About Us</a>
+
+  <a href="#education" class="btn-mynav">Education</a>
+
+  <a href="#career" class="btn-mynav">Career</a>
+
+  <a href="#contact-details" class="btn-mynav">Contact Details</a>
+  
+    <a href="#kundli" class="btn-mynav">Kundli</a>
+
+  <a href="#lifestyle" class="btn-mynav">LifeStyle</a>
+
+  <a href="#family" class="btn-mynav">Family</a>
+
+
+</div>
     <div class="content">
         <div class="container-fluid">
             <form method="post" action="{{ route('user.update', ['user' => $user]) }}" autocomplete="off"
@@ -8,8 +28,8 @@
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card ">
+                    <div class="col-md-12" id="basic-information">
+                        <div class="card">
 
 
                             <div class="card-header card-header-primary">
@@ -173,7 +193,7 @@
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" id="update-user">
                         <div class="card ">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">{{ __('Update User') }}</h4>
@@ -513,7 +533,7 @@
                 </div>
             </form>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12"  id="profile-picture">
                     <form method="post" action="{{ route('user.update_profile', ['user' => $user]) }}" autocomplete="off"
                           class="form-horizontal" enctype="multipart/form-data">
                         @csrf
@@ -712,7 +732,7 @@
                 <input name="_method" type="hidden" value="PUT">
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" id="about-us">
                         <form method="post" action="" class="form-horizontal">
                             @csrf
 
@@ -856,7 +876,7 @@
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" id="education">
 
 
                         <div class="card ">
@@ -956,10 +976,10 @@
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" id="career">
 
 
-                        <div class="card ">
+                        <div class="card" >
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">{{ __('Career') }}</h4>
                                 <p class="card-category">{{ __('Career') }}</p>
@@ -1064,9 +1084,9 @@
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" id="contact-details">
 
-                        <div class="card ">
+                        <div class="card " >
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">{{ __('Contact Details') }}</h4>
                                 <p class="card-category">{{ __('Contact Details') }}</p>
@@ -1212,7 +1232,7 @@
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" id="kundli">
 
                         <div class="card ">
                             <div class="card-header card-header-primary">
@@ -1295,7 +1315,7 @@
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" id="lifestyle">
 
 
                         <div class="card ">
@@ -1406,9 +1426,9 @@
                 @csrf
                 <input name="_method" type="hidden" value="PUT">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" id="family">
 
-                        <div class="card ">
+                        <div class="card " >
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">{{ __('Family') }}</h4>
                                 <p class="card-category">{{ __('Family Details') }}</p>
@@ -1577,6 +1597,9 @@
 @endsection
 
 @section('script')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
     <script>
 
         $(document).ready(function () {
@@ -1664,5 +1687,27 @@
         });
     </script>
 
+<script>
+$(window).scroll(function(){
+  var sticky = $('#mynavbar'),
+      scroll = $(window).scrollTop();
+
+  if (scroll >= 100) sticky.addClass('sticky');
+  else sticky.removeClass('sticky');
+});
+</script>
+
+<script>
+// Add active class to the current button (highlight it)
+var header = document.getElementById("mynavbar");
+var btns = header.getElementsByClassName("btn-mynav");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace(" active", "");
+  this.className = " active";
+  });
+}
+</script>
 @endsection
 

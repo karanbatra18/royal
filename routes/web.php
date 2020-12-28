@@ -29,6 +29,15 @@ Route::get('/clear-cache', function() {
 Route::prefix('admin')->middleware('auth')->group(function() {
 
     Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
+    Route::get('members/create', 'Admin\MemberController@create')->name('member.create');
+    Route::get('members', 'Admin\MemberController@index')->name('member.index');
+     Route::post('members', 'Admin\MemberController@store')->name('member.store');
+     Route::get('members/{user_id}/edit', 'Admin\MemberController@edit')->name('member.edit');
+         Route::put('members/{user}', 'Admin\MemberController@update')->name('member.update');
+    Route::DELETE('members/{id}', 'Admin\MemberController@destroy')->name('member.destroy');
+      Route::post('members/status/{id}', 'Admin\MemberController@updateStatus')->name('member.status.update');
+  
+    
     // Route::post('create', 'VideoRoomsController@createRoom');
     Route::get('users/create', 'Admin\UserController@create')->name('user.create');
     Route::get('users', 'Admin\UserController@index')->name('user.index');
@@ -76,8 +85,7 @@ Route::put('emails/{email_id}', 'Admin\EmailController@update')->name('email.upd
     Route::put('leads/{lead_id}', 'Admin\LeadController@update')->name('lead.update');
     Route::get('leads', 'Admin\LeadController@index')->name('lead.index');
     Route::get('leads/edit/{lead_id}', 'Admin\LeadController@edit')->name('lead.edit');
-   
-    
+     Route::post('leads', 'Admin\LeadController@search')->name('lead.search');
 });
 
 Route::get('country-state-city','CountryStateCityController@index');

@@ -21,8 +21,8 @@
     <img class="thumb_image" src="{{ $profileImg }}" alt="no image">
     </a>--}}
     <div class="position-relative">
-    	 <img class="thumb_image"   src="{{ $profileImg }}" alt="no image"> 
-         <div class="pop-gallery position-absolute overflow-hidden" style="left:0; top:0; opacity:0">
+    	 <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/O7qK1vQY3p0/1519x2279"> <img class="thumb_image"   src="{{ $profileImg }}" alt="no image"> </a>
+         <div class="pop-gallery position-absolute w-100 h-100" style="left:0; top:0; opacity:0; overflow:hidden">
              @for($i = 1; $i <= 5; $i++)
                  <?php $imageName = 'profile_picture'.$i; ?>
                  @if(!empty($user->$imageName))

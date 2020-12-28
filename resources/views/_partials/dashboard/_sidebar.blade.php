@@ -14,6 +14,8 @@
                 <p>Dashboard</p>
             </a>
         </li>
+             @if(auth()->user()->role_id == 1)
+                       
         <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
                         <span class="sidebar-mini"> <i class="material-icons">person</i></span>
@@ -117,7 +119,7 @@
                     </div>
         </li>
         
-        
+        @endif;
         
           <li class="nav-item">
                     <a class="nav-link" data-toggle="collapse" href="#leadm" aria-expanded="false">
@@ -129,12 +131,15 @@
                     </a>
                     <div class="collapse" id="leadm" style="">
                       <ul class="nav">
+                                 @if(auth()->user()->role_id == 1)
+      
                         <li class="nav-item">
                           <a class="nav-link" href="{{ route('lead.create') }}">
                             <span class="sidebar-mini">  <i class="material-icons">person</i> </span>
                             <span class="sidebar-normal">Add Lead </span>
                           </a>
                         </li>
+                        @endif;
                         <li class="nav-item">
                           <a class="nav-link" href="{{ route('lead.index') }}">
                             <span class="sidebar-mini"> <i class="material-icons">person</i></span>
@@ -145,6 +150,36 @@
                     </div>
         </li>
         
+             @if(auth()->user()->role_id == 1)
+                       
+            <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#laravelExamples" aria-expanded="false">
+                        <span class="sidebar-mini"> <i class="material-icons">person</i></span>
+                         
+                        <p>Member Management
+                        <b class="caret"></b>
+                      </p>
+                    </a>
+                    <div class="collapse" id="laravelExamples" style="">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('member.create') }}">
+                            <span class="sidebar-mini">  <i class="material-icons">person</i> </span>
+                            <span class="sidebar-normal">Add Member </span>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('member.index') }}">
+                            <span class="sidebar-mini"> <i class="material-icons">person</i></span>
+                            <span class="sidebar-normal"> All Member</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+        </li>
+        
+    
+        
 
         
            <li class="nav-item">
@@ -153,6 +188,6 @@
                 <p>Email Templates</p>
             </a>
         </li>
-
+@endif;
     </ul>
 </div>

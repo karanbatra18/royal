@@ -259,7 +259,7 @@ class MatchController extends Controller
             ->where($conditionId)
             ->first();
 
-
+ //dd($user);
         $response = [];
         if(!empty($user)){
             $userGender = $user->gender;
@@ -305,7 +305,7 @@ class MatchController extends Controller
                 ->where($ageCondition)
                 ->where($maritalStatusCondition)
                 ->paginate(10);
-
+           
             $returnHTML = view('admin.match.search_profile')->with(compact('user'))->render();
             if($otherProfiles->count()){
                 $returnOtherHTML = view('admin.match.matched_profiles')->with(compact('otherProfiles'))->render();

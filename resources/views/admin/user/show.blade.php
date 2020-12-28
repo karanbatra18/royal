@@ -68,6 +68,8 @@
             border-bottom: 1px solid;
             font-size: 24px;
             margin-bottom: 10px;
+            color: #3C4858;
+    font-weight: 400;
         }
 
         .fa-question-circle-o {
@@ -102,8 +104,9 @@
         }
 
         #bg-ger-ul li {
-            font-size: 13px;
+            font-size: 14px;
             padding: 3px 0px;
+            font-weight: 400;
         }
 
         #bg-ger-suce-ul ul {
@@ -151,7 +154,7 @@
 
         .pt20 {
             padding-top: 15px;
-            color: silver;
+            color: #34495e;
         }
 
         #section1 {
@@ -213,6 +216,7 @@
             color: #d9475c;
             font-weight: inherit;
             position: relative;
+            font-weight: 400;
         }
 
         .left-same-col i {
@@ -237,6 +241,7 @@
             color: #999;
             font-size: 15px;
             letter-spacing: .50px;
+            font-weight: 400;
         }
 
         .spadd-ul-s {
@@ -288,7 +293,7 @@
         }
 
         .pt-49 {
-            padding-top: 44px;
+            padding-top: 30px;
             border-bottom: 1px solid;
             margin-bottom: 15px;
         }
@@ -296,10 +301,14 @@
         .pt-49 p {
             font-size: 17px;
             padding-left: 16px;
+                color: #d9475c;
+                font-weight: 400;
         }
 
         .pr-17 {
             padding: 15px 16px 0px 16px;
+font-size: 15px;
+                font-weight: 400;  
         }
 
         .pr-17a {
@@ -404,7 +413,8 @@
                                                          }
                                     @endphp
                                     <div class="position-relative">
-                                        <img src="{{ $profileImg }}" alt="no image">
+                                        <img src="/royal/public/assets/images/users/dipika-img.jpg" alt="no image" width="192">
+                                       <!-- <img src="{{ $profileImg }}" alt="no image">-->
                                         <div class="pop-gallery position-absolute overflow-hidden"
                                              style="left:0; top:0; opacity:0">
                                             @for($i = 1; $i <= 5; $i++)
@@ -521,11 +531,11 @@
                                                     class="spadd-ul-s">{{ !empty($user->first_name) ? $user->first_name : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>Lastname</span><span>{{ !empty($user->last_name) ? $user->last_name : 'Not filled in' }}</span>
+                                            <span>Lastname</span><span class="spadd-ul-s">{{ !empty($user->last_name) ? $user->last_name : 'Not filled in' }}</span>
                                         </li>
                                         {{--						<li><span>UG Degree</span><span class="spadd-ul-s">BCA</span></li>
-                                                                <li><span>UG College </span><span>Not filled in</span></li>
-                                                                <li><span>Other UG Degree</span><span>Not filled in</span></li>--}}
+                                                                <li><span>UG College </span><span class="spadd-ul-s">Not filled in</span></li>
+                                                                <li><span>Other UG Degree</span><span class="spadd-ul-s">Not filled in</span></li>--}}
                                         <li><span>Email</span><span
                                                     class="spadd-ul-s">{{ !empty($user->email) ? $user->email : 'Not filled in' }}</span>
                                         </li>
@@ -533,7 +543,7 @@
                                                     class="spadd-ul-s">{{ !empty($user->gender) ? $user->gender : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>Date of Birth</span><span>{{ !empty($user->dob) ? date('M d, Y', strtotime($user->dob)) : 'Not filled in' }}</span>
+                                            <span>Date of Birth</span><span class="spadd-ul-s">{{ !empty($user->dob) ? date('M d, Y', strtotime($user->dob)) : 'Not filled in' }}</span>
                                         </li>
                                         <li><span>Marital Status</span><span
                                                     class="spadd-ul-s">{{ $marriedStatus }}</span></li>
@@ -551,11 +561,11 @@
                                                     class="spadd-ul-s">{{ !empty($userProfile->profile_managed_by) ? $userProfile->profile_managed_by : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>Portfolio Number</span><span>{{ !empty($userProfile->folio_no) ? $userProfile->folio_no : 'Not filled in' }}</span>
+                                            <span>Portfolio Number</span><span class="spadd-ul-s">{{ !empty($userProfile->folio_no) ? $userProfile->folio_no : 'Not filled in' }}</span>
                                         </li>
                                         {{--						<li><span>UG Degree</span><span class="spadd-ul-s">BCA</span></li>
-                                                                <li><span>UG College </span><span>Not filled in</span></li>
-                                                                <li><span>Other UG Degree</span><span>Not filled in</span></li>--}}
+                                                                <li><span>UG College </span><span class="spadd-ul-s">Not filled in</span></li>
+                                                                <li><span>Other UG Degree</span><span class="spadd-ul-s">Not filled in</span></li>--}}
                                         <li><span>Height</span><span
                                                     class="spadd-ul-s">{{ !empty($userProfile->height) ? $userProfile->height : 'Not filled in' }}</span>
                                         </li>
@@ -563,7 +573,7 @@
                                                     class="spadd-ul-s">{{ !empty($userProfile->religion) ? ucfirst($userProfile->religion) : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>Caste</span><span>{{ !empty($userProfile->caste_id) ? $userProfile->caste->name : 'Not filled in' }}</span>
+                                            <span>Caste</span><span class="spadd-ul-s">{{ !empty($userProfile->caste_id) ? $userProfile->caste->name : 'Not filled in' }}</span>
                                         </li>
                                         <li><span>Sub Caste</span><span
                                                     class="spadd-ul-s">{{ !empty($userProfile->sub_caste_id) ? $userProfile->subCaste->name : 'Not filled in' }}</span>
@@ -594,7 +604,7 @@
                                                     class="spadd-ul-s">{{ !empty($userProfile->personal_detail) ? $userProfile->personal_detail : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>Weight</span><span>{{ !empty($userProfile->weight) ? $userProfile->weight : 'Not filled in' }}</span>
+                                            <span>Weight</span><span class="spadd-ul-s">{{ !empty($userProfile->weight) ? $userProfile->weight : 'Not filled in' }}</span>
                                         </li>
                                         <li><span>Body Type</span><span
                                                     class="spadd-ul-s">{{ !empty($userProfile->body_type) ? $userProfile->body_type : 'Not filled in' }}</span>
@@ -603,7 +613,7 @@
                                                     class="spadd-ul-s">{{ !empty($userProfile->complexion) ? ucfirst($userProfile->complexion) : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>Challanged</span><span>{{ !empty($userProfile->challanged) ? $userProfile->challanged : 'Not filled in' }}</span>
+                                            <span>Challanged</span><span class="spadd-ul-s">{{ !empty($userProfile->challanged) ? $userProfile->challanged : 'Not filled in' }}</span>
                                         </li>
 
                                     </ul>
@@ -620,10 +630,10 @@
                                                     class="spadd-ul-s">{{ !empty($userProfile->higher_education) ? $userProfile->higher_education : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>College</span><span>{{ !empty($userProfile->college) ? $userProfile->college : 'Not filled in' }}</span>
+                                            <span>College</span><span class="spadd-ul-s">{{ !empty($userProfile->college) ? $userProfile->college : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>School Name</span><span>{{ !empty($userProfile->school) ? $userProfile->school : 'Not filled in' }}</span>
+                                            <span>School Name</span><span class="spadd-ul-s">{{ !empty($userProfile->school) ? $userProfile->school : 'Not filled in' }}</span>
                                         </li>
 
                                         <li><span>About Career</span><span
@@ -636,7 +646,7 @@
                                                     class="spadd-ul-s">{{ !empty($userProfile->occupation) ? $userProfile->occupation : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>Organization Name</span><span>{{ !empty($userProfile->organization_name) ? $userProfile->organization_name : 'Not filled in' }}</span>
+                                            <span>Organization Name</span><span class="spadd-ul-s">{{ !empty($userProfile->organization_name) ? $userProfile->organization_name : 'Not filled in' }}</span>
                                         </li>
                                         {{--<li><span>Annual Income</span><span class="spadd-ul-s">{{ !empty($userProfile->annual_income) ? $userProfile->annual_income : 'Not filled in' }}</span></li>--}}
                                     </ul>
@@ -653,10 +663,10 @@
                                                     class="spadd-ul-s">{{ !empty($user->alternate_email) ? $user->alternate_email : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>Phone</span><span>{{ !empty($user->phone) ? $user->phone : 'Not filled in' }}</span>
+                                            <span>Phone</span><span class="spadd-ul-s">{{ !empty($user->phone) ? $user->phone : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>Alternate Phone</span><span>{{ !empty($user->alternate_phone) ? $user->alternate_phone : 'Not filled in' }}</span>
+                                            <span>Alternate Phone</span><span class="spadd-ul-s">{{ !empty($user->alternate_phone) ? $user->alternate_phone : 'Not filled in' }}</span>
                                         </li>
 
                                         <li><span>Family Phone Number</span><span
@@ -680,7 +690,7 @@
                                                     class="spadd-ul-s">{{ !empty($userProfile->non_veg) ? 'Yes' : 'No' }}</span>
                                         </li>
                                         <li>
-                                            <span>Drink</span><span>{{ !empty($userProfile->drink) ? 'Yes' : 'No' }} </span>
+                                            <span>Drink</span><span class="spadd-ul-s">{{ !empty($userProfile->drink) ? 'Yes' : 'No' }} </span>
                                         </li>
                                         <li><span>Somke</span><span
                                                     class="spadd-ul-s">{{ !empty($userProfile->smoke) ? 'Yes' : 'No' }}</span>
@@ -689,7 +699,7 @@
                                                     class="spadd-ul-s">{{ !empty($userProfile->own_house) ? 'Yes' : 'No' }}</span>
                                         </li>
                                         <li>
-                                            <span>Own a Car</span><span>{{ !empty($userProfile->own_car) ? 'Yes' : 'No' }} </span>
+                                            <span>Own a Car</span><span class="spadd-ul-s">{{ !empty($userProfile->own_car) ? 'Yes' : 'No' }} </span>
                                         </li>
                                     </ul>
                                     {{--<p class="spadd-ul-lp spadd-ul-s"><i class="fa fa-thumb-tack"></i>Not interested in settling abroad</p>--}}
@@ -702,7 +712,7 @@
                                                     class="spadd-ul-s">{{ !empty($userProfile->father_name) ? $userProfile->father_name : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>Father's Occupation</span><span>{{ !empty($userProfile->father_occupation) ? $userProfile->father_occupation : 'Not filled in' }} </span>
+                                            <span>Father's Occupation</span><span class="spadd-ul-s">{{ !empty($userProfile->father_occupation) ? $userProfile->father_occupation : 'Not filled in' }} </span>
                                         </li>
                                         <li><span>Mother Name</span><span
                                                     class="spadd-ul-s">{{ !empty($userProfile->mother_name) ? $userProfile->mother_name : 'Not filled in' }}</span>
@@ -714,18 +724,18 @@
                                         {{--	<li><span>Sister(s)</span><span class="spadd-ul-s">0 sister</span></li>
                                             <li><span>Brother(s)</span><span>0 brother</span></li>--}}
                                         <li>
-                                            <span>Gothra</span><span>{{ !empty($userProfile->gothra) ? $userProfile->gothra : 'Not filled in' }} </span>
+                                            <span>Gothra</span><span class="spadd-ul-s">{{ !empty($userProfile->gothra) ? $userProfile->gothra : 'Not filled in' }} </span>
                                         </li>
                                         {{--<li><span>Gothra (maternal)</span><span class="spadd-ul-s">Ranga</span></li>--}}
                                         {{--<li><span>Family Status</span><span class="spadd-ul-s">Middle Class</span></li>--}}
                                         <li>
-                                            <span>Family Income</span><span>{{ !empty($userProfile->family_income) ? $userProfile->family_income : 'Not filled in' }}</span>
+                                            <span>Family Income</span><span class="spadd-ul-s">{{ !empty($userProfile->family_income) ? $userProfile->family_income : 'Not filled in' }}</span>
                                         </li>
                                         <li>
-                                            <span>Living with Parents</span><span>{{ !empty($userProfile->living_with_parents) ? 'Yes' : 'No' }}</span>
+                                            <span>Living with Parents</span><span class="spadd-ul-s">{{ !empty($userProfile->living_with_parents) ? 'Yes' : 'No' }}</span>
                                         </li>
                                         <li>
-                                            <span>Willing to go abroad</span><span>{{ !empty($userProfile->abroad_willing) ? 'Yes' : 'No' }}</span>
+                                            <span>Willing to go abroad</span><span class="spadd-ul-s">{{ !empty($userProfile->abroad_willing) ? 'Yes' : 'No' }}</span>
                                         </li>
                                         {{--<li><span>Family Type</span><span class="spadd-ul-s">Joint Family</span></li>
                                         <li><span>Family Values</span><span class="spadd-ul-s">Liberal</span></li>
@@ -739,10 +749,10 @@
 
                                     <ul class="spadd-ul">
                                         <li><span>Habits</span><span class="spadd-ul-s">Not filled in</span></li>
-                                        <li><span>Assets</span><span>Not filled in</span></li>
+                                        <li><span>Assets</span><span class="spadd-ul-s">Not filled in</span></li>
                                         <li><span>Languages Known</span><span class="spadd-ul-s">Not filled in</span></li>
-                                        <li><span>Blood Group</span><span>Not filled in</span></li>
-                                        <li><span>Residential Status</span><span>Not filled in</span></li>
+                                        <li><span>Blood Group</span><span class="spadd-ul-s">Not filled in</span></li>
+                                        <li><span>Residential Status</span><span class="spadd-ul-s">Not filled in</span></li>
                                         <li><span>Special Cases</span><span class="spadd-ul-s">HIV+ - No</span></li>
                                     </ul>
                                 </div>--}}

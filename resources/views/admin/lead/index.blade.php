@@ -20,7 +20,33 @@
                             <p class="card-category"> Manage Leads</p>
                         </div>
                         <div class="card-body">
-                            
+                             <form method="post" action="{{ route('lead.search') }}" autocomplete="off" class="form-horizontal">
+                                
+                              <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group{{ $errors->has('from_date') ? ' has-danger' : '' }}">
+                      <input class="datepicker form-control{{ $errors->has('from_date') ? ' is-invalid' : '' }}" name="from_date" id="from_date" type="text" placeholder="{{ __('From') }}" value="{{ old('from_date') }}" required autocomplete="off" />
+                    
+                      @if ($errors->has('from_date'))
+                        <span id="from_date-error" class="error text-danger" >{{ $errors->first('from_date') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                                  
+                                    <div class="col-sm-4">
+                    <div class="form-group{{ $errors->has('to_date') ? ' has-danger' : '' }}">
+                      <input class="datepicker form-control{{ $errors->has('to_date') ? ' is-invalid' : '' }}" name="to_date" id="to_date" type="text" placeholder="{{ __('To') }}" value="{{ old('to_date') }}" required autocomplete="off" />
+                    
+                      @if ($errors->has('to_date'))
+                        <span id="to_date-error" class="error text-danger" >{{ $errors->first('to_date') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                                   <button type="button"  id="go" class="btn btn-primary">{{ __('Go') }}</button>
+                </div>
+                                 
+                                 
+                             </form> 
                             <div class="table-responsive">
                                 <table class="table table-bordered data-table">
                                     <thead>
@@ -53,7 +79,8 @@
     <script src="{{ asset('assets/js/jquery.enhanced-switch.js') }}"></script>
     <script type="text/javascript">
         $(function () {
-
+            var from_date=$('#from_date').val();
+            var to_date=$('#to_date').val();
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -63,7 +90,11 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('lead.index') }}",
+                ajax: {
+    url:'{{ route("lead.index") }}',
+    data:{from_date:from_date, to_date:to_date}
+   },
+              //  ajax: "{{ route('lead.index') }}",
                 "initComplete":function( settings, json){
                     console.log(json);
                     // call your function here
@@ -85,5 +116,56 @@
       
 
         });
+    
+          $('#go').click(function () {
+            var from_date=$('#from_date').val();
+            var to_date=$('#to_date').val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+ $('.data-table').DataTable().destroy();
+            var table = $('.data-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+    url:'{{ route("lead.index") }}',
+    data:{from_date:from_date, to_date:to_date}
+   },
+              //  ajax: "{{ route('lead.index') }}",
+                "initComplete":function( settings, json){
+                    console.log(json);
+                    // call your function here
+                  /*  $(".switch").enhancedSwitch();
+                    // Set the second switch to be active after it has been initialised
+                    $(".switch.active").enhancedSwitch('setTrue');*/
+                },
+            
+                columns: [
+                    {data: 'name', name: 'name'},
+                    {data: 'email', name: 'email'},
+                    {data: 'phone', name: 'phone'},
+                    {data: 'source', name: 'source'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
+                ]
+            });
+
+          
+      
+
+        });
+  
     </script>
+    
+    <script>
+
+        $(document).ready(function(){
+            $('#from_date').datepicker({ format:"yyyy-mm-dd" });
+
+            $('#to_date').datepicker({ format:"yyyy-mm-dd" });
+        });
+    </script>
+
+
 @endsection
