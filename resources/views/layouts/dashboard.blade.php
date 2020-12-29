@@ -23,7 +23,8 @@
     <link href="{{ asset('assets/css/material-dashboard.css?v=2.1.2') }}" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet"/>
-    
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet"/>
+
 </head>
 
 

@@ -25,6 +25,7 @@
     <div class="position-relative">
          <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/O7qK1vQY3p0/1519x2279"> <img class="thumb_image"   src="{{ $profileImg }}" alt="no image"> </a>
          <div class="pop-gallery position-absolute w-100 h-100" style="left:0; top:0; opacity:0; overflow:hidden">
+
              @for($i = 1; $i <= 5; $i++)
                  <?php $imageName = 'profile_picture'.$i; ?>
                  @if(!empty($user->$imageName))
@@ -45,7 +46,10 @@
    
 
     <div class="media-body">
-        <h3 class="mb-1 mt-0"><a href="{{ route('user.show', ['user_id' => $user->id]) }}">{{ $user->first_name.' '.$user->last_name }}</a></h3>
+        <h3 class="mb-1 mt-0">
+            <a href="{{ route('user.show', ['user_id' => $user->id]) }}">{{ $user->first_name.' '.$user->last_name }}</a>
+           {{-- <input type="checkbox" name="send_profile[{{ $user->id }}]" class="pdf_profile">--}}
+        </h3>
         <div>
             <ul class="list-unstyled row mb-0">
                 <li class="col-md-3 ">{{ $user->email }}</li>

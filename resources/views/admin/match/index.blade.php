@@ -37,7 +37,7 @@
                                         @endif
                                     </select>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label class="position-static">Search By Email</label>
                                     <select class="form-control selected_email" name="selected_email">
                                         <option value="" data-email="" data-folio="" selected>--Search Email--</option>
@@ -49,6 +49,19 @@
                                     </select>
                                    {{-- <input type="text" class="form-control selected_email" placeholder="Email-id"
                                            name="selected_email">--}}
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="position-static">Search By Phone No</label>
+                                    <select class="form-control selected_phone" name="selected_phone">
+                                        <option value="" data-email="" data-folio="" selected>--Search Phone--</option>
+                                        @if($users->count())
+                                            @foreach($users as $user)
+                                                <option value="{{ $user->id }}" data-email="{{ $user->email }}" data-folio="{{ !empty($user->userProfile) ? $user->userProfile->folio_no : ''}}">{{ $user->phone }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    {{-- <input type="text" class="form-control selected_email" placeholder="Email-id"
+                                            name="selected_email">--}}
                                 </div>
                                 <div class="col-md-3">
                                     <label class="position-static">Search By Folio No</label>
@@ -64,10 +77,11 @@
                                            name="selected_folio">--}}
 
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-12">
                                     <button type="submit" class="btn btn-primary search_pro">Go</button>
                                 </div>
                             </div>
+
                             <div class="border p-3 mt-5 bg-light insert_user_profile">
                                 <p>Please Select Folio number or Email to find matches.</p>
                                 {{--<div class="media">
@@ -424,17 +438,26 @@
     <script>
         $(function () {
 
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             $('.user_profiles').select2();
             $('.selected_email').select2();
+            $('.selected_phone').select2();
             $('.selected_folio').select2();
 
             $(document.body).on("select2:closing",".user_profiles",function(){
                 if($(this).val() == '') {
                     $(".selected_email").val('').trigger('change');
                     $(".selected_folio").val('').trigger('change');
+                    $(".selected_phone").val('').trigger('change');
                 } else {
                     $(".selected_email").val($(this).val()).trigger('change');
                     $(".selected_folio").val($(this).val()).trigger('change');
+                    $(".selected_phone").val($(this).val()).trigger('change');
                 }
 
             });
@@ -443,9 +466,11 @@
                 if($(this).val() == '') {
                     $(".user_profiles").val('').trigger('change');
                     $(".selected_folio").val('').trigger('change');
+                    $(".selected_phone").val('').trigger('change');
                 } else {
                     $(".user_profiles").val($(this).val()).trigger('change');
                     $(".selected_folio").val($(this).val()).trigger('change');
+                    $(".selected_phone").val($(this).val()).trigger('change');
                 }
 
             });
@@ -454,10 +479,49 @@
                 if($(this).val() == '') {
                     $(".user_profiles").val('').trigger('change');
                     $(".selected_email").val('').trigger('change');
+                    $(".selected_phone").val('').trigger('change');
                 } else {
                     $(".user_profiles").val($(this).val()).trigger('change');
                     $(".selected_email").val($(this).val()).trigger('change');
+                    $(".selected_phone").val($(this).val()).trigger('change');
                 }
+
+            });
+
+            $(document.body).on("select2:closing",".selected_phone",function(){
+                if($(this).val() == '') {
+                    $(".user_profiles").val('').trigger('change');
+                    $(".selected_email").val('').trigger('change');
+                    $(".selected_folio").val('').trigger('change');
+                } else {
+                    $(".user_profiles").val($(this).val()).trigger('change');
+                    $(".selected_email").val($(this).val()).trigger('change');
+                    $(".selected_folio").val($(this).val()).trigger('change');
+                }
+
+            });
+
+            $(document).on("click",".pro_send_btn",function(){
+
+                var checkValues = $('input[name="send_profile"]:checked').map(function()
+                {
+                    return $(this).val();
+                }).get();
+                if(!checkValues.length){
+                    alert('Please Select atleast one Profile');
+                    return false;
+                }
+                var id = $('.selected_folio').val();
+
+                $.ajax({
+                    url: "{{ route('admin.send_profile') }}",
+                    type: 'post',
+                    data: { ids: checkValues, user_id: id },
+                    success:function(data){
+
+                    }
+                });
+                console.log(checkValues);
 
             });
 
@@ -509,6 +573,10 @@
 
 
             $('.search_filters').on('click', function () {
+                if($('.selected_folio').val() == ''){
+                    alert('Please select profile');
+                    return false;
+                }
                 var id = $('.selected_folio').val();
                 var profile_managed_by = $('#profile_managed_by').val();
                 var occupation = $('#occupation').val();
@@ -574,7 +642,10 @@
             $('.search_pro').on('click', function () {
 
                 var id = $('.selected_folio').val();
-
+                if($('.selected_folio').val() == ''){
+                    alert('Please select profile');
+                    return false;
+                }
 
                 $.ajax({
                     type: "post",

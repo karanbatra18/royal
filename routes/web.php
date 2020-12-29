@@ -61,6 +61,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::get('memberships/edit/{membership_id}', 'Admin\MembershipController@edit')->name('membership.edit');
     Route::put('memberships/{membership_id}', 'Admin\MembershipController@update')->name('membership.update');
     Route::get('match', 'Admin\MatchController@index')->name('admin.match');
+    Route::post('send_profile', 'Admin\MatchController@sendProfile')->name('admin.send_profile');
     Route::post('match/selected-user', 'Admin\MatchController@serachUser')->name('admin.match.search_user');
     Route::post('match/search_filtered_user', 'Admin\MatchController@serachFilteredUser')->name('admin.match.search_filtered_user');
 

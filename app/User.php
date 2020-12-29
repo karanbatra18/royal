@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -55,6 +56,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
+
     public function userProfile(): HasOne
     {
         return $this->hasOne(\App\Models\UserProfile::class);
@@ -63,5 +69,10 @@ class User extends Authenticatable
     public function swyamber()
     {
         return $this->belongsToMany('App\Models\Swyamber');
+    }
+
+    public function sentProfiles(): HasMany
+    {
+        return $this->hasMany(\App\Models\SentProfile::class);
     }
 }

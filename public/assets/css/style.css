@@ -1,0 +1,17 @@
+.pdf_profile{
+    float: right;
+}
+.send_profile{
+    float: right;
+}
+
+.pro_send_btn{
+    margin-bottom: 10px;
+
+}
+
+.already_sent{
+    margin-left: 10px;
+    font-size: 14px;
+    color: #B13132;
+}

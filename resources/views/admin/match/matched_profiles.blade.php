@@ -1,4 +1,9 @@
 @if($otherProfiles->count())
+    <div class="media mb-12 pro_send_btn">
+    <button type="button" class="btn btn-primary search_pro send_profile">Send Profiles
+        <div class="ripple-container"></div>
+    </button>
+    </div>
     @foreach($otherProfiles as $user)
 <div class="media mb-4 border-bottom">
     @php
@@ -21,6 +26,7 @@
     <img class="thumb_image" src="{{ $profileImg }}" alt="no image">
     </a>--}}
     <div class="position-relative">
+
     	 <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/O7qK1vQY3p0/1519x2279"> <img class="thumb_image"   src="{{ $profileImg }}" alt="no image"> </a>
          <div class="pop-gallery position-absolute w-100 h-100" style="left:0; top:0; opacity:0; overflow:hidden">
              @for($i = 1; $i <= 5; $i++)
@@ -43,7 +49,16 @@
    
 
     <div class="media-body">
-        <h6 class="mb-1 mt-0"><a href="{{ route('user.show', ['user_id' => $user->id]) }}"> {{ $user->first_name.' '.$user->last_name }} </a></h6>
+        <h6 class="mb-1 mt-0">
+            <a href="{{ route('user.show', ['user_id' => $user->id]) }}"> {{ $user->first_name.' '.$user->last_name }} </a>
+            @if(in_array($user->id, $userSentProfiles))
+                <span class="already_sent">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                  {{--  <i class="fa fa-check-square-o" aria-hidden="true"></i>--}}
+                </span>
+            @endif
+            <input type="checkbox" name="send_profile" class="pdf_profile" value="{{ $user->id }}">
+        </h6>
         <div>
             <table class="table-sm table mb-0">
                 <tbody><tr>

@@ -7,10 +7,12 @@ use App\Country;
 use App\Models\Caste;
 use App\User;
 use App\UserProfile;
+use PDF;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 
 class MatchController extends Controller
@@ -27,13 +29,60 @@ class MatchController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Request $request,$birthdayDate = null)
+    public function index(Request $request, $birthdayDate = null)
     {
-        $countries= Country::get(["name","id"]);
-        $castes = Caste::where('parent_id',0)->orderBy('name')->get();
-        $users = User::where('role_id',2)->get();
+        $countries = Country::get(["name", "id"]);
+        $castes = Caste::where('parent_id', 0)->orderBy('name')->get();
+        $users = User::where('role_id', 2)->get();
         return view('admin.match.index', compact('users', 'countries', 'castes'));
 
+    }
+
+    /**
+     * @param Request $request
+     */
+    public function sendProfile(Request $request)
+    {
+        if (isset($request->ids) && count($request->ids)) {
+            $profileIds = $request->ids;
+            $currentUser = $request->user_id;
+            $selectedUser = User::with('sentProfiles')->where('id', $currentUser)->first();
+            $users = User::with('userProfile')->whereIn('id', $profileIds)->get();
+            $userSentProfiles = $selectedUser->sentProfiles()->pluck('receiver_id')->toArray();
+            foreach ($users as $user) {
+                $userProfile = $user->userProfile()->first();
+
+                view()->share(['user' => $user, 'userProfile' => $userProfile]);
+                $pdf = PDF::loadView('emails.profile.pdf');
+                $data['email'] = $selectedUser->email;
+                $data['name'] = $selectedUser->full_name;
+                try {
+                    Mail::send('emails.profile.pdf', [$data], function ($message) use ($pdf, $data) {
+                        $message->to($data['email'], $data['name'])
+                            ->subject('Royal Matrimonial - Profile Suggestion')
+                            ->attachData($pdf->output(), "profile.pdf");
+                    });
+                    if(!in_array($user->id,$userSentProfiles)) {
+                        $selectedUser->sentProfiles()->create(['receiver_id' => $user->id]);
+                    }
+
+                } catch (JWTException $exception) {
+                    $this->serverstatuscode = "0";
+                    $this->serverstatusdes = $exception->getMessage();
+                }
+                if (Mail::failures()) {
+                    $this->statusdesc = "Error sending mail";
+                    $this->statuscode = "0";
+
+                } else {
+
+                    $this->statusdesc = "Message sent Succesfully";
+                    $this->statuscode = "1";
+                }
+
+            }
+            return response()->json(compact('this'));
+        }
     }
 
     /**
@@ -59,7 +108,7 @@ class MatchController extends Controller
         $user = User::create($data);
         $user->userProfile()->create([]);
 
-        return redirect()->route('user.create')->with('success','User successfully Added!');;
+        return redirect()->route('user.create')->with('success', 'User successfully Added!');;
     }
 
     /**
@@ -89,7 +138,7 @@ class MatchController extends Controller
         $user = User::where('id', $userId)->first();
         $user->update($data);
 
-        return redirect()->back()->with('success','Information Updated successfully!');
+        return redirect()->back()->with('success', 'Information Updated successfully!');
     }
 
     /**
@@ -103,10 +152,11 @@ class MatchController extends Controller
         $user = User::where('id', $userId)->first();
         $user->userProfile()->update($data);
 
-        return redirect()->back()->with('success','Information Updated successfully!');
+        return redirect()->back()->with('success', 'Information Updated successfully!');
     }
 
-    public function serachFilteredUser(Request $request){
+    public function serachFilteredUser(Request $request)
+    {
         $conditionId = !empty($request->id) ? ['users.id' => $request->id] : [];
         $user = DB::table('users')->join('user_profiles', 'user_profiles.user_id', '=', 'users.id')
             ->select(
@@ -136,14 +186,14 @@ class MatchController extends Controller
 
 
         $response = [];
-        if(!empty($user)){
+        if (!empty($user)) {
             $userGender = $user->gender;
             $userAge = $user->age;
 
             $userCasteId = !empty($request->caste_id) ? $request->caste_id : $user->caste_id;
             $maritalStatus = !empty($request->marital_status) ? $request->marital_status : $user->marital_status;
 
-            if(!empty($userAge)) {
+            if (!empty($userAge)) {
                 $upperAge = $userAge + 2;
                 $lowerAge = $userAge - 2;
             }
@@ -209,10 +259,10 @@ class MatchController extends Controller
                 ->where($challangedCondition)
                 ->where($annualIncomeCondition)
                 ->paginate(10);
-                //->get();
+            //->get();
 
             $returnHTML = view('admin.match.search_profile')->with(compact('user'))->render();
-            if($otherProfiles->count()){
+            if ($otherProfiles->count()) {
                 $returnOtherHTML = view('admin.match.matched_profiles')->with(compact('otherProfiles'))->render();
             } else {
                 $returnOtherHTML = '<p class="text-align:center">No Match Found</p>';
@@ -230,8 +280,9 @@ class MatchController extends Controller
         return Response::json($response);
     }
 
-    public function serachUser(Request $request){
-       // dd($request->all());
+    public function serachUser(Request $request)
+    {
+        // dd($request->all());
         $conditionId = !empty($request->id) ? ['users.id' => $request->id] : [];
         $user = DB::table('users')->join('user_profiles', 'user_profiles.user_id', '=', 'users.id')
             ->select(
@@ -259,15 +310,16 @@ class MatchController extends Controller
             ->where($conditionId)
             ->first();
 
- //dd($user);
+        //dd($user);
         $response = [];
-        if(!empty($user)){
+        if (!empty($user)) {
             $userGender = $user->gender;
             $userAge = $user->age;
             $userCasteId = $user->caste_id;
             $maritalStatus = $user->marital_status;
-
-            if(!empty($userAge)) {
+            $userMain = User::where('id',$user->id)->first();
+            $userSentProfiles = $userMain->sentProfiles()->pluck('receiver_id')->toArray();
+            if (!empty($userAge)) {
                 $upperAge = $userAge + 2;
                 $lowerAge = $userAge - 2;
             }
@@ -305,10 +357,10 @@ class MatchController extends Controller
                 ->where($ageCondition)
                 ->where($maritalStatusCondition)
                 ->paginate(10);
-           
+
             $returnHTML = view('admin.match.search_profile')->with(compact('user'))->render();
-            if($otherProfiles->count()){
-                $returnOtherHTML = view('admin.match.matched_profiles')->with(compact('otherProfiles'))->render();
+            if ($otherProfiles->count()) {
+                $returnOtherHTML = view('admin.match.matched_profiles')->with(compact('otherProfiles','userSentProfiles'))->render();
             } else {
                 $returnOtherHTML = '<p class="text-align:center">No Match Found</p>';
             }
