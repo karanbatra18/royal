@@ -116,14 +116,14 @@
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('user.index') }}",
-                "initComplete":function( settings, json){
+                "initComplete": function (settings, json) {
                     console.log(json);
                     // call your function here
-                  /*  $(".switch").enhancedSwitch();
-                    // Set the second switch to be active after it has been initialised
-                    $(".switch.active").enhancedSwitch('setTrue');*/
+                    /*  $(".switch").enhancedSwitch();
+                      // Set the second switch to be active after it has been initialised
+                      $(".switch.active").enhancedSwitch('setTrue');*/
                 },
-                "drawCallback": function( settings ) {
+                "drawCallback": function (settings) {
                     $(".switch").enhancedSwitch();
                     $(".switch_vip").enhancedSwitch();
                     // Set the second switch to be active after it has been initialised
@@ -169,44 +169,87 @@
             });
 
 
-           // $(".switch").enhancedSwitch();
+            // $(".switch").enhancedSwitch();
 
-            $('body').on('click', '.switch', function() {
+            $('body').on('click', '.switch', function () {
                 var selectedSwitch = $(this);
-                var user_id = $(this).data("id");
-                selectedSwitch.enhancedSwitch('toggle');
-                var status = selectedSwitch.enhancedSwitch('state') ? 1 : 0;
-                $.ajax({
-                    type: "post",
-                    url: "{{ url('admin/users/status') }}" + '/' + user_id,
-                    data: {'status': status},
-                    success: function (data) {
-                       // table.draw();
-                        swal("Updated!", "Status successfully updated!", "success");
+                swal({
+                        title: "Are you sure?",
+                        text: "Are you sure you want to proceed!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: '#DD6B55',
+                        confirmButtonText: 'Yes, I am sure!',
+                        cancelButtonText: "No, cancel it!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
                     },
-                    error: function (data) {
-                        console.log('Error:', data);
-                    }
-                });
+                    function (isConfirm) {
+
+                        if (isConfirm) {
+
+                            var user_id = $(selectedSwitch).data("id");
+                            selectedSwitch.enhancedSwitch('toggle');
+                            var status = selectedSwitch.enhancedSwitch('state') ? 1 : 0;
+                            $.ajax({
+                                type: "post",
+                                url: "{{ url('admin/users/status') }}" + '/' + user_id,
+                                data: {'status': status},
+                                success: function (data) {
+                                    // table.draw();
+                                    swal("Updated!", "Status successfully updated!", "success");
+                                },
+                                error: function (data) {
+                                    console.log('Error:', data);
+                                }
+                            });
+                        } else {
+                            swal("Cancelled", "Your action is terminated :)", "error");
+                            e.preventDefault();
+                        }
+
+                    });
             });
 
-            $('body').on('click', '.switch_vip', function() {
+            $('body').on('click', '.switch_vip', function (e) {
                 var selectedSwitch = $(this);
-                var user_id = $(this).data("id");
-                selectedSwitch.enhancedSwitch('toggle');
-                var status = selectedSwitch.enhancedSwitch('state') ? 1 : 0;
-                $.ajax({
-                    type: "post",
-                    url: "{{ url('admin/users/vip') }}" + '/' + user_id,
-                    data: {'status': status},
-                    success: function (data) {
-                        // table.draw();
-                        swal("Updated!", "Vip Status updated!", "success");
+                swal({
+                        title: "Are you sure?",
+                        text: "Are you sure you want to proceed!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: '#DD6B55',
+                        confirmButtonText: 'Yes, I am sure!',
+                        cancelButtonText: "No, cancel it!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
                     },
-                    error: function (data) {
-                        console.log('Error:', data);
-                    }
-                });
+                    function (isConfirm) {
+
+                        if (isConfirm) {
+
+                            var user_id = $(selectedSwitch).data("id");
+                            selectedSwitch.enhancedSwitch('toggle');
+                            var status = selectedSwitch.enhancedSwitch('state') ? 1 : 0;
+                            $.ajax({
+                                type: "post",
+                                url: "{{ url('admin/users/vip') }}" + '/' + user_id,
+                                data: {'status': status},
+                                success: function (data) {
+                                    // table.draw();
+                                    swal("Updated!", "Vip Status updated!", "success");
+                                },
+                                error: function (data) {
+                                    console.log('Error:', data);
+                                }
+                            });
+
+                        } else {
+                            swal("Cancelled", "Your action is terminated :)", "error");
+                            e.preventDefault();
+                        }
+
+                    });
             });
         });
     </script>

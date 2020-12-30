@@ -52,6 +52,7 @@ class UserProfile extends Model
         'family_income',
         'living_with_parents',
         'abroad_willing',
+        'default_pic',
     ];
 
     public function user(): BelongsTo

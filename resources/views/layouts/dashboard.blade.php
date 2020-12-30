@@ -101,6 +101,18 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script>
     $(document).ready(function() {
+            var url = window.location.href;
+            var activePage = url;
+            $('.sidebar-wrapper > ul li').each(function () {
+                var linkPage = $(this).find('a').attr('href');
+
+                if (activePage == linkPage) {
+                    $(this).addClass("active");
+                    $(this).closest('.nav-item').find('.collapse').addClass('show');
+                    $(this).closest('.nav-item').find('.nav-link.collapsed').removeClass('collapsed');
+                }
+            });
+
        /* $('.datepicker').datepicker({ format:"yyyy-mm-dd" });*/
         $().ready(function() {
             $sidebar = $('.sidebar');

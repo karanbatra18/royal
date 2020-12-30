@@ -508,7 +508,8 @@
                     return $(this).val();
                 }).get();
                 if(!checkValues.length){
-                    alert('Please Select atleast one Profile');
+                    //alert('Please Select atleast one Profile');
+                    swal("Warning", "Please Select atleast one Profile", "warning");
                     return false;
                 }
                 var id = $('.selected_folio').val();
@@ -518,7 +519,7 @@
                     type: 'post',
                     data: { ids: checkValues, user_id: id },
                     success:function(data){
-
+                        swal("Success!", "Profile successfully Sent!", "success");
                     }
                 });
                 console.log(checkValues);
@@ -574,7 +575,8 @@
 
             $('.search_filters').on('click', function () {
                 if($('.selected_folio').val() == ''){
-                    alert('Please select profile');
+                    //alert('Please select profile');
+                    swal("Warning", "Please select profile", "warning");
                     return false;
                 }
                 var id = $('.selected_folio').val();
@@ -643,7 +645,7 @@
 
                 var id = $('.selected_folio').val();
                 if($('.selected_folio').val() == ''){
-                    alert('Please select profile');
+                    swal("Warning", "Please select profile", "warning");
                     return false;
                 }
 

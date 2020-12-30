@@ -538,7 +538,7 @@
                           class="form-horizontal" enctype="multipart/form-data">
                         @csrf
                         <input name="_method" type="hidden" value="PUT">
-                        <input name="upload_images" type="hidden" value="1">
+                        {{--<input name="upload_images" type="hidden" value="1">--}}
 
                         <div class="card ">
                             <div class="card-header card-header-primary">
@@ -563,6 +563,7 @@
 
                                 <div class="row">
                                     <div class="input-group mb-3 img_sec_border">
+                                        <input type="radio" name="default_pic" value="profile_picture1" class="default_pic" {{ $userProfile->default_pic == 'profile_picture1' ? 'checked' : ''}}>
                                         <div class="custom-file">
                                             <input type="file" name="file[profile_picture1]" class="custom-file-input"
                                                    id="inputGroupFile01">
@@ -576,7 +577,9 @@
                                 </div>
 
                                 <div class="row">
+
                                     <div class="input-group mb-3 img_sec_border">
+                                        <input type="radio" name="default_pic" value="profile_picture2" class="default_pic" {{ $userProfile->default_pic == 'profile_picture2' ? 'checked' : ''}}>
                                         <div class="custom-file">
                                             <input type="file" name="file[profile_picture2]" class="custom-file-input"
                                                    id="inputGroupFile02">
@@ -591,6 +594,7 @@
 
                                 <div class="row">
                                     <div class="input-group mb-3 img_sec_border">
+                                        <input type="radio" name="default_pic" value="profile_picture3" class="default_pic" {{ $userProfile->default_pic == 'profile_picture3' ? 'checked' : ''}}>
                                         <div class="custom-file">
                                             <input type="file" name="file[profile_picture3]" class="custom-file-input"
                                                    id="inputGroupFile03">
@@ -605,6 +609,7 @@
 
                                 <div class="row">
                                     <div class="input-group mb-3 img_sec_border">
+                                        <input type="radio" name="default_pic" value="profile_picture4" class="default_pic" {{ $userProfile->default_pic == 'profile_picture4' ? 'checked' : ''}}>
                                         <div class="custom-file">
                                             <input type="file" name="file[profile_picture4]" class="custom-file-input"
                                                    id="inputGroupFile04">
@@ -619,6 +624,7 @@
 
                                 <div class="row">
                                     <div class="input-group mb-3 img_sec_border">
+                                        <input type="radio" name="default_pic" value="profile_picture5" class="default_pic" {{ $userProfile->default_pic == 'profile_picture5' ? 'checked' : ''}}>
                                         <div class="custom-file">
                                             <input type="file" name="file[profile_picture5]" class="custom-file-input"
                                                    id="inputGroupFile05">

@@ -8,6 +8,9 @@
 <div class="media mb-4 border-bottom">
     @php
         $profileImg = '';
+        if(!empty($user->{$user->default_pic})) {
+            $profileImg = asset('assets/images/users/'.$user->{$user->default_pic});
+        } else
         if(!empty($user->profile_picture1)) {
             $profileImg = asset('assets/images/users/'.$user->profile_picture1);
         } else if(!empty($user->profile_picture2)) {

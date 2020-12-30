@@ -305,7 +305,8 @@ class MatchController extends Controller
                 'user_profiles.profile_picture2',
                 'user_profiles.profile_picture3',
                 'user_profiles.profile_picture4',
-                'user_profiles.profile_picture5'
+                'user_profiles.profile_picture5',
+                'user_profiles.default_pic'
             )
             ->where($conditionId)
             ->first();
@@ -350,7 +351,8 @@ class MatchController extends Controller
                     'user_profiles.profile_picture2',
                     'user_profiles.profile_picture3',
                     'user_profiles.profile_picture4',
-                    'user_profiles.profile_picture5'
+                    'user_profiles.profile_picture5',
+                    'user_profiles.default_pic'
                 )
                 ->where($genderCondition)
                 ->where($casteCondition)

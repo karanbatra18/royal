@@ -1,6 +1,9 @@
 <div class="media">
     @php
         $profileImg = '';
+        if(!empty($user->{$user->default_pic})) {
+            $profileImg = asset('assets/images/users/'.$user->{$user->default_pic});
+        } else
         if(!empty($user->profile_picture1)) {
             $profileImg = asset('assets/images/users/'.$user->profile_picture1);
         } else if(!empty($user->profile_picture2)) {
@@ -14,6 +17,7 @@
         } else {
             $profileImg = asset('assets/images/users/default.jpg');
         }
+
     @endphp
     {{--<a href="{{ route('user.show', ['user_id' => $user->id]) }}">
     <img class="thumb_image" src="{{ $profileImg }}" alt="no image">
