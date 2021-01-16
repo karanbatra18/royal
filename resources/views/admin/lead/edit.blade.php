@@ -11,9 +11,15 @@
             <input name="_method" type="hidden" value="PUT">
             <div class="card ">
               <div class="card-header card-header-primary">
+              	<div class=card-details>
                 <h4 class="card-title">{{ __('Update Lead') }}</h4>
                 <p class="card-category">{{ __('Lead Management') }}</p>
+            </div>
+                <div class="transfer-btn">
+                <a class="btn btn-primary" href="{{ route('lead.transfer', ['lead_id' => $lead->id]) }}">Transfer</a></div>
               </div>
+              
+               
               <div class="card-body ">
                 @if (session('status'))
                   <div class="row">
@@ -342,6 +348,10 @@
           
               </div>
               <div class="card-footer ml-auto mr-auto">
+                  
+                  
+                 
+
                 <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
               </div>
             </div>

@@ -181,6 +181,23 @@ class LeadController extends Controller
 
     }
 
-
+public function transfer($leadId)
+    {
+      
+        $lead = Lead::where('id', $leadId)->first();
+       
+        $data['first_name']=$lead->name;
+        $data['email']=$lead->email;
+        $data['phone']=$lead->phone;
+        $data['gender']=$lead->gender;
+        $data['alternate_email']=$lead->alternate_email;
+        $data['alternate_phone']=$lead->alternate_phone;
+        
+        
+        $lead = User::create($data);
+     
+        return redirect()->route('lead.index')->with('success','Lead successfully Transferred!');;
+ 
+    }
 
 }

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ asset('assets/font_awesome/font-awesome.min.css') }}">
     {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--}}
     <title>Home</title>
 </head>
@@ -191,7 +192,7 @@
     <div class="wrapper">
         <div class="lft-sec">
             <div class="image">
-                <!--<img src="dipika.png">-->
+                <img src="assets/images/users/dipika-img.jpg">
             </div>
         </div>
 
@@ -200,7 +201,7 @@
             <div id="inner-sec">
                 <span>{{ $user->full_name }}</span><span><i class="fa fa-question-circle-o"></i></span>
                 <hr>
-                <ul id="list-ul">
+                <table id="list-ul">
                     <li>{{ !empty($userProfile->folio_no) ? $userProfile->folio_no : '' }}</li>
 
 
@@ -483,5 +484,6 @@ Family Details</span>
 
     </div>
 </div>
+
 </body>
 </html>

@@ -62,6 +62,7 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::put('memberships/{membership_id}', 'Admin\MembershipController@update')->name('membership.update');
     Route::get('match', 'Admin\MatchController@index')->name('admin.match');
     Route::post('send_profile', 'Admin\MatchController@sendProfile')->name('admin.send_profile');
+    Route::get('print_profile/{id}', 'Admin\MatchController@printProfile')->name('admin.print_profile');
     Route::post('match/selected-user', 'Admin\MatchController@serachUser')->name('admin.match.search_user');
     Route::post('match/search_filtered_user', 'Admin\MatchController@serachFilteredUser')->name('admin.match.search_filtered_user');
 
@@ -81,11 +82,13 @@ Route::get('emails/edit/{email_id}', 'Admin\EmailController@edit')->name('email.
 Route::put('emails/{email_id}', 'Admin\EmailController@update')->name('email.update');
  
 
- Route::get('lead/create', 'Admin\LeadController@create')->name('lead.create');
+    Route::get('lead/create', 'Admin\LeadController@create')->name('lead.create');
     Route::post('leads', 'Admin\LeadController@store')->name('lead.store');
     Route::put('leads/{lead_id}', 'Admin\LeadController@update')->name('lead.update');
     Route::get('leads', 'Admin\LeadController@index')->name('lead.index');
     Route::get('leads/edit/{lead_id}', 'Admin\LeadController@edit')->name('lead.edit');
+    Route::get('leads/transfer/{lead_id}', 'Admin\LeadController@transfer')->name('lead.transfer');
+   
      Route::post('leads', 'Admin\LeadController@search')->name('lead.search');
 });
 

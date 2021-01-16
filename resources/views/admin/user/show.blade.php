@@ -40,8 +40,21 @@
         #share-mater ul li {
             list-style: none;
             width: 100%;
+               
         }
-
+ #share-mater ul.single-pdf li{
+     color: #fff;
+       border-bottom: 1px solid #fff;
+    padding: 10px;
+}
+ #share-mater ul.single-pdf li a{
+    color: white;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 15px;
+    display: block;
+    padding: 6px 2px;
+ }
         #share-mater ul li a {
             color: white;
             text-decoration: none;
@@ -60,8 +73,8 @@
             padding-left: 20px;
         }
 
-        #share-mater ul li a:hover {
-            background: #d9475c;
+        #share-mater ul.single-pdf li a:hover {
+            background: none;
         }
 
         #bg-ger-child {
@@ -325,6 +338,11 @@ font-size: 15px;
             color: white;
             text-decoration: none;
         }
+        .grid-second-child.last-second-child{
+            position: sticky;
+            overflow: hidden;
+            top: 0;
+        }
     </style>
 
     <div class="content">
@@ -412,32 +430,27 @@ font-size: 15px;
                                                              $income =  '50 Lakh and above';
                                                          }
                                     @endphp
-                                    <div class="position-relative">
-                                        <img src="/royal/public/assets/images/users/dipika-img.jpg" alt="no image" width="192">
-                                       <!-- <img src="{{ $profileImg }}" alt="no image">-->
-                                        <div class="pop-gallery position-absolute overflow-hidden"
-                                             style="left:0; top:0; opacity:0">
-                                            @for($i = 1; $i <= 5; $i++)
-                                                <?php $imageName = 'profile_picture' . $i; ?>
-                                                @if(!empty($user->$imageName))
-                                                    <a data-fancybox="gallery-{{ $user->id }}"
-                                                       href="{{ asset('assets/images/users/'.$user->$imageName) }}">
-                                                        <img src="{{ asset('assets/images/users/'.$user->$imageName) }}"
-                                                             alt="">
-                                                    </a>
-                                                @endif
-                                            @endfor
-                                            {{--
-                                                          <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/O7qK1vQY3p0/1519x2279">
-                                                             <img src="{{ $profileImg }}" alt="">
-                                                         </a>
-                                                          <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/IbLZjKcelpM/1020x858">
-                                                             <img src="{{ $profileImg }}" alt="">
-                                                         </a>	--}}
-                                        </div>
-                                    </div>
-
-                                </div>
+           <div class="position-relative">
+         <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/O7qK1vQY3p0/1519x2279"> <img class="thumb_image"   src="{{ $profileImg }}" alt="no image"> </a>
+         <div class="pop-gallery w-100 h-100" style="left:0; top:0; opacity:0; overflow:hidden">
+             @for($i = 1; $i <= 5; $i++)
+                 <?php $imageName = 'profile_picture'.$i; ?>
+                 @if(!empty($user->$imageName))
+             <a data-fancybox="gallery-{{ $user->id }}" href="{{ asset('assets/images/users/'.$user->$imageName) }}">
+                <img src="{{ asset('assets/images/users/'.$user->$imageName) }}" alt="">
+             </a>
+                 @endif
+             @endfor
+{{--
+             <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/O7qK1vQY3p0/1519x2279">
+                <img src="{{ $profileImg }}" alt="">
+             </a>   
+             <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/IbLZjKcelpM/1020x858">
+                <img src="{{ $profileImg }}" alt="">
+             </a>   --}}
+         </div> 
+    </div>
+                            </div>
                                 <div class="grid-child-3" id="bg-ger">
                                     <div id="bg-ger-child">
                                         <span>{{ $user->first_name.' '.$user->last_name }}</span><span><i
@@ -485,10 +498,12 @@ font-size: 15px;
                                 </div>
 
                                 <div class="grid-child-3" id="share-mater">
-                                    {{--<ul>
-                                        <li><a href="#"><i class="fa fa-share-alt"></i><span id="padd-20">Share</span></a></li>
-                                        <li><a href="#"><i class="fa fa-phone"></i><span id="padd-20">Share</span></a></li>
-                                    </ul>--}}
+                                    <ul class="single-pdf">
+                                        <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i>
+Download Pdf</a></li>
+                                        <li><a href="#"><i class="fa fa-history"></i> Earlier Send</a></li>
+                                        <li><a href="#"><i class="fa fa-print"></i> Print</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -815,7 +830,7 @@ font-size: 15px;
 
                                 </div>--}}
                             </div>
-                            <div class="grid-second-child">
+                            <div class="grid-second-child last-second-child">
                                 <div class="pt-49">
                                     <p>Horoscope</p>
                                 </div>

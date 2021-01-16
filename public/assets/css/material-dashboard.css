@@ -7557,7 +7557,11 @@ button.bg-dark:focus {
 .position-relative {
   position: relative !important;
 }
-
+#main-secc .position-relative{
+   position: relative !important;
+       top: 69px;
+    left: 57px;
+}
 .position-absolute {
   position: absolute !important;
 }
@@ -19798,5 +19802,30 @@ html{
 
 .sticky + .content {
   padding-top: 60px;
+} 
+
+
+.media-body h6.mb-1.mt-0{
+      display: inline-block;
+}
+ul.match-ullist {
+    list-style: none;
+    margin: 0;
+    padding: 0 5px;
+    display: inline-block;
+}
+ul.match-ullist li{
+  display:inline-block;
+  padding-right: 5px;
+      font-size: 18px;
+}
+.col-md-8.other_profiles {
+    background: #eee;
+}
+.card-details {
+    float: left;
+}
+.transfer-btn {
+    float: right;
 }
 /*# sourceMappingURL=dashboard-free.css.map */

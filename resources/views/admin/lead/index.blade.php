@@ -88,6 +88,7 @@
             });
 
             var table = $('.data-table').DataTable({
+                dom: 'Bfrtip',
                 processing: true,
                 serverSide: true,
                 ajax: {
@@ -109,7 +110,8 @@
                     {data: 'phone', name: 'phone'},
                     {data: 'source', name: 'source'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
-                ]
+                ],
+                buttons: ['csv']
             });
 
           

@@ -38,8 +38,24 @@ class MatchController extends Controller
 
     }
 
+    public function printProfile(Request $request, $id)
+    {
+
+            $user = User::with('userProfile')->where('id', $id)->firstOrFail();
+            $userProfile = $user->userProfile()->first();
+
+            view()->share(['user' => $user, 'userProfile' => $userProfile]);
+
+            //$pdf = PDF::loadHtml('emails.profile.pdf');
+            $pdf = PDF::loadView('emails.profile.pdf')->stream();
+
+            return $pdf;
+
+    }
+
     /**
      * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function sendProfile(Request $request)
     {

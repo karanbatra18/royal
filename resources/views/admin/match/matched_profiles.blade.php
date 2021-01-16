@@ -26,10 +26,12 @@
         }
     @endphp
   {{--<a href="{{ route('user.show', ['user_id' => $user->id]) }}">
+
     <img class="thumb_image" src="{{ $profileImg }}" alt="no image">
     </a>--}}
-    <div class="position-relative">
+      	<input type="checkbox" name="send_profile" class="pdf_profile" value="{{ $user->id }}">
 
+    <div class="position-relative">
     	 <a data-fancybox="gallery-{{ $user->id }}" href="https://source.unsplash.com/O7qK1vQY3p0/1519x2279"> <img class="thumb_image"   src="{{ $profileImg }}" alt="no image"> </a>
          <div class="pop-gallery position-absolute w-100 h-100" style="left:0; top:0; opacity:0; overflow:hidden">
              @for($i = 1; $i <= 5; $i++)
@@ -54,14 +56,22 @@
     <div class="media-body">
         <h6 class="mb-1 mt-0">
             <a href="{{ route('user.show', ['user_id' => $user->id]) }}"> {{ $user->first_name.' '.$user->last_name }} </a>
-            @if(in_array($user->id, $userSentProfiles))
-                <span class="already_sent">
-                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                  {{--  <i class="fa fa-check-square-o" aria-hidden="true"></i>--}}
-                </span>
-            @endif
-            <input type="checkbox" name="send_profile" class="pdf_profile" value="{{ $user->id }}">
+
+        
         </h6>
+          <ul class="match-ullist">
+              @if(in_array($user->id, $userSentProfiles))
+                  {{--<span class="already_sent">--}}
+                      <li> <a href="#">
+                    {{--<i class="fa fa-paper-plane" aria-hidden="true"></i>--}}
+                      <i class="fa fa-history" aria-hidden="true"></i>
+                              </a></li>
+                      {{--  <i class="fa fa-check-square-o" aria-hidden="true"></i>--}}
+
+              @endif
+       {{-- <li> <a href="#"><i class="fa fa-history" aria-hidden="true"></i></a></li>--}}
+        <li> <a class="print_pdf" data-id="{{ $user->id }}" href="{{ route('admin.print_profile',['id' => $user->id]) }}"> <i class="fa fa-print"></i></a></li>
+</ul>  
         <div>
             <table class="table-sm table mb-0">
                 <tbody><tr>
