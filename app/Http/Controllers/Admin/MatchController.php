@@ -22,6 +22,7 @@ class MatchController extends Controller
      */
     public function create()
     {
+
         return view('admin.user.create');
     }
 
@@ -31,6 +32,7 @@ class MatchController extends Controller
      */
     public function index(Request $request, $birthdayDate = null)
     {
+
         $countries = Country::get(["name", "id"]);
         $castes = Caste::where('parent_id', 0)->orderBy('name')->get();
         $users = User::where('role_id', 2)->get();

@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Membership;
+use App\Models\SiteModule;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -16,6 +17,15 @@ class MembershipController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Membership')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_write == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
         return view('admin.membership.create');
     }
 
@@ -54,6 +64,15 @@ class MembershipController extends Controller
      */
     public function edit($membershipId)
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Membership')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_edit == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
         $membership = Membership::where('id', $membershipId)->first();
         return view('admin.membership.edit', compact('membership'));
     }

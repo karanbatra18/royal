@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\SiteModule;
 use App\Models\Swyamber;
 use App\User;
 use App\UserProfile;
@@ -18,6 +19,17 @@ class SwyamberController extends Controller
      */
     public function create()
     {
+
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Swyamber')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_write == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
+
         $users = User::get();
         return view('admin.swyamber.create',compact('users'));
     }
@@ -39,6 +51,16 @@ class SwyamberController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Swyamber')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_write == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
+
         // dd($request->all());
         $validateData = $request->validate([
             'title' => 'required|min:3|max:180',
@@ -64,6 +86,16 @@ class SwyamberController extends Controller
      */
     public function edit($swyamberId)
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Swyamber')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_edit == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
+
         $users = User::get();
         $swyamber = Swyamber::with('users')->where('id', $swyamberId)->first();
         $members = $swyamber->users()->pluck('users.id')->toArray();
@@ -77,6 +109,16 @@ class SwyamberController extends Controller
      */
     public function update(Request $request, $swyamberId)
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Swyamber')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_edit == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
+
         $validateData = $request->validate([
             'title' => 'required|min:3|max:180',
             'place' => 'required|min:3|max:180',
