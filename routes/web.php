@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/clear-cache', function() {
+Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     Artisan::call('config:clear');
     Artisan::call('view:clear');
@@ -26,18 +26,18 @@ Route::get('/clear-cache', function() {
     return "Cache is cleared";
 });
 
-Route::prefix('admin')->middleware('auth')->group(function() {
+Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard');
     Route::get('members/create', 'Admin\MemberController@create')->name('member.create');
     Route::get('members', 'Admin\MemberController@index')->name('member.index');
-     Route::post('members', 'Admin\MemberController@store')->name('member.store');
-     Route::get('members/{user_id}/edit', 'Admin\MemberController@edit')->name('member.edit');
-         Route::put('members/{user}', 'Admin\MemberController@update')->name('member.update');
+    Route::post('members', 'Admin\MemberController@store')->name('member.store');
+    Route::get('members/{user_id}/edit', 'Admin\MemberController@edit')->name('member.edit');
+    Route::put('members/{user}', 'Admin\MemberController@update')->name('member.update');
     Route::DELETE('members/{id}', 'Admin\MemberController@destroy')->name('member.destroy');
-      Route::post('members/status/{id}', 'Admin\MemberController@updateStatus')->name('member.status.update');
-  
-    
+    Route::post('members/status/{id}', 'Admin\MemberController@updateStatus')->name('member.status.update');
+
+
     // Route::post('create', 'VideoRoomsController@createRoom');
     Route::get('users/create', 'Admin\UserController@create')->name('user.create');
     Route::get('users', 'Admin\UserController@index')->name('user.index');
@@ -67,20 +67,20 @@ Route::prefix('admin')->middleware('auth')->group(function() {
     Route::post('match/search_filtered_user', 'Admin\MatchController@serachFilteredUser')->name('admin.match.search_filtered_user');
 
     Route::get('caste/create', 'Admin\CasteController@create')->name('caste.create');
-Route::post('get_sub_castes', 'Admin\CasteController@getSubCastes')->name('caste.sub_castes');
-Route::get('castes', 'Admin\CasteController@index')->name('caste.index');
-Route::post('castes', 'Admin\CasteController@store')->name('caste.store');
-Route::get('castes/edit/{caste_id}', 'Admin\CasteController@edit')->name('caste.edit');
-Route::put('castes/{caste_id}', 'Admin\CasteController@update')->name('caste.update');
+    Route::post('get_sub_castes', 'Admin\CasteController@getSubCastes')->name('caste.sub_castes');
+    Route::get('castes', 'Admin\CasteController@index')->name('caste.index');
+    Route::post('castes', 'Admin\CasteController@store')->name('caste.store');
+    Route::get('castes/edit/{caste_id}', 'Admin\CasteController@edit')->name('caste.edit');
+    Route::put('castes/{caste_id}', 'Admin\CasteController@update')->name('caste.update');
 
-  Route::get('emails', 'Admin\EmailController@index')->name('email.index');
-  Route::get('email/create', 'Admin\EmailController@create')->name('email.create');
+    Route::get('emails', 'Admin\EmailController@index')->name('email.index');
+    Route::get('email/create', 'Admin\EmailController@create')->name('email.create');
 
 
-Route::post('emails', 'Admin\EmailController@store')->name('email.store');
-Route::get('emails/edit/{email_id}', 'Admin\EmailController@edit')->name('email.edit');
-Route::put('emails/{email_id}', 'Admin\EmailController@update')->name('email.update');
- 
+    Route::post('emails', 'Admin\EmailController@store')->name('email.store');
+    Route::get('emails/edit/{email_id}', 'Admin\EmailController@edit')->name('email.edit');
+    Route::put('emails/{email_id}', 'Admin\EmailController@update')->name('email.update');
+
 
     Route::get('lead/create', 'Admin\LeadController@create')->name('lead.create');
     Route::post('leads/store/', 'Admin\LeadController@store')->name('lead.store');
@@ -88,19 +88,18 @@ Route::put('emails/{email_id}', 'Admin\EmailController@update')->name('email.upd
     Route::get('leads', 'Admin\LeadController@index')->name('lead.index');
     Route::get('leads/edit/{lead_id}', 'Admin\LeadController@edit')->name('lead.edit');
     Route::get('leads/transfer/{lead_id}', 'Admin\LeadController@transfer')->name('lead.transfer');
-   
-     Route::post('leads', 'Admin\LeadController@search')->name('lead.search');
+
+    Route::post('leads', 'Admin\LeadController@search')->name('lead.search');
+
+    Route::get('/user/permissions/{user?}', 'Admin\UserController@permissions')->name('admin.permissions.create');
+    Route::post('/user/permissions/{user?}', 'Admin\UserController@savePermissions')->name('admin.permissions.update');
+
 });
 
-Route::get('country-state-city','CountryStateCityController@index');
-Route::post('get-states-by-country','CountryStateCityController@getState');
-Route::post('get-cities-by-state','CountryStateCityController@getCity');
+Route::get('country-state-city', 'CountryStateCityController@index');
+Route::post('get-states-by-country', 'CountryStateCityController@getState');
+Route::post('get-cities-by-state', 'CountryStateCityController@getCity');
 
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 

@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Models\SiteModule;
 use App\User;
 
 use DateTime;
@@ -21,6 +22,15 @@ class MemberController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Members')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_write == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
         return view('admin.member.create');
     }
 
@@ -30,6 +40,7 @@ class MemberController extends Controller
      */
     public function index(Request $request)
     {
+        $permission = getModulePermission(auth()->id(), 7);
         if ($request->ajax()) {
             $data = User::where('role_id',3)->latest()->get();
             return Datatables::of($data)
@@ -40,10 +51,10 @@ class MemberController extends Controller
 
                     return $btn;
                 })
-                ->addColumn('action', function($row){
-                    $btn = '<a href="'.route("member.edit" , ["user_id" => $row->id]).'" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
+                ->addColumn('action', function($row) use ($permission){
+                    $btn = (auth()->user()->role_id == 1 || (!empty($permission) && $permission->can_edit == 1)) ? '<a href="'.route("member.edit" , ["user_id" => $row->id]).'" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>' : '';
 
-                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct" onclick="return confirm("Are you sure you want to delete this item?");">Delete</a>';
+                    $btn = (auth()->user()->role_id == 1 || (!empty($permission) && $permission->can_delete == 1)) ? $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct" onclick="return confirm("Are you sure you want to delete this item?");">Delete</a>' : $btn.'';
 
                     return $btn;
                 })
@@ -88,7 +99,15 @@ class MemberController extends Controller
      */
     public function edit($userId)
     {
-
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Members')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_edit == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
         $user = User::where('id', $userId)->first();
        
         return view('admin.member.edit', compact('user'));
@@ -136,6 +155,17 @@ class MemberController extends Controller
      */
    
     public function destroy($id){
+
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Members')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_delete == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
+
         $user = User::findOrFail($id);
         $user->delete();
 

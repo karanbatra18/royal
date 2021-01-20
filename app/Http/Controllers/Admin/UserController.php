@@ -4,6 +4,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Caste;
+use App\Models\SiteModule;
+use App\Models\SitePermission;
 use App\User;
 use App\Country;
 use App\UserProfile;
@@ -21,6 +23,16 @@ class UserController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','User Management')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_write == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
+
         return view('admin.user.create');
     }
 
@@ -30,20 +42,23 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $permission = getModulePermission(auth()->id(), 1);
         if ($request->ajax()) {
             $data = User::where('role_id',2)->latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
-                ->addColumn('userStatus', function($row){
+                ->addColumn('userStatus', function($row) use ($permission){
                     $statusClass = ($row->status == 1) ? 'active' : '';
-                    $btn = '<div data-id="'.$row->id.'" class="switch '.$statusClass.'" ></div>';
+                    $btn = (auth()->user()->role_id == 1 || (!empty($permission) && $permission->can_activate == 1)) ? '<div data-id="'.$row->id.'" class="switch '.$statusClass.'" ></div>' : '';
 
                     return $btn;
                 })
-                ->addColumn('action', function($row){
-                    $btn = '<a href="'.route("user.edit" , ["user_id" => $row->id]).'" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
+                ->addColumn('action', function($row) use ($permission){
 
-                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
+                        $btn = (auth()->user()->role_id == 1 || (!empty($permission) && $permission->can_edit == 1)) ? '<a href="' . route("user.edit", ["user_id" => $row->id]) . '" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>' : '';
+
+
+                        $btn = (auth()->user()->role_id == 1 || (!empty($permission) && $permission->can_delete == 1)) ? $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>' :  $btn . '';
 
                     return $btn;
                 })
@@ -91,7 +106,7 @@ class UserController extends Controller
         $user = User::create($data);
         $user->userProfile()->create(['folio_no' => 'RMP'.$user->id]);
 
-        return redirect()->route('user.create')->with('success','User successfully Added!');;
+        return redirect()->route('user.create')->with('success','User successfully Added!');
     }
 
     /**
@@ -100,6 +115,15 @@ class UserController extends Controller
      */
     public function edit($userId)
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','User Management')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_edit == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
 
         $user = User::where('id', $userId)->first();
         $userProfile = $user->userProfile()->first();
@@ -221,11 +245,49 @@ class UserController extends Controller
     }
 
     public function destroy($id){
+        $user1 = auth()->user();
+        $getModule = SiteModule::where('name','User Management')->first();
+        if($user1->role_id != 1) {
+            $permission = getModulePermission($user1->id,$getModule->id);
+            if(empty($permission) || $permission->can_delete == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
         $user = User::findOrFail($id);
         $user->delete();
 
         return response()->json(['status' => 200]);
     }
+
+    public function permissions(Request $request){
+        $user = null;
+        $siteModules = SiteModule::get();
+        $users = User::where('role_id',2)->get();
+
+        if(isset($request->user) && !empty($request->user)) {
+            $user = User::where('id',$request->user)->first();
+        }
+        //dd($user);
+        return view('admin.user.permissions', compact('siteModules','users', 'user'));
+    }
+
+    public function savePermissions(Request $request, $id){
+        if(isset($request->permission) && count($request->permission)) {
+
+            foreach($request->permission as $key => $onePermission) {
+                //dd($onePermission);
+                SitePermission::updateOrCreate([
+                    'user_id' => $id,
+                    'site_module_id' => $key,
+                ],$onePermission);
+            }
+        }
+
+        //$users = User::where('role_id',2)->get();
+        return redirect()->back();
+    }
+
 
 
 }

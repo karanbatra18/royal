@@ -1,6 +1,9 @@
 @extends('layouts.dashboard', [ 'titlePage' => __('Lead Management')])
 
 @section('content')
+    @php
+        $permission = getModulePermission(auth()->id(), 6);
+    @endphp
     <script src="{{ asset('assets/js/jquery-3.5.1.slim.min.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -46,7 +49,14 @@
                 </div>
                                  
                                  
-                             </form> 
+                             </form>
+                            <div class="row">
+                                @if(auth()->user()->role_id == 1 || !empty($permission) && $permission->can_write == 1)
+                                    <div class="col-12 text-right">
+                                        <a href="{{ route('lead.create') }}" class="btn btn-sm btn-primary">Add Lead</a>
+                                    </div>
+                                @endif
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered data-table">
                                     <thead>

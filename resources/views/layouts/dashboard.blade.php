@@ -24,6 +24,9 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('assets/css/toastr.min.css') }}" rel="stylesheet" type="text/css">
+
+
 
 </head>
 
@@ -42,6 +45,7 @@
         @include('_partials.dashboard._header')
 
         <div class="content">
+
             @include('flash-message')
             @yield('content')
         </div>
@@ -99,7 +103,22 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{ asset('assets/demo/demo.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="{{ asset('assets/js/toastr.min.js') }}"></script>
+
 <script>
+            @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type', 'info') }}";
+    switch (type) {
+        case 'success':
+            toastr.success("{{ Session::get('message') }}");
+            break;
+
+        case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+    }
+    @endif
+
     $(document).ready(function() {
             var url = window.location.href;
             var activePage = url;

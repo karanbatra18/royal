@@ -2,7 +2,10 @@
 
 @section('content')
 
-
+    @php
+    $permission = getModulePermission(auth()->id(), 9);
+    @endphp
+    @if(!empty($permission) && $permission->can_write == 1)
   <div class="content">
     <div class="container-fluid">
       <div class="row">
@@ -79,7 +82,7 @@
       </div>
    </div>
   </div>
-
+@endif
 
     <div class="content">
         <div class="container-fluid">
@@ -115,13 +118,14 @@
 
                                             
                                             <td class="td-actions text-right">
-
+                                                @if(!empty($permission) && $permission->can_edit == 1)
                                                 <a rel="tooltip" class="btn btn-success btn-link"
                                                    href="{{ route('caste.edit' , ['caste_id' => $cast->id]) }}"
                                                    data-original-title="" title="">
                                                     <i class="material-icons">edit</i>
                                                     <div class="ripple-container"></div>
                                                 </a>
+                                                    @endif
                                             </td>
                                         </tr>
                                         @if($cast->subCastes)
@@ -133,13 +137,14 @@
 
 
                                                     <td class="td-actions text-right">
-
+                                                        @if(!empty($permission) && $permission->can_edit == 1)
                                                         <a rel="tooltip" class="btn btn-success btn-link"
                                                            href="{{ route('caste.edit' , ['caste_id' => $subCast->id]) }}"
                                                            data-original-title="" title="">
                                                             <i class="material-icons">edit</i>
                                                             <div class="ripple-container"></div>
                                                         </a>
+                                                            @endif
                                                     </td>
                                                 </tr>
                                             @endforeach

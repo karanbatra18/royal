@@ -34,6 +34,15 @@ class EmailController extends Controller
     
     public function edit($EmailId)
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Email Tempaltes')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_edit == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
         $email = Email::where('id', $EmailId)->first();
         return view('admin.email.edit', compact('email'));
     }

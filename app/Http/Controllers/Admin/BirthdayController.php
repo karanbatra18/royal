@@ -17,6 +17,15 @@ class BirthdayController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Birthday Lisitng')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_write == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
         return view('admin.user.create');
     }
 
@@ -67,6 +76,15 @@ class BirthdayController extends Controller
      */
     public function edit($userId)
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Birthday Lisitng')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_edit == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
         $user = User::where('id', $userId)->first();
         $userProfile = $user->userProfile()->first();
         return view('admin.user.edit', compact('user', 'userProfile'));

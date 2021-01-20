@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Lead;
+use App\Models\SiteModule;
 use App\User;
 use App\Country;
 use App\UserProfile;
@@ -20,6 +21,15 @@ class LeadController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Leads')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_write == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
         $users = User::where('role_id',3)->get();
         
         $countries= Country::get(["name","id"]);
@@ -33,6 +43,7 @@ class LeadController extends Controller
     
       public function index(Request $request)
     {
+        $permission = getModulePermission(auth()->id(), 6);
         $role_id=auth()->user()->role_id;
           $user_id= auth()->user()->id ;
              $datas['from_date']=""; 
@@ -53,8 +64,8 @@ class LeadController extends Controller
                 $data = Lead::latest()->get();
          }
                 return Datatables::of($data)
-                   ->addColumn('action', function($row){
-                        $btn = '<a href="'.route("lead.edit" , ["lead_id" => $row->id]).'" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
+                   ->addColumn('action', function($row) use ($permission){
+                        $btn = (auth()->user()->role_id == 1 || (!empty($permission) && $permission->can_edit == 1)) ? '<a href="'.route("lead.edit" , ["lead_id" => $row->id]).'" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>' : '';
 
                         return $btn;
                     })->rawColumns(['action'])
@@ -66,8 +77,8 @@ class LeadController extends Controller
             if ($request->ajax()) {
                $data = Lead::where('assign_user',$user_id)->latest()->get();
                 return Datatables::of($data)
-                   ->addColumn('action', function($row){
-                        $btn = '<a href="'.route("lead.edit" , ["lead_id" => $row->id]).'" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
+                   ->addColumn('action', function($row) use ($permission){
+                        $btn = (auth()->user()->role_id == 1 || (!empty($permission) && $permission->can_edit == 1)) ? '<a href="'.route("lead.edit" , ["lead_id" => $row->id]).'" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>' : '';
 
                         return $btn;
                     })->rawColumns(['action'])
@@ -86,6 +97,15 @@ class LeadController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Leads')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_write == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
         // dd($request->all());
         $validateData = $request->validate([
             'name' => 'required|min:3|max:180',
@@ -108,6 +128,15 @@ class LeadController extends Controller
      */
     public function edit($leadId)
     {
+        $user = auth()->user();
+        $getModule = SiteModule::where('name','Leads')->first();
+        if($user->role_id != 1) {
+            $permission = getModulePermission($user->id,$getModule->id);
+            if(empty($permission) || $permission->can_edit == 0) {
+                $response = messageResponse(true, 'error', 'Unauthorised Access');
+                return redirect()->route('admin.dashboard')->with($response);
+            }
+        }
           $users = User::where('role_id',3)->get();
      
         $lead = Lead::where('id', $leadId)->first();
