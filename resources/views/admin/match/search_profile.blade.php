@@ -51,7 +51,7 @@
 
     <div class="media-body">
         <h3 class="mb-1 mt-0">
-            <a href="{{ route('user.show', ['user_id' => $user->id]) }}">{{ $user->first_name.' '.$user->last_name }}</a>
+            <a target="_blank" href="{{ route('user.show', ['user_id' => $user->id]) }}">{{ $user->first_name.' '.$user->last_name }}</a>
             {{-- <input type="checkbox" name="send_profile[{{ $user->id }}]" class="pdf_profile">--}}
         </h3>
         <div>
@@ -80,7 +80,7 @@
                 <li class="col-md-3 ">{{ $user->mangalik_status == 'yes' ? 'Manglik' : 'Not Manglik' }}</li>
                 <li class="col-md-3 ">{{ $user->higher_education }} {{ !empty($user->college) ? ','.$user->college : '' }}</li>
                 <li class="col-md-3 ">{{ $user->city.', '.$user->state }}</li>
-                <li class="col-md-3 "><a target="_blank" href="{{ route('user.show', ['user_id' => $user->id]) }}">View Profile</a></li>
+                <li class="col-md-3 "><a target="_blank" target="_blank" href="{{ route('user.show', ['user_id' => $user->id]) }}">View Profile</a></li>
             </ul>
         </div>
     </div>

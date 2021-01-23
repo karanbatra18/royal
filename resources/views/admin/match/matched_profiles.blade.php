@@ -98,7 +98,7 @@
                     {{ $marriedStatus }}</td>
                     <td>{{ $user->mangalik_status == 'yes' ? 'Manglik' : 'Not Manglik' }}</td>
                     <td>{{ $user->higher_education }} {{ !empty($user->college) ? ','.$user->college : '' }}</td>
-                    <td><a href="{{ route('user.show', ['user_id' => $user->id]) }}">View Profile</a></td>
+                    <td><a target="_blank" href="{{ route('user.show', ['user_id' => $user->id]) }}">View Profile</a></td>
                 </tr>
                 </tbody></table>
         </div>
