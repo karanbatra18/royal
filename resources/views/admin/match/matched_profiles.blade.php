@@ -55,7 +55,7 @@
 
     <div class="media-body">
         <h6 class="mb-1 mt-0">
-            <a href="{{ route('user.show', ['user_id' => $user->id]) }}"> {{ $user->first_name.' '.$user->last_name }} </a>
+            <a target="_blank" href="{{ route('user.show', ['user_id' => $user->id]) }}"> {{ $user->first_name.' '.$user->last_name }} </a>
 
         
         </h6>

@@ -48,9 +48,12 @@ class MatchController extends Controller
 
             view()->share(['user' => $user, 'userProfile' => $userProfile]);
 
-            //$pdf = PDF::loadHtml('emails.profile.pdf');
-            $pdf = PDF::loadView('emails.profile.pdf')->stream();
 
+            //$pdf = PDF::loadView('emails.profile.pdf')->stream();
+
+            $returnOtherHTML = view('emails.profile.pdf')->with(compact('user', 'userProfile'))->render();
+            //echo $returnOtherHTML;die;
+            $pdf = PDF::loadHtml($returnOtherHTML)->stream();
             return $pdf;
 
     }

@@ -37,11 +37,11 @@
         -webkit-box-sizing: border-box;
     }
 
-    .right-sec {
+    /*.right-sec {
         float: left;
         width: 25%;
 
-    }
+    }*/
 
     body {
         color: #3C4858;
@@ -57,11 +57,11 @@
         padding: 0px 10px;
     }
 
-    .lft-sec {
+    /*.lft-sec {
         float: left;
         width: 25%;
 
-    }
+    }*/
 
     .lft-sec .image {
         background: #fff;
@@ -69,12 +69,12 @@
         min-height: 198px;
     }
 
-    .mid-sec {
+   /* .mid-sec {
         width: 50%;
         float: left;
-    }
+    }*/
 
-    .mid-sec #inner-sec {
+/*    .mid-sec #inner-sec {
         padding: 10px 10px;
         min-height: 198px;
         background: #f0f2f7;
@@ -146,7 +146,7 @@
     }
 
     .basic-info .lft-info {
-        /* background: #fff; */
+        !* background: #fff; *!
         float: left;
         width: 72%;
     }
@@ -184,11 +184,44 @@
     .pr-17 {
         padding: 15px 16px 0px 16px;
         color: silver;
+    }*/
+    .grid-second-child {
+        background: white;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .left-heading {
+        font-size: 17px;
+        color: #d9475c;
+        font-weight: inherit;
+        position: relative;
+        font-weight: 400;
+    }
+
+    .basic-info-ul {
+        list-style: none;
+        display: block;
+        width: 100%;
+    }
+
+    .basic-info-ul li {
+        padding-top: 15px;
+        display: block;
+        color: #999;
+        font-size: 15px;
+        letter-spacing: .50px;
+        font-weight: 400;
+
+    }
+
+    .basic-info-ul li span{
+        display: block;
     }
 </style>
 <body>
 
-<div class="user-profle">
+{{--<div class="user-profle">
     <div class="wrapper">
         <div class="lft-sec">
             <div class="image">
@@ -196,12 +229,12 @@
             </div>
         </div>
 
-        <div class="mid-sec">
+        --}}{{--<div class="mid-sec">
 
-            <div id="inner-sec">
+            <div id="inner-sec" class="grid-second-child">
                 <span>{{ $user->full_name }}</span><span><i class="fa fa-question-circle-o"></i></span>
                 <hr>
-                <table id="list-ul">
+                <div class="basic-info-ul">
                     <li>{{ !empty($userProfile->folio_no) ? $userProfile->folio_no : '' }}</li>
 
 
@@ -261,21 +294,89 @@
                 </ul>
             </div>
 
-        </div>
+        </div>--}}{{--
 
-        <div class="right-sec">
+        --}}{{--<div class="right-sec">
             <div class="right-info">
             </div>
         </div>
-        <div class="clear"></div>
+        <div class="clear"></div>--}}{{--
     </div>
 
-</div>
+</div>--}}
 <div class="wrapper">
     <div class="basic-info">
         <div class="lft-info">
             <div class="inner-info">
-                <div id="section2">
+                <div id="section2" class="grid-second-child">
+                    <div class="image">
+                        <img src="assets/images/users/dipika-img.jpg">
+                    </div>
+                </div>
+                <div id="section2" class="grid-second-child">
+                    <span>{{ $user->full_name }}</span><span><i class="fa fa-question-circle-o"></i></span>
+                    <hr>
+                    <div class="basic-info-ul">
+                        <li>{{ !empty($userProfile->folio_no) ? $userProfile->folio_no : '' }}</li>
+
+
+                        <li>{{ !empty($userProfile->religion) ? $userProfile->religion : '' }}</li>
+                        <li>
+
+                            @php
+                                $income = 'Not Filled in';
+                                            if(isset($userProfile->annual_income) && $userProfile->annual_income == '03') {
+                                                   $income =  '0 - 3 Lakh';
+
+                                               } else if(isset($userProfile->annual_income) && $userProfile->annual_income == '35') {
+                                                      $income =  '3 - 5 Lakh';
+                                               }  else if(isset($userProfile->annual_income) && $userProfile->annual_income == '58'){
+                                                    $income =  '5 - 8 Lakh';
+                                               }  else if(isset($userProfile->annual_income) && $userProfile->annual_income == 'sikh'){
+                                                     $income =  '8 - 10 Lakh';
+                                               }  else if(isset($userProfile->annual_income) && $userProfile->annual_income == '1015'){
+                                                     $income =  '10 - 15 Lakh';
+                                               }  else if(isset($userProfile->annual_income) && $userProfile->annual_income == 'jain'){
+                                                     $income =  '15 - 20 Lakh';
+                                               }  else if(isset($userProfile->annual_income) && $userProfile->annual_income == '2025'){
+                                                     $income =  '20 - 25 Lakh';
+                                               } else if(isset($userProfile->annual_income) && $userProfile->annual_income == '2530'){
+                                                     $income =  '25 - 30 Lakh';
+                                               } else if(isset($userProfile->annual_income) && $userProfile->annual_income == '3040'){
+                                                     $income =  '30 - 40 Lakh';
+                                               } else if(isset($userProfile->annual_income) && $userProfile->annual_income == '4050'){
+                                                     $income =  '40 - 50 Lakh';
+                                               }  else if(isset($userProfile->annual_income) && $userProfile->annual_income == '5000'){
+                                                     $income =  '50 Lakh and above';
+                                                 }
+                            @endphp
+                            {{ $income }}
+                        </li>
+                        <li>{{ !empty($userProfile->mother_tongue) ? $userProfile->mother_tongue : '' }}</li>
+
+
+                        <li>{{ !empty($userProfile->state) ? $userProfile->state : '' }}</li>
+                        <li> @php
+                                if($user->marital_status == 'never_married') {
+                                    $marriedStatus = 'Never Married';
+                               } else if($user->marital_status == 'divorced'){
+                               $marriedStatus = 'Divorced';
+                               } else if($user->marital_status == 'awaiting_divorce'){
+                               $marriedStatus = 'Awaiting Divorce';
+                               } else if($user->marital_status == 'widowed'){
+                               $marriedStatus = 'Widowed';
+                               } else if($user->marital_status == 'annulled'){
+                               $marriedStatus = 'Annulled';
+                               } else {
+                               $marriedStatus = '';
+                               }
+                            @endphp
+                            {{ $marriedStatus }}</li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div id="section2" class="grid-second-child">
                                     <span class="left-heading"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
 Basic Information</span>
 
@@ -314,7 +415,7 @@ Basic Information</span>
                     </ul>
 
                 </div>
-                <div id="section2">
+                <div id="section2" class="grid-second-child">
                                     <span class="left-heading"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
 About Me</span>
 
@@ -334,7 +435,7 @@ About Me</span>
                     </ul>
 
                 </div>
-                <div id="section2">
+                <div id="section2" class="grid-second-child">
                                     <span class="left-heading"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
 Education & Career</span>
 
@@ -362,7 +463,7 @@ Education & Career</span>
                     </ul>
 
                 </div>
-                <div id="section2">
+                <div id="section2" class="grid-second-child">
                                     <span class="left-heading"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
 Contact Details</span>
 
@@ -387,7 +488,7 @@ Contact Details</span>
                     </ul>
 
                 </div>
-                <div id="section2">
+                <div id="section2" class="grid-second-child">
                                     <span class="left-heading"><i class="fa fa-user" aria-hidden="true"></i>
 LifeStyle</span>
 
@@ -407,7 +508,7 @@ LifeStyle</span>
                     </ul>
 
                 </div>
-                <div id="section2">
+                <div id="section2" class="grid-second-child">
                                     <span class="left-heading"><i class="fa fa-user" aria-hidden="true"></i>
 
 Family Details</span>
@@ -442,9 +543,44 @@ Family Details</span>
                     </ul>
 
                 </div>
+                <div id="section2" class="grid-second-child">
+                    <ul class="grid-second-child">
+                               <span class="left-heading"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+Horoscope</span>
+
+                        <li class="pt20 pr-17">Place of
+                            Birth<br>{{ $userProfile->birth_place ? ucfirst($userProfile->birth_place) : null }}
+                        </li>
+                        <li class="pt20 pr-17">Date of
+                            Birth<br>{{ !empty($user->dob) ? date('M d, Y', strtotime($user->dob)) : null }}</li>
+                        <li class="pt20 pr-17">Time of
+                            Birth<br>{{ !empty($userProfile->birth_time) ? $userProfile->birth_time : 'Not filled in' }}
+                        </li>  
+
+                        <li class="pt20 pr-17">
+                            Manglik<br>
+                            @if(empty($userProfile->mangalik_status))
+                                Not Filled
+
+                            @elseif($userProfile->mangalik_status == 'mangalik')
+                                Mangalik
+                            @elseif($userProfile->mangalik_status == 'anshik_manglik')
+                                Anshik manglik
+                            @elseif($userProfile->mangalik_status == 'non_mangalik')
+                                Non Manglik
+
+
+                            @endif
+
+                        </li>
+
+
+                    </ul>
+                </div>
+
             </div>
         </div>
-        <div class="right-info">
+        {{--<div class="right-info">
             <div class="inner-sec">
                 <div class="grid-second-child">
                     <div class="pt-49">
@@ -481,7 +617,7 @@ Family Details</span>
             </div>
         </div>
         <div class="clear"></div>
-
+--}}
     </div>
 </div>
 
