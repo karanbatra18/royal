@@ -263,7 +263,7 @@ class UserController extends Controller
     public function permissions(Request $request){
         $user = null;
         $siteModules = SiteModule::get();
-        $users = User::where('role_id',2)->get();
+        $users = User::where('role_id',3)->get();
 
         if(isset($request->user) && !empty($request->user)) {
             $user = User::where('id',$request->user)->first();
