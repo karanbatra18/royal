@@ -86,6 +86,24 @@
                                         </div>
                                     </div>
                                 </div>
+                                
+                                   <div class="row">
+                                    <label class="col-sm-2 col-form-label">{{ __('Employment Number*') }}</label>
+                                    <div class="col-sm-7">
+                                        <div class="form-group{{ $errors->has('employment_number') ? ' has-danger' : '' }}">
+                                            <input class="form-control{{ $errors->has('employment_number') ? ' is-invalid' : '' }}"
+                                                   name="phone" id="input-phone" type="text"
+                                                   placeholder="{{ __('Employment Number') }}"
+                                                   value="{{ isset($user->employment_number) ? $user->employment_number : old('employment_number') }}"
+                                                   required/>
+
+                                            @if ($errors->has('employment_number'))
+                                                <span id="employment_number-error"
+                                                      class="error text-danger">{{ $errors->first('employment_number') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                             <div class="card-footer ml-auto mr-auto">

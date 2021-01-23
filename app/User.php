@@ -36,6 +36,7 @@ class User extends Authenticatable
         'is_vip',
         'role_id',
         'age',
+        'employment_number'
     ];
 
     /**

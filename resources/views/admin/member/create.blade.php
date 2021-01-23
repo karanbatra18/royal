@@ -73,6 +73,19 @@
                   </div>
                 </div>
                 
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Employment Number') }}</label>
+                  <div class="col-sm-7">
+                    <div class="form-group{{ $errors->has('employment_number') ? ' has-danger' : '' }}">
+                       <input class="form-control{{ $errors->has('employment_number') ? ' is-invalid' : '' }}" name="employment_number" id="input-employment_number" type="text" placeholder="{{ __('Employment Number') }}" value="{{ old('employment_number') }}" required />
+                   
+                      @if ($errors->has('employment_number'))
+                        <span id="employment_number-error" class="error text-danger" >{{ $errors->first('employment_number') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                
                    <div class="row">
                   <label class="col-sm-2 col-form-label" for="input-password">{{ __('New Password') }}</label>
                   <div class="col-sm-7">
